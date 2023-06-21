@@ -1,3 +1,7 @@
+
+
+
+
 <!-- Add new tax start -->
 
 <div class="content-wrapper">
@@ -108,8 +112,12 @@
 
                     <?php echo  form_open('Caccounts/create_tax_setup') ?>
 
+<input type="hidden" name="tax_name" value="<?php echo  $this->uri->segment(3);  ?>"/>
 
-                    <table class="table table-bordered table-hover" border="0">
+
+
+
+                    <table class="table table-bordered table-hover"   id="POITable"  border="0">
 
         <tr>
 
@@ -153,33 +161,33 @@
         <tr>
             <td><?php echo $s; ?></td>
 
-            <td class="paddin5ps" required><input  type="text" class="form-control" id="start_amount" value="<?php if($tax['employer']){ echo $tax['employer'];}else{echo "";} ?>" name="start_amount[]"  required/></td>
+            <td class="paddin5ps" required><input  type="text" class="form-control" id="start_amount" value="<?php if($tax['employer']){ echo $tax['employer'];}else{echo "";} ?>" name="employer[]"  required/></td>
 
-            <td class="paddin5ps"><input  type="text" class="form-control" id="end_amount" value="<?php if($tax['employee']){ echo $tax['employee'];}else{echo "";} ?>"  name="end_amount[]"  required/></td>
+            <td class="paddin5ps"><input  type="text" class="form-control" id="end_amount" value="<?php if($tax['employee']){ echo $tax['employee'];}else{echo "";} ?>"  name="employee[]"  required/></td>
 
-            <td class="paddin5ps"><input  type="text" class="form-control" id="rate"  value="<?php if($tax['details']){ echo $tax['details'];}else{echo "";} ?>" name="rate[]"  required/></td>
+            <td class="paddin5ps"><input  type="text" class="form-control" id="rate"  value="<?php if($tax['details']){ echo $tax['details'];}else{echo "";} ?>" name="details[]"  required/></td>
 
-             <td class="paddin5ps"><input  type="text" class="form-control" id="rate" value="<?php if($tax['single']){ $split=explode('-',$tax['single']); if($split[0]){ echo $split[0];}else{echo "";}} ?>"  name="rate[]"  required/></td>
-              <td class="paddin5ps"><input  type="text" class="form-control" id="rate" value="<?php if($tax['single']){ $split=explode('-',$tax['single']); if($split[1]){ echo $split[1];}else{echo "";}} ?>"  name="rate[]"  required/></td>
+              <td class="paddin5ps"><input  type="text" class="form-control" id="single_from" value="<?php if($tax['single']){ $split=explode('-',$tax['single']); if($split[0]){ echo $split[0];}else{echo "";}} ?>"  name="single[]"  required/></td>
+              <td class="paddin5ps"><input  type="text" class="form-control" id="single_to" value="<?php if($tax['single']){ $split=explode('-',$tax['single']); if($split[1]){ echo $split[1];}else{echo "";}} ?>"  name="single[]"  required/></td>
              
-                          <td class="paddin5ps"><input  type="text" class="form-control" id="rate" value="<?php if($tax['tax_filling']){ $split=explode('-',$tax['tax_filling']); if($split[0]){ echo $split[0];}else{echo "";}} ?>"  name="rate[]"  required/></td>
-              <td class="paddin5ps"><input  type="text" class="form-control" id="rate" value="<?php if($tax['tax_filling']){ $split=explode('-',$tax['tax_filling']); if($split[1]){ echo $split[1];}else{echo "";}} ?>"  name="rate[]"  required/></td>
-            <td class="paddin5ps"><input  type="text" class="form-control" id="rate" value="<?php if($tax['married']){ $split=explode('-',$tax['married']); if($split[0]){ echo $split[0];}else{echo "";}} ?>"  name="rate[]"  required/></td>
-              <td class="paddin5ps"><input  type="text" class="form-control" id="rate" value="<?php if($tax['married']){ $split=explode('-',$tax['married']); if($split[1]){ echo $split[1];}else{echo "";}} ?>"  name="rate[]"  required/></td>
+              <td class="paddin5ps"><input  type="text" class="form-control" id="tax_filling_from" value="<?php if($tax['tax_filling']){ $split=explode('-',$tax['tax_filling']); if($split[0]){ echo $split[0];}else{echo "";}} ?>"  name="tax_filling[]"  required/></td>
+              <td class="paddin5ps"><input  type="text" class="form-control" id="tax_filling_to" value="<?php if($tax['tax_filling']){ $split=explode('-',$tax['tax_filling']); if($split[1]){ echo $split[1];}else{echo "";}} ?>"  name="tax_filling[]"  required/></td>
+           
+           
+           
+              <td class="paddin5ps"><input  type="text" class="form-control" id="rate" value="<?php if($tax['married']){ $split=explode('-',$tax['married']); if($split[0]){ echo $split[0];}else{echo "";}} ?>"  name="married[]"  required/></td>
+              <td class="paddin5ps"><input  type="text" class="form-control" id="rate" value="<?php if($tax['married']){ $split=explode('-',$tax['married']); if($split[1]){ echo $split[1];}else{echo "";}} ?>"  name="married[]"  required/></td>
 
-        <td class="paddin5ps"><input  type="text" class="form-control" id="rate" value="<?php if($tax['head_household']){ $split=explode('-',$tax['head_household']); if($split[0]){ echo $split[0];}else{echo "";}} ?>"  name="rate[]"  required/></td>
-              <td class="paddin5ps"><input  type="text" class="form-control" id="rate" value="<?php if($tax['head_household']){ $split=explode('-',$tax['head_household']); if($split[1]){ echo $split[1];}else{echo "";}} ?>"  name="rate[]"  required/></td>
+             <td class="paddin5ps"><input  type="text" class="form-control" id="rate" value="<?php if($tax['head_household']){ $split=explode('-',$tax['head_household']); if($split[0]){ echo $split[0];}else{echo "";}} ?>"  name="head_household[]"  required/></td>
+              <td class="paddin5ps"><input  type="text" class="form-control" id="rate" value="<?php if($tax['head_household']){ $split=explode('-',$tax['head_household']); if($split[1]){ echo $split[1];}else{echo "";}} ?>"  name="head_household[]"  required/></td>
 
    
-            <td class="paddin5ps"><button type="button" id="delPOIbutton" class="btn btn-danger" style="position: relative; left: 25px;" value="Delete" onclick="deleteTaxRow(this)"><i class="fa fa-trash"></i></button></td>
-
-            <td class="paddin5ps"><button type="button" id="addmorePOIbutton" class="btn btn-success" style="position: relative; left: 30px;" value="Add More POIs" onclick="TaxinsRow()"><i class="fa fa-plus-circle"></button></td>
-
         </tr>
       
 
        <?php $s++; }  ?>
         <tr>
+
             <td><?php echo $s; ?></td>
 
             <td class="paddin5ps" required><input  type="text" class="form-control" id="start_amount"  name="start_amount[]"  required/></td>
@@ -188,20 +196,32 @@
 
             <td class="paddin5ps"><input  type="text" class="form-control" id="rate"   name="rate[]"  required/></td>
 
-             <td class="paddin5ps"><input  type="text" class="form-control" id="rate"   name="rate[]"  required/></td>
+             <td class="paddin5ps"><input  type="text" class="form-control" id="rate"   name="single_from[]"  required/></td>
+              <td class="paddin5ps"><input  type="text" class="form-control" id="rate"   name="single_to[]"  required/></td>
 
-              <td class="paddin5ps"><input  type="text" class="form-control" id="rate"   name="rate[]"  required/></td>
 
-               <td class="paddin5ps"><input  type="text" class="form-control" id="rate"   name="rate[]"  required/></td>
-
-                <td class="paddin5ps"><input  type="text" class="form-control" id="rate"   name="rate[]"  required/></td>
+               <td class="paddin5ps"><input  type="text" class="form-control" id="rate"   name="tax_filling_from[]"  required/></td>
+                <td class="paddin5ps"><input  type="text" class="form-control" id="rate"   name="tax_filling_to[]"  required/></td>
                  
+
+                <td><input  type="text" class="form-control" id="rate"   name="married_from[]"  required/></td>
+                <td><input  type="text" class="form-control" id="rate"   name="married_to[]"  required/></td>
+
+
+
+                <td><input  type="text" class="form-control" id="rate"   name="head_household_from[]"  required/></td>
+                <td class="paddin5ps"><input  type="text" class="form-control" id="rate"   name="head_household_to[]"  required/></td>
+
+
 
             <td class="paddin5ps"><button type="button" id="delPOIbutton" class="btn btn-danger" style="position: relative; left: 25px;" value="Delete" onclick="deleteTaxRow(this)"><i class="fa fa-trash"></i></button></td>
 
             <td class="paddin5ps"><button type="button" id="addmorePOIbutton" class="btn btn-success" style="position: relative; left: 30px;" value="Add More POIs" onclick="TaxinsRow()"><i class="fa fa-plus-circle"></button></td>
 
+
         </tr>
+               <?php $s++;   ?>
+
         </table>
 
 
@@ -209,7 +229,7 @@
         <br>
                         <div class="form-group text-center">
 
-                            <button type="reset" class="btn btn-primary w-md m-b-5"><?php echo display('reset') ?></button>
+                            <!-- <button type="reset" class="btn btn-primary w-md m-b-5"><?php echo display('reset') ?></button> -->
 
                             <button type="submit" class="btn btn-success w-md m-b-5"><?php echo display('setup') ?></button>
 

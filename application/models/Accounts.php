@@ -34,7 +34,7 @@ class Accounts extends CI_Model {
         $query = $this->db->get()->num_rows();
 
 
-    //    echo $this->db->last_query();
+    //    echo $this->db->last_query(); die();
 
         if ($query > 0) {
             return FALSE;
@@ -74,12 +74,48 @@ class Accounts extends CI_Model {
 
 
 
-    public function taxsetup_create($data = array())
+    public function taxsetup_create($data1,$tax_name)
     {
- 
+  $query=$this->db->select('*')
 
-$this->db->insert('payroll_tax_setup',$data);
+                ->from('state_localtax')
+              //  ->where('created_by',$this->session->userdata('user_id'))
+                ->where('tax',$tax_name)
+                ->get();
+        //  echo $this->db->last_query(); die();
+
+
+
+        if ($query->num_rows() > 0) {
+ 
+         $this->db->where('tax',$tax_name);
+                //   echo $this->db->last_query(); die();
+
+         $this->db->delete('state_localtax');
+                  echo $this->db->last_query(); die();
+
+         $this->db->insert('state_localtax', $data1);
+
+         echo $this->db->last_query(); die();
+
+        }else{
+            $this->db->insert('state_localtax', $data1);
+                     echo $this->db->last_query(); die();
+
+        }
+        //  $this->db->insert('payroll_tax_setup',$data);
+ 
+return true;
     }
+
+
+
+
+
+
+
+
+
         public function viewTaxsetup()
     {
         return $this->db->select('*')   

@@ -263,22 +263,115 @@ if ($this->db->field_exists($txd, 'quotation_taxinfo')) {
     }
     // ==================== Income tax form end ============
 
+
+
+
     // ================ Income tax entry   ======
     public function create_tax_setup(){
-        $sm = $this->input->post('start_amount',TRUE);
-        $em = $this->input->post('end_amount',TRUE);
-        $rt = $this->input->post('rate');
-         for ($i=0; $i < sizeof($sm); $i++) {
-                $postData = [
-                    'start_amount'  => $sm[$i],
-                    'end_amount'    => $em[$i],
-                    'rate'          => $rt[$i],                 
-                ];     
-                $this->Accounts->taxsetup_create($postData);
+        // $sm = $this->input->post('start_amount',TRUE);
+        // $em = $this->input->post('end_amount',TRUE);
+        // $rt = $this->input->post('rate');
+
+        // $st = $this->input->post('single_from');
+        // $st = $this->input->post('single_to');
+
+        // $tt = $this->input->post('tax_filling_from');
+        // $tt = $this->input->post('tax_filling_to');
+
+        // $mt = $this->input->post('married_from');
+        // $mt = $this->input->post('married_to');
+
+        // $ht = $this->input->post('head_household_from');
+        // $ht = $this->input->post('head_household_to');
+
+
+
+
+
+
+
+        //  for ($i=0; $i < sizeof($sm); $i++) {
+        //         $postData = [
+        //             'start_amount'  => $sm[$i],
+        //             'end_amount'    => $em[$i],
+        //             'rate'          => $rt[$i],    
+                    
+        //             'single_from' => $st[$i],    
+        //             'single_to' => $st[$i],    
+
+        //             'tax_filling_from'=> $tt[$i],
+        //             'tax_filling_to'=> $tt[$i],
+
+        //             'married_from' => $mt[$i], 
+        //             'married_to' => $mt[$i], 
+
+        //             'head_household_from' => $ht[$i], 
+        //             'head_household_to'  => $ht[$i], 
+        //         ];    
+                
+
+
+                
+ $tax_name = $this->input->post('tax_name',TRUE);
+
+
+
+        $start_amount = $this->input->post('start_amount',TRUE);
+        $end_amount = $this->input->post('end_amount',TRUE);
+        $rate = $this->input->post('rate',TRUE);
+        $single_from = $this->input->post('single_from',TRUE);
+        $single_to = $this->input->post('single_to',TRUE);
+        $tax_filling_from = $this->input->post('tax_filling_from',TRUE);
+        $tax_filling_to = $this->input->post('tax_filling_to',TRUE);
+        $married_from = $this->input->post('married_from',TRUE);
+        $married_to = $this->input->post('married_to',TRUE);
+        $head_household_from = $this->input->post('head_household_from',TRUE);
+        $head_household_to = $this->input->post('head_household_to',TRUE);
+
+// print_r( $head_household_to); die();
+
+
+     //   echo count($slab_no);
+        
+       for ($i = 0, $n = count($rate); $i < $n; $i++) {
+           
+            $samount = $start_amount[$i];
+            $eamount = $end_amount[$i];
+            $arate = $rate[$i];
+            $sfrom = $single_from[$i];
+            $sto = $single_to[$i];
+            $tffrom = $tax_filling_from[$i];
+            $tfto = $tax_filling_to[$i];
+            $mfrom = $married_from[$i];
+            $mto = $married_to[$i];
+            $hhfrom = $head_household_from[$i];
+            $hhto = $head_household_to[$i];
+
+
+            $data1 = array(
+
+                'employer'    => $samount,
+                'employee'      => $eamount,
+                'details'            => $arate,
+                'single'   =>  $samount."-".$eamount,
+                'tax_filling' => $tffrom."-".$tfto,           
+                'married' => $mfrom."-".$mto,
+                'head_household' => $hhfrom."-".$hhto,
+                'tax'  =>$tax_name,
+        );
+
+        //   print_r($data1);  
+
+      $this->Accounts->taxsetup_create($data1,$tax_name);
+
+
+
             }
             $this->session->set_flashdata('message', display('save_successfully'));
             redirect("Caccounts/manage_income_tax"); 
     }
+
+
 
     #==============TAX Entry==============#
     public function tax_entry()
