@@ -57,7 +57,7 @@
 
             ?>
 
-            <div class="alert alert-info alert-dismissable">
+            <div class="alert alert-info alert-dismissable" style="color:white;background-color:#38469f;">
 
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 
@@ -77,7 +77,7 @@
 
             ?>
 
-            <div class="alert alert-danger alert-dismissable">
+            <div class="alert alert-danger alert-dismissable" style="color:white;background-color:#38469f;">
 
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 
@@ -355,11 +355,13 @@ border-collapse:collapse;'>
           for($i=0; $i < sizeof($states_list); $i++) {
                    // echo $states_list[$i];
                   $splt=explode(",",$states_list[$i]['tax']);
+                 
                   $j=1;
                
                    echo "<tr><td>".$k."</td><td class='state_name' style='text-align:center;font-weight:bold;' rowspan='".$j."'>". $states_list[$i]['state']."</td><td><table>";
                   
                    foreach($splt as $sp){
+                   
           //  $empName = $states_list[$i];
           
          
@@ -370,8 +372,8 @@ border-collapse:collapse;'>
           
                
               if(!empty($sp) && $sp !==','){
-            
-            echo "<tr><td style='display:none' class='state_name'>". $states_list[$i]['state']."</td><td style='width:450px;' class='tax_value'>".$sp."</td> <td>  <a  href=".base_url('Chrm/add_state_taxes_detail/'.$states_list[$i]['state']."-".$sp)." class='btn btnclr btn-sm' data-toggle='tooltip' data-placement='left'  data-original-title='Add Taxes Detail'><i class='fa fa-window-restore' aria-hidden='true'></i></a>
+            $sp_url= str_replace(" ","_",$sp);
+            echo "<tr><td style='display:none' class='state_name'>". $states_list[$i]['state']."</td><td style='width:450px;' class='tax_value'>".$sp."</td> <td>  <a  href=".base_url('Chrm/add_state_taxes_detail/'.$states_list[$i]['state']."-".$sp_url)." class='btn btnclr btn-sm' data-toggle='tooltip' data-placement='left'  data-original-title='Add Taxes Detail'><i class='fa fa-window-restore' aria-hidden='true'></i></a>
                                         <a  class='delete_item btn btnclr btn-sm' ><i class='fa fa-trash' aria-hidden='true'></i></a>     </td></tr></td>";
                   }
                 else{
