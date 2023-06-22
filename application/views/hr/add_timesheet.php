@@ -151,7 +151,7 @@
 
                         <div class="form-group row">
                             
-                            <div class="col-sm-6">
+                        <div class="col-sm-6">
                                 <label for="customer" class="col-sm-4 col-form-label">Job title<i class="text-danger">*</i></label>
                                 <div class="col-sm-8">
                                         <input type="text" name="job_title" id="job_title" placeholder="Job title" value="" class="form-control">
@@ -166,30 +166,26 @@
 
                                 <div class="col-sm-7">
 
-                                <input type="text" required tabindex="2" class="form-control " name="dailybreak" value="10" id="dailybreak"  style="width: 500px;"  />
+                                <!-- <input type="text" required tabindex="2" class="form-control " name="dailybreak" value="10" id="dailybreak"  style="width: 500px;"  /> -->
 
-                                <!-- <select name="dailybreak"  id="dailybreak"  class="form-control datepicker"  style="width: 420px;" >
-
-
-                                        <option value="">  Select Daily Break   </option>
-                                        <option value="30min">  30min   </option>
-                                        <option value="45min">  45min </option>
-                                        <option value="1hour">  1hour </option>
-
+                                <select name="dailybreak"  id="dailybreak"  class="form-control datepicker"  style="width: 420px;" >
     
-                                        <?php //foreach($dailybreak as $dbd){ ?>
-          <option value="<?php// echo $dbd['dailybreak_name'] ; ?>"><?php //echo $dbd['dailybreak_name'] ; ?></option>
-                               <?php   // }?>
+                                        <?php foreach($dailybreak as $dbd){ ?>
+
+                                            <option selected value="5">  5   </option>
+
+          <option value="<?php echo $dbd['dailybreak_name'] ; ?>"><?php echo $dbd['dailybreak_name'] ; ?></option>
+                               <?php    }?>
 
 
 
-                                           </select> -->
+                                           </select>
                                            </div>
 
 
-                                           <!-- <div  class=" col-sm-1">
+                                           <div  class=" col-sm-1">
 <a  class="client-add-btn btn" aria-hidden="true" style="color:white;background-color:#38469f;"  data-toggle="modal" data-target="#dailybreak_add" ><i class="fa fa-plus"></i></a>
-</div> -->
+</div> 
 
 
 
@@ -386,11 +382,20 @@
                     <td>20</td>
                  
                                 </tr> -->
-                                    
+                                             
+                    
 								</tbody>
                                
                                 <tfoot>
           
+                                <tr style="text-align:end"> 
+                                             <td colspan="4" class="text-right">Total hours worked:</td>  
+                                             <!-- <td>160</td> -->
+                                             <!-- console.log(total_net.toFixed(3)); -->
+                                             <!-- <td class="total_net" name="total_net" style="border:none;width: 40px;"></td> -->
+                                             <input  type="text"   readonly id="total_net"  name="total_net"     />                
+                                          
+                                            </tr> 
 
                  
                                 </tfoot>
@@ -398,13 +403,11 @@
 
 		                    </table>
 
-
-
-
-
-
-
+                                             
+                                          
+                                        
 		                </div>
+
                         <input type="submit" style="float:right;color:white;background-color: #38469f;" value="Generate pay slip"   class="btn btn-info m-b-5 m-r-2"/> 
 
                     </div>               
@@ -571,8 +574,8 @@
 
             <div class="col-sm-6">
 
-                <input class="form-control" name ="dbreak" id="dbreak" type="text" placeholder="Daily Break"  required="" tabindex="1">
-
+                <!-- <input class="form-control"  name ="dbreak" id="dbreak" type="text" placeholder="Daily Break"  required="" tabindex="1"> -->
+                <input type="text"   class="decimal form-control" name ="dbreak" id="dbreak" placeholder="Integer and decimal only"/>
             </div>
 
         </div>
@@ -644,107 +647,55 @@
 
 
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
 
 <script>
- var csrfName = '<?php echo $this->security->get_csrf_token_name();?>';
-var csrfHash = '<?php echo $this->security->get_csrf_hash();?>';
-    $(document).on('select change'  ,'#templ_name', function () {
-        
-var data = {
-      
-      value:$('#templ_name').val()
-  };
-
-  data[csrfName] = csrfHash;
-
-  $.ajax({
-      type:'POST',
-      data: data, 
-     dataType:"json",
-      url:'<?php echo base_url();?>Chrm/getemployee_data',
-      success: function(result, statut) {
-        
-           $('#job_title').val(result[0]['designation']);
-     
-  
-      }
-  });
 
 
-    });
-
-
-
-
-
-    
-
-
-var csrfName = '<?php echo $this->security->get_csrf_token_name();?>';
-var csrfHash = '<?php echo $this->security->get_csrf_hash();?>';
-
-$(function() {
-
-var start = moment().subtract(29, 'days');
-var end = moment();
-
-function cb(start, end) {
-    $('#reportrange').val(start.format('D/M/YYYY') + ' - ' + end.format('D/M/YYYY'));
-}
-
-$('#reportrange').daterangepicker({
-    startDate: start,
-    endDate: end,
-    ranges: {
-       'Today': [moment(), moment()],
-       'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-       'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-       'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-       'This Month': [moment().startOf('month'), moment().endOf('month')],
-       'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+$('.decimal').keydown(function (e) {
+  //Get the occurence of decimal operator
+  var match = $(this).val().match(/\./g);
+  if(match!=null){
+    // Allow: backspace, delete, tab, escape and enter 
+    if ($.inArray(e.keyCode, [46,8, 9, 27, 13, 110]) !== -1 ||
+        // Allow: Ctrl+A
+        (e.keyCode == 65 && e.ctrlKey === true) ||
+        // Allow: home, end, left, right
+        (e.keyCode >= 35 && e.keyCode <= 39)) {
+      // let it happen, don't do anything
+      return;
+    }  // Ensure that it is a number and stop the keypress
+    else if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105 )&&(e.keyCode==190)) {
+      e.preventDefault();
     }
-}, cb);
-
-cb(start, end);
-
+  }
+  else{
+    // Allow: backspace, delete, tab, escape, enter and .
+    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+        // Allow: Ctrl+A
+        (e.keyCode == 65 && e.ctrlKey === true) ||
+        // Allow: home, end, left, right
+        (e.keyCode >= 35 && e.keyCode <= 39)) {
+      // let it happen, don't do anything
+      return;
+    }
+    // Ensure that it is a number and stop the keypress
+    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+      e.preventDefault();
+    }
+  }
 });
-$('body').on('input select change','#reportrange',function(){
-    var date = $(this).val();
-    $('#tBody').empty();
-    const myArray = date.split("-");
-    var start = myArray[0];
-    var s_split=start.split("/");
-    var end = myArray[1];
-    var e_split=end.split("/");
-    const weekDays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    let chosenDate = start; //get chosen date from datepicker
-    var Date1 = new Date (s_split[2], s_split[0], s_split[1]);
-var Date2 = new Date (e_split[2], e_split[0], e_split[1]);
-var Days = Math.round((Date2.getTime() - Date1.getTime())/(1000*60*60*24));
-console.log(s_split[2]+"/"+ s_split[1]+"/"+ s_split[0]+"/"+Days);
-    const validDate = new Date(chosenDate);
-    let newDate;
-        const monStartWeekDays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
-        for(let i = 0; i < Days; i++) { //iterate through each weekday
-          newDate = new Date(validDate); //create date object
-          newDate.setDate(validDate.getDate() + i); //increment set date
-          //append results to table
-          $('#tBody').append( `
-          <tr>
-            
-            <td class="date">${newDate.getDate()} / ${newDate.getMonth() + 1} / ${newDate.getFullYear()}</td>
-            <td class="day">${weekDays[newDate.getDay()].slice(0,3)}</td>
-            <td class="start-time"><input id="startTime${monStartWeekDays[i]}" class="strt time ui-timepicker-input" type="time" /></td>
-            <td class="finish-time"><input id="finishTime${monStartWeekDays[i]}" class="end time ui-timepicker-input" type="time" /></td></td>
-          
-            <td class="hours-worked" id="hoursWorked${monStartWeekDays[i]}">
-              0
-            </td>
-          </tr>
-          ` );
-        }
+//Allow Upto Two decimal places value only
+$('.decimal').keyup(function () {
+  if ($(this).val().indexOf('.') != -1) {
+    if ($(this).val().split(".")[1].length > 2) {
+      if (isNaN(parseFloat(this.value))) return;
+      this.value = parseFloat(this.value).toFixed(2);
+    }
+  }
 });
+
+
 
 
 $('#add_pay_terms').submit(function(e){
@@ -785,7 +736,7 @@ $('#add_pay_terms').submit(function(e){
 
 
 $('body').on('keyup','.end',function(){
-   debugger;
+//    debugger;
     var start=$(this).closest('tr').find('.strt').val();
     //alert(start);
     var end=$(this).closest('td').find('.end').val();
@@ -801,6 +752,32 @@ $(this).closest('tr').find('.hours-worked').html(final);
 
 
 
+var csrfName = '<?php echo $this->security->get_csrf_token_name();?>';
+var csrfHash = '<?php echo $this->security->get_csrf_hash();?>';
+    $(document).on('select change'  ,'#templ_name', function () {
+        
+var data = {
+      
+      value:$('#templ_name').val()
+  };
+
+  data[csrfName] = csrfHash;
+
+  $.ajax({
+      type:'POST',
+      data: data, 
+     dataType:"json",
+      url:'<?php echo base_url();?>Chrm/getemployee_data',
+      success: function(result, statut) {
+        
+           $('#job_title').val(result[0]['designation']);
+     
+  
+      }
+  });
+
+
+    });
 
 
 
@@ -883,7 +860,45 @@ $(this).closest('tr').find('.hours-worked').html(final);
 
 
 
-  <?php
+
+
+
+
+
+
+
+
+
+ var csrfName = '<?php echo $this->security->get_csrf_token_name();?>';
+var csrfHash = '<?php echo $this->security->get_csrf_hash();?>';
+    $(document).on('select change'  ,'#templ_name', function () {
+        
+var data = {
+      
+      value:$('#templ_name').val()
+  };
+
+  data[csrfName] = csrfHash;
+
+  $.ajax({
+      type:'POST',
+      data: data, 
+     dataType:"json",
+      url:'<?php echo base_url();?>Chrm/getemployee_data',
+      success: function(result, statut) {
+        
+           $('#job_title').val(result[0]['designation']);
+     
+  
+      }
+  });
+
+
+    });
+
+
+
+    <?php
 if(isset($_POST['btnSearch'])){
     $s = $_REQUEST["daterangepicker-field"];
   
@@ -900,6 +915,195 @@ $searchdate =(!empty($s)?$s:$dat2);
 
 
 
-</script>
+    
 
+
+var csrfName = '<?php echo $this->security->get_csrf_token_name();?>';
+var csrfHash = '<?php echo $this->security->get_csrf_hash();?>';
+
+$(function() {
+
+var start = moment().subtract(29, 'days');
+var end = moment();
+
+function cb(start, end) {
+    $('#reportrange').val(start.format('D/M/YYYY') + ' - ' + end.format('D/M/YYYY'));
+}
+
+$('#reportrange').daterangepicker({
+    startDate: start,
+    endDate: end,
+    ranges: {
+       'Today': [moment(), moment()],
+       'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+       'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+       'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+       'This Month': [moment().startOf('month'), moment().endOf('month')],
+       'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+    }
+}, cb);
+
+cb(start, end);
+
+});
+$('body').on('input select change','#reportrange',function(){
+    var date = $(this).val();
+    $('#tBody').empty();
+    const myArray = date.split("-");
+    var start = myArray[0];
+    var s_split=start.split("/");
+    var end = myArray[1];
+    var e_split=end.split("/");
+    const weekDays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    let chosenDate = start; //get chosen date from datepicker
+    var Date1 = new Date (s_split[2], s_split[0], s_split[1]);
+var Date2 = new Date (e_split[2], e_split[0], e_split[1]);
+var Days = Math.round((Date2.getTime() - Date1.getTime())/(1000*60*60*24));
+console.log(s_split[2]+"/"+ s_split[1]+"/"+ s_split[0]+"/"+Days);
+    const validDate = new Date(chosenDate);
+    let newDate;
+        const monStartWeekDays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+        for(let i = 0; i < Days; i++) { //iterate through each weekday
+          newDate = new Date(validDate); //create date object
+          newDate.setDate(validDate.getDate() + i); //increment set date
+          //append results to table
+          $('#tBody').append( `
+          <tr >
+            
+            <td class="date">${newDate.getDate()} / ${newDate.getMonth() + 1} / ${newDate.getFullYear()}</td>
+            <td class="day">${weekDays[newDate.getDay()].slice(0,3)}</td>
+            <td class="start-time">    <input    id="startTime${monStartWeekDays[i]}"    class="hasTimepicker start"  type="time"   /></td>
+            <td class="finish-time">   <input    id="finishTime${monStartWeekDays[i]}"   class="hasTimepicker end"    type="time"   /></td></td>
+            <td class="hours-worked">  <input    id="hoursWorked${monStartWeekDays[i]}"  class="timeSum"              type="text"   /></td></td>
+        
+            
+        
+          
+                 
+                             
+            </tr>
+
+
+
+          ` );
+
+   
+        }
+        
+});
+
+
+
+
+
+function converToMinutes(s) {
+    var c = s.split('.');
+    return parseInt(c[0]) * 60 + parseInt(c[1]);
+}
+
+function parseTime(s) {
+    return Math.floor(parseInt(s) / 60) + "." + parseInt(s) % 60
+}
+
+$(document).on('select change'  ,'.end','.dailybreak', function () {
+
+
+
+var $begin = $(this).closest('tr').find('.start').val();
+var $end = $(this).closest('tr').find('.end').val();
+let valuestart = moment.duration($begin, "HH:mm");
+let valuestop = moment.duration($end, "HH:mm");
+let difference = valuestop.subtract(valuestart);
+
+var timeToSubtract = $('#dailybreak').val();
+var startTime = converToMinutes(difference.hours() + "." + difference.minutes());
+var converted = parseTime(startTime - timeToSubtract);
+
+// var hoursWorkedMonday = $('#hoursWorkedMonday_'+id).val();
+
+// alert(converted);
+ $(this).closest('tr').find('.timeSum').val(converted);
+
+ var total_net=0;
+ $('.table').each(function() {
+    $(this).find('.timeSum').each(function() {
+        var precio = $(this).val();
+        if (!isNaN(precio) && precio.length !== 0) {
+          total_net += parseFloat(precio);
+        }
+      });
+
+  });
+//   console.log(total_net.toFixed(3));
+$('#total_net').val(total_net.toFixed(3)).trigger('change');
+
+});
+
+
+
+
+$(document).on('input','.timeSum', function () {
+    // $(".timeSum").change(function(){
+
+    var $addtotal = $(this).closest('tr').find('.timeSum').val();
+
+    alert($addtotal);
+
+
+    });
+
+
+// var timeOptions = {
+//   interval: 15,
+// dropdown: true,
+// change: function(time) {
+//   sumHours();
+// }
+// }
+
+
+// $begin.timepicker(timeOptions);
+// $end.timepicker(timeOptions);
+
+
+// $(document).on('focus', $end, function() {
+// $(this).select();  // select entire text on focus
+// });
+
+
+// $begin.on("click, focus", function () {
+// $(this).select();
+// });
+
+
+function sumHours () {
+
+    var time1 = $begin.timepicker().getTime();
+    var time2 = $end.timepicker().getTime();
+
+    if ( time1 && time2 ) {
+      if ( time1 > time2 ) {
+        //Correct the day so second entry is always 
+        //after first, as in midnight shift. Use a new 
+        //date object so original is not incremented.
+        v = new Date(time2);
+        v.setDate(v.getDate() + 1);
+      } else {
+        v = time2;
+      }
+
+      var diff = ( Math.abs( v - time1) / 36e5 ).toFixed(2);
+      $input.val(diff); 
+      
+    } else {
+
+      $input.val(''); 
+
+      alert($input);
+    }
+}
+
+
+
+</script>
 

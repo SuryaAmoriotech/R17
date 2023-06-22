@@ -15,21 +15,44 @@ class Chrm extends CI_Controller {
         $this->load->model('Hrm_model');
         $this->auth->check_admin_auth();
     }
+
+
+
+    public function add_dailybreak_info(){
+        $CI = & get_instance();
+        $CI->auth->check_admin_auth();
+        $CI->load->model('Hrm_model');
+        $postData = $this->input->post('dailybreak_name');
+        // print_r($postData);
+        $data = $this->Hrm_model->insert_dailybreak_data($postData);
+        echo json_encode($data);
+    }
+    
+    
+
+
+
+
+
+
+
+
+
+
     public function manage_timesheet() {
         $this->load->model('Hrm_model');
          $data['title']            = display('manage_employee');
-
-
          $data['timesheet_list']    = $this->Hrm_model->timesheet_list();
-
-
-
-        //  print_r( $data['timesheet_list'] ); die();
-
-
          $content                  = $this->parser->parse('hr/timesheet_list', $data, true);
         $this->template->full_admin_html_view($content);
         }
+
+
+     
+        
+
+
+
 public function timesheed_inserted_data($id) {
         //    echo $id; die();
            $CI = & get_instance();
@@ -198,6 +221,27 @@ $state= $this->input->post('state');
      redirect("Chrm/payroll_setting");
 }
 
+
+
+
+public function getemployee_data(){
+    $CI = & get_instance();
+    $this->auth->check_admin_auth();
+    $CI->load->model('Hrm_model');
+    $value = $this->input->post('value',TRUE);
+    $customer_info = $CI->Hrm_model->getemp_data($value);
+ 
+    echo json_encode($customer_info);
+    
+}
+
+
+
+
+
+
+
+
 public function add_state_taxes_detail($tax=0) {
    $tax= str_replace("_"," ",$tax);
     $data['taxinfo'] = $this->db->select("*")->from('state_localtax')->where('tax',$tax)->get()->result_array();
@@ -247,9 +291,41 @@ public function add_state_taxes_detail($tax=0) {
 
      public function add_timesheet() {
     $data['title'] = display('add_timesheet');
-    $content = $this->parser->parse('hr/add_timesheet', $data, true);
-    $this->template->full_admin_html_view($content);
-    }
+    
+        $this->load->model('Hrm_model');
+
+        $data['employee_name'] = $this->Hrm_model->employee_name();
+
+         $data['payment_terms'] = $this->Hrm_model->get_payment_terms();
+    
+
+        $data['dailybreak'] = $this->Hrm_model->get_dailybreak();
+        
+        $data['duration'] = $this->Hrm_model->get_duration_data();
+    
+        $content = $this->parser->parse('hr/add_timesheet', $data, true);
+        $this->template->full_admin_html_view($content);
+        }
+    
+
+        public function add_durat_info(){
+            $CI = & get_instance();
+            $CI->auth->check_admin_auth();
+            $CI->load->model('Hrm_model');
+            $postData = $this->input->post('duration_name');
+            $data = $this->Hrm_model->insert_duration_data($postData);
+            echo json_encode($data);
+        }
+    // $content = $this->parser->parse('hr/add_timesheet', $data, true);
+    // $this->template->full_admin_html_view($content);
+    // }
+
+
+
+
+
+
+
 
 
     //Designation form
