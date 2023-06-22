@@ -29,6 +29,117 @@ class Hrm_model extends CI_Model {
          return false;
     }
     
+
+    public function employee_name() {
+
+        $this->db->select('*');
+        $this->db->from('employee_history');
+         $this->db->where('created_by',$this->session->userdata('user_id'));
+         $query = $this->db->get();
+    //    echo $this->db->last_query();
+       if ($query->num_rows() > 0) {
+        return $query->result_array();
+
+    }
+        return false;
+
+    }
+
+
+    public function get_payment_terms(){
+
+        $this->db->select('*');
+        $this->db->from('payment_terms');
+        $this->db->where('create_by' ,$this->session->userdata('user_id'));
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+
+    public function insert_duration_data($postData){
+        $data=array(
+            'duration_name' => $postData,
+            'create_by' => $this->session->userdata('user_id')
+        );
+        // print_r($data);
+        $this->db->insert('duration', $data);
+        // echo $this->db->last_query(); die();
+        $this->db->select('*');
+        $this->db->from('duration');
+        $this->db->where('create_by' ,$this->session->userdata('user_id'));
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function get_dailybreak(){
+    
+        $this->db->select('*');
+        $this->db->from('dailybreak');
+        $this->db->where('create_by' ,$this->session->userdata('user_id'));
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    
+    public function get_duration_data(){
+        
+        $this->db->select('*');
+        $this->db->from('duration');
+        $this->db->where('create_by' ,$this->session->userdata('user_id'));
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+
+
+    public function getemp_data($value){
+        $this->db->select('*');
+        $this->db->from('employee_history');
+        $this->db->where('id', $value);
+        $query = $this->db->get()->result();
+    //  echo $this->db->last_query(); die();
+        return $query;
+    
+    }
+
+
+
+
+
+
+    public function insert_dailybreak_data($postData){
+        $data=array(
+            'dailybreak_name' => $postData,
+            'create_by' => $this->session->userdata('user_id')
+        );
+        // print_r($data);
+        $this->db->insert('dailybreak', $data);
+        // echo $this->db->last_query(); die();
+        $this->db->select('*');
+        $this->db->from('dailybreak');
+        $this->db->where('create_by' ,$this->session->userdata('user_id'));
+        $query = $this->db->get();
+
+                // echo $this->db->last_query(); die();
+
+
+        return $query->result_array();
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public function timesheet_data($id) {
     $this->db->select('*');
     $this->db->from('employee_history');
