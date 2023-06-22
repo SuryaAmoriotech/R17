@@ -34,7 +34,7 @@ class Hrm_model extends CI_Model {
 
         $this->db->select('*');
         $this->db->from('employee_history');
-         $this->db->where('created_by',$this->session->userdata('user_id'));
+         $this->db->where('create_by',$this->session->userdata('user_id'));
          $query = $this->db->get();
     //    echo $this->db->last_query();
        if ($query->num_rows() > 0) {
