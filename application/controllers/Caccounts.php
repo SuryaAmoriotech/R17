@@ -268,57 +268,14 @@ if ($this->db->field_exists($txd, 'quotation_taxinfo')) {
 
     // ================ Income tax entry   ======
     public function create_tax_setup(){
-        // $sm = $this->input->post('start_amount',TRUE);
-        // $em = $this->input->post('end_amount',TRUE);
-        // $rt = $this->input->post('rate');
+      
+ $tname = $this->input->post('tax_name',TRUE);
+  $tax_name= str_replace("_"," ",$tname);
+$year = date("Y"); 
 
-        // $st = $this->input->post('single_from');
-        // $st = $this->input->post('single_to');
-
-        // $tt = $this->input->post('tax_filling_from');
-        // $tt = $this->input->post('tax_filling_to');
-
-        // $mt = $this->input->post('married_from');
-        // $mt = $this->input->post('married_to');
-
-        // $ht = $this->input->post('head_household_from');
-        // $ht = $this->input->post('head_household_to');
-
-
-
-
-
-
-
-        //  for ($i=0; $i < sizeof($sm); $i++) {
-        //         $postData = [
-        //             'start_amount'  => $sm[$i],
-        //             'end_amount'    => $em[$i],
-        //             'rate'          => $rt[$i],    
-                    
-        //             'single_from' => $st[$i],    
-        //             'single_to' => $st[$i],    
-
-        //             'tax_filling_from'=> $tt[$i],
-        //             'tax_filling_to'=> $tt[$i],
-
-        //             'married_from' => $mt[$i], 
-        //             'married_to' => $mt[$i], 
-
-        //             'head_household_from' => $ht[$i], 
-        //             'head_household_to'  => $ht[$i], 
-        //         ];    
-                
-
-
-                
- $tax_name = $this->input->post('tax_name',TRUE);
-
-
-
-        $start_amount = $this->input->post('start_amount',TRUE);
-        $end_amount = $this->input->post('end_amount',TRUE);
-        $rate = $this->input->post('rate',TRUE);
+        $start_amount = $this->input->post('employer',TRUE);
+        $end_amount = $this->input->post('employee',TRUE);
+        $details = $this->input->post('details',TRUE);
         $single_from = $this->input->post('single_from',TRUE);
         $single_to = $this->input->post('single_to',TRUE);
         $tax_filling_from = $this->input->post('tax_filling_from',TRUE);
@@ -332,12 +289,16 @@ if ($this->db->field_exists($txd, 'quotation_taxinfo')) {
 
 
      //   echo count($slab_no);
-        
-       for ($i = 0, $n = count($rate); $i < $n; $i++) {
+               $this->db->where('tax',$tax_name);
+                //   echo $this->db->last_query(); die();
+
+         $this->db->delete('state_localtax');
+         echo $this->db->last_query();
+       for ($i = 0, $n = count($details); $i < $n; $i++) {
            
             $samount = $start_amount[$i];
             $eamount = $end_amount[$i];
-            $arate = $rate[$i];
+            $arate = $details[$i];
             $sfrom = $single_from[$i];
             $sto = $single_to[$i];
             $tffrom = $tax_filling_from[$i];
@@ -349,7 +310,7 @@ if ($this->db->field_exists($txd, 'quotation_taxinfo')) {
 
 
             $data1 = array(
-
+                'year'  => $year,
                 'employer'    => $samount,
                 'employee'      => $eamount,
                 'details'            => $arate,
@@ -358,17 +319,26 @@ if ($this->db->field_exists($txd, 'quotation_taxinfo')) {
                 'married' => $mfrom."-".$mto,
                 'head_household' => $hhfrom."-".$hhto,
                 'tax'  =>$tax_name,
+              'create_by' => $this->session->userdata('user_id')
         );
 
         //   print_r($data1);  
 
-      $this->Accounts->taxsetup_create($data1,$tax_name);
+
+
+         $this->db->insert('state_localtax', $data1);
+
+         echo $this->db->last_query(); 
+
+      
+
+        
 
 
 
             }
             $this->session->set_flashdata('message', display('save_successfully'));
-            redirect("Caccounts/manage_income_tax"); 
+            redirect("Chrm/add_state_taxes_detail/".$tname); 
     }
 
 

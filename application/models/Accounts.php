@@ -92,15 +92,15 @@ class Accounts extends CI_Model {
                 //   echo $this->db->last_query(); die();
 
          $this->db->delete('state_localtax');
-                  echo $this->db->last_query(); die();
+                  echo $this->db->last_query(); 
 
          $this->db->insert('state_localtax', $data1);
 
-         echo $this->db->last_query(); die();
+         echo $this->db->last_query(); 
 
         }else{
             $this->db->insert('state_localtax', $data1);
-                     echo $this->db->last_query(); die();
+                     echo $this->db->last_query(); 
 
         }
         //  $this->db->insert('payroll_tax_setup',$data);

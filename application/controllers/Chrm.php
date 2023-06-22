@@ -195,7 +195,7 @@ $state= $this->input->post('state');
 
 
 public function add_state_taxes_detail($tax=0) {
-    
+   $tax= str_replace("_"," ",$tax);
     $data['taxinfo'] = $this->db->select("*")->from('state_localtax')->where('tax',$tax)->get()->result_array();
     // $data['taxinfo'] = $this->db->select("*")->from('federal_tax')->where('tax',$tax)->get()->result_array();
     // print_r($data['taxinfo']); 
