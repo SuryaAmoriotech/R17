@@ -214,7 +214,7 @@ public function add_state_taxes_detail($tax=0) {
 
    public function add_taxes_detail() {
      $tax = $this->input->post('tax');
-    $data['taxinfo'] = $this->db->select("*")->from('federal_tax')->get()->result_array();
+    $data['taxinfo'] = $this->db->select("*")->from('federal_tax')->where('tax','Federal Income tax')->get()->result_array();
     // $data['taxinfo'] = $this->db->select("*")->from('federal_tax')->where('tax',$tax)->get()->result_array();
     // print_r($data['taxinfo']); die();
     // echo $this->db->last_query(); die();
@@ -225,19 +225,20 @@ public function add_state_taxes_detail($tax=0) {
     }
     public function socialsecurity_detail() {
     // $tax = $this->input->post('tax');
-    $data['taxinfo'] = $this->db->select("*")->from('federal_tax')->get()->result_array();
+    $data['taxinfo'] = $this->db->select("*")->from('federal_tax')->where('tax','Social Security')->get()->result_array();
     $data['title'] = display('add_taxes_detail');
+ 
     $content = $this->parser->parse('hr/social_security_list', $data, true);
     $this->template->full_admin_html_view($content);
     }
     public function medicare_detail() {
-    $data['taxinfo'] = $this->db->select("*")->from('federal_tax')->get()->result_array();
+    $data['taxinfo'] = $this->db->select("*")->from('federal_tax')->where('tax','Medicare')->get()->result_array();
     $data['title'] = display('add_taxes_detail');
     $content = $this->parser->parse('hr/medicare_list', $data, true);
     $this->template->full_admin_html_view($content);
     }
     public function federalunemployment_detail() {
-    $data['taxinfo'] = $this->db->select("*")->from('federal_tax')->get()->result_array();
+    $data['taxinfo'] = $this->db->select("*")->from('federal_tax')->where('tax','Federal unemployment')->get()->result_array();
     $data['title'] = display('add_taxes_detail');
     $content = $this->parser->parse('hr/federalunemployment_list', $data, true);
     $this->template->full_admin_html_view($content);

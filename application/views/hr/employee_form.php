@@ -847,7 +847,7 @@ Payment Type
 
                         <!-- <button type="reset"   style="color:white;background-color: #38469f;"   class="btn btn-primary w-md m-b-5"><?php echo display('reset') ?></button> -->
 
-                        <button type="submit"  style="color:white;background-color: #38469f;"  class="btn btn-success w-md m-b-5"><?php echo display('save') ?></button>
+                        <button type="submit"  style="float: right; color:white;background-color: #38469f;"  class="btn  w-md m-b-5"><?php echo display('save') ?></button>
 
                     </div>
 
@@ -995,12 +995,12 @@ Payment Type
 
 
 <!------ add new designation_modal -->  
-<div class="modal fade" id="designation_modal" role="dialog">
+<div class="modal fade" id="designation_modal" role="dialog" style="margin-left: 400px;">
 <div class="modal-dialog modal-lg" >
 
 <!-- <div class="modal-dialog" role="document"> -->
 
-    <div class="modal-content">
+    <div class="modal-content" style="width: 600px;">
 
         <div class="modal-header" style="color:white;background-color:#38469f;" >
 
