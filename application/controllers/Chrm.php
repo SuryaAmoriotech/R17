@@ -15,7 +15,21 @@ class Chrm extends CI_Controller {
         $this->load->model('Hrm_model');
         $this->auth->check_admin_auth();
     }
+    public function manage_timesheet() {
+        $this->load->model('Hrm_model');
+         $data['title']            = display('manage_employee');
 
+
+         $data['timesheet_list']    = $this->Hrm_model->timesheet_list();
+
+
+
+        //  print_r( $data['timesheet_list'] ); die();
+
+
+         $content                  = $this->parser->parse('hr/timesheet_list', $data, true);
+        $this->template->full_admin_html_view($content);
+        }
 public function timesheed_inserted_data($id) {
         //    echo $id; die();
            $CI = & get_instance();
@@ -185,16 +199,19 @@ $state= $this->input->post('state');
 }
 
 public function add_state_taxes_detail($tax=0) {
-    
+   $tax= str_replace("_"," ",$tax);
     $data['taxinfo'] = $this->db->select("*")->from('state_localtax')->where('tax',$tax)->get()->result_array();
     // $data['taxinfo'] = $this->db->select("*")->from('federal_tax')->where('tax',$tax)->get()->result_array();
-    print_r($data['taxinfo']); 
+    // print_r($data['taxinfo']); 
     // echo $this->db->last_query(); die();
+
+    
     $data['title'] = display('add_taxes_detail');
     $content = $this->parser->parse('hr/add_state_tax_detail', $data, true);
     $this->template->full_admin_html_view($content);
     // echo json_encode($data);
     }
+
    public function add_taxes_detail() {
      $tax = $this->input->post('tax');
     $data['taxinfo'] = $this->db->select("*")->from('federal_tax')->get()->result_array();
