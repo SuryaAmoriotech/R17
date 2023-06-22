@@ -16,7 +16,19 @@ class Hrm_model extends CI_Model {
 
     }
 
+    public function timesheet_list(){
 
+        $this->db->select('*');
+        $this->db->from('timesheet_info');
+         $this->db->where('create_by',$this->session->userdata('user_id'));
+         $query = $this->db->get();
+        //  echo $this->db->last_query(); die();
+         if ($query->num_rows() > 0) {
+           return $query->result_array();
+         }
+         return false;
+    }
+    
 public function timesheet_data($id) {
     $this->db->select('*');
     $this->db->from('employee_history');
