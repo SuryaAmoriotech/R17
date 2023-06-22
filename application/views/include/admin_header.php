@@ -745,7 +745,8 @@ if($_SESSION['u_type']==2)
                 <ul class="treeview-menu">
                     <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/manage_employee"><?php  echo display('Employee Info (W4 form)');?></a></li>
                                         <!-- <li class="treeview  "><a href="<?php //echo base_url(); ?>/Chrm/add_employee"><?php  echo display('Employee Info (W4 form)');?></a></li> -->
-                                                    <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/manage_employee"><?php  echo display('Time sheet');?></a></li>
+                                        <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/manage_timesheet"><?php  echo display('Time sheet');?></a></li>
+
                                                             <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/pay_slip_list"><?php  echo display('Pay slip / Checks per user');?></a></li>
                                             <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/payroll_setting"><?php  echo display('Payroll settings');?></a></li>
                     
@@ -1589,7 +1590,8 @@ break;
                 <ul class="treeview-menu">
                     <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/manage_employee"><?php  echo display('Employee Info (W4 form)');?></a></li>
                                         <!-- <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/add_employee"><?php  echo display('Employee Info (W4 form)');?></a></li> -->
-                                                    <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/manage_employee"><?php  echo display('Time sheet');?></a></li>
+                                        <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/manage_timesheet"><?php  echo display('Time sheet');?></a></li>
+                                     
                                                             <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/pay_slip_list"><?php  echo display('Pay slip / Checks per user');?></a></li>
                                             <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/payroll_setting"><?php  echo display('Payroll settings');?></a></li>
                     

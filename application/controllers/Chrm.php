@@ -15,7 +15,21 @@ class Chrm extends CI_Controller {
         $this->load->model('Hrm_model');
         $this->auth->check_admin_auth();
     }
+    public function manage_timesheet() {
+        $this->load->model('Hrm_model');
+         $data['title']            = display('manage_employee');
 
+
+         $data['timesheet_list']    = $this->Hrm_model->timesheet_list();
+
+
+
+        //  print_r( $data['timesheet_list'] ); die();
+
+
+         $content                  = $this->parser->parse('hr/timesheet_list', $data, true);
+        $this->template->full_admin_html_view($content);
+        }
 public function timesheed_inserted_data($id) {
         //    echo $id; die();
            $CI = & get_instance();
