@@ -13362,3 +13362,407 @@ INFO - 2023-06-23 07:46:40 --> File loaded: D:\wamp\www\R17\application\views\in
 INFO - 2023-06-23 07:46:40 --> File loaded: D:\wamp\www\R17\application\views\admin_html_template.php
 INFO - 2023-06-23 07:46:40 --> Final output sent to browser
 DEBUG - 2023-06-23 07:46:40 --> Total execution time: 0.8900
+ERROR - 2023-06-23 06:56:16 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R17\application\vendor/autoload.php was not found.
+INFO - 2023-06-23 06:56:16 --> Config Class Initialized
+INFO - 2023-06-23 06:56:16 --> Hooks Class Initialized
+DEBUG - 2023-06-23 06:56:16 --> UTF-8 Support Enabled
+INFO - 2023-06-23 06:56:16 --> Utf8 Class Initialized
+INFO - 2023-06-23 06:56:16 --> URI Class Initialized
+INFO - 2023-06-23 06:56:16 --> Router Class Initialized
+INFO - 2023-06-23 06:56:16 --> Output Class Initialized
+INFO - 2023-06-23 06:56:16 --> Security Class Initialized
+DEBUG - 2023-06-23 06:56:16 --> Global POST, GET and COOKIE data sanitized
+INFO - 2023-06-23 06:56:16 --> CSRF cookie sent
+INFO - 2023-06-23 06:56:16 --> Input Class Initialized
+INFO - 2023-06-23 06:56:16 --> Language Class Initialized
+INFO - 2023-06-23 06:56:16 --> Loader Class Initialized
+INFO - 2023-06-23 06:56:16 --> Helper loaded: url_helper
+INFO - 2023-06-23 06:56:16 --> Helper loaded: file_helper
+INFO - 2023-06-23 06:56:16 --> Helper loaded: form_helper
+INFO - 2023-06-23 06:56:16 --> Helper loaded: lang_helper
+INFO - 2023-06-23 06:56:16 --> Database Driver Class Initialized
+INFO - 2023-06-23 06:56:16 --> Session: Class initialized using 'files' driver.
+INFO - 2023-06-23 06:56:16 --> Parser Class Initialized
+INFO - 2023-06-23 06:56:16 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2023-06-23 06:56:16 --> Pagination Class Initialized
+INFO - 2023-06-23 06:56:16 --> Form Validation Class Initialized
+INFO - 2023-06-23 06:56:16 --> Controller Class Initialized
+DEBUG - 2023-06-23 06:56:16 --> Auth class already loaded. Second attempt ignored.
+DEBUG - 2023-06-23 06:56:16 --> Session class already loaded. Second attempt ignored.
+INFO - 2023-06-23 06:56:16 --> Model "Hrm_model" initialized
+ERROR - 2023-06-23 06:56:16 --> Severity: Notice --> Undefined variable: employees D:\wamp\www\R17\application\views\hr\timesheet_list.php 304
+ERROR - 2023-06-23 06:56:16 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\hr\timesheet_list.php 304
+ERROR - 2023-06-23 06:56:16 --> Severity: Notice --> Undefined variable: employees D:\wamp\www\R17\application\views\hr\timesheet_list.php 308
+ERROR - 2023-06-23 06:56:16 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\hr\timesheet_list.php 308
+ERROR - 2023-06-23 06:56:16 --> Severity: Notice --> Undefined variable: employees D:\wamp\www\R17\application\views\hr\timesheet_list.php 311
+ERROR - 2023-06-23 06:56:16 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\hr\timesheet_list.php 311
+ERROR - 2023-06-23 06:56:16 --> Severity: Notice --> Undefined variable: employees D:\wamp\www\R17\application\views\hr\timesheet_list.php 304
+ERROR - 2023-06-23 06:56:16 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\hr\timesheet_list.php 304
+ERROR - 2023-06-23 06:56:16 --> Severity: Notice --> Undefined variable: employees D:\wamp\www\R17\application\views\hr\timesheet_list.php 308
+ERROR - 2023-06-23 06:56:16 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\hr\timesheet_list.php 308
+ERROR - 2023-06-23 06:56:16 --> Severity: Notice --> Undefined variable: employees D:\wamp\www\R17\application\views\hr\timesheet_list.php 311
+ERROR - 2023-06-23 06:56:16 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\hr\timesheet_list.php 311
+INFO - 2023-06-23 06:56:16 --> File loaded: D:\wamp\www\R17\application\views\hr/timesheet_list.php
+DEBUG - 2023-06-23 06:56:16 --> Parser class already loaded. Second attempt ignored.
+INFO - 2023-06-23 06:56:16 --> File loaded: D:\wamp\www\R17\application\views\include/top_menu.php
+INFO - 2023-06-23 06:56:16 --> File loaded: D:\wamp\www\R17\application\views\include/admin_loggedin_info.php
+INFO - 2023-06-23 06:56:16 --> Model "Products" initialized
+INFO - 2023-06-23 06:56:16 --> Model "Web_settings" initialized
+INFO - 2023-06-23 07:56:16 --> Model "reports" initialized
+INFO - 2023-06-23 07:56:16 --> Model "Users" initialized
+INFO - 2023-06-23 07:56:17 --> File loaded: D:\wamp\www\R17\application\views\include/admin_header.php
+ERROR - 2023-06-23 07:56:17 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R17\application\views\include\admin_footer.php 108
+ERROR - 2023-06-23 07:56:17 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\include\admin_footer.php 108
+ERROR - 2023-06-23 07:56:17 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\include\admin_footer.php 108
+ERROR - 2023-06-23 07:56:17 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R17\application\views\include\admin_footer.php 120
+ERROR - 2023-06-23 07:56:17 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\include\admin_footer.php 120
+ERROR - 2023-06-23 07:56:17 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\include\admin_footer.php 120
+ERROR - 2023-06-23 07:56:17 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R17\application\views\include\admin_footer.php 123
+ERROR - 2023-06-23 07:56:17 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\include\admin_footer.php 123
+ERROR - 2023-06-23 07:56:17 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\include\admin_footer.php 123
+INFO - 2023-06-23 07:56:17 --> File loaded: D:\wamp\www\R17\application\views\include/admin_footer.php
+INFO - 2023-06-23 07:56:17 --> File loaded: D:\wamp\www\R17\application\views\admin_html_template.php
+INFO - 2023-06-23 07:56:17 --> Final output sent to browser
+DEBUG - 2023-06-23 07:56:17 --> Total execution time: 0.9913
+ERROR - 2023-06-23 06:56:17 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R17\application\vendor/autoload.php was not found.
+INFO - 2023-06-23 06:56:17 --> Config Class Initialized
+INFO - 2023-06-23 06:56:17 --> Hooks Class Initialized
+DEBUG - 2023-06-23 06:56:17 --> UTF-8 Support Enabled
+INFO - 2023-06-23 06:56:17 --> Utf8 Class Initialized
+INFO - 2023-06-23 06:56:17 --> URI Class Initialized
+ERROR - 2023-06-23 06:56:17 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R17\application\vendor/autoload.php was not found.
+INFO - 2023-06-23 06:56:17 --> Router Class Initialized
+INFO - 2023-06-23 06:56:17 --> Output Class Initialized
+INFO - 2023-06-23 06:56:17 --> Config Class Initialized
+INFO - 2023-06-23 06:56:17 --> Hooks Class Initialized
+INFO - 2023-06-23 06:56:17 --> Security Class Initialized
+DEBUG - 2023-06-23 06:56:17 --> UTF-8 Support Enabled
+DEBUG - 2023-06-23 06:56:17 --> Global POST, GET and COOKIE data sanitized
+INFO - 2023-06-23 06:56:17 --> Utf8 Class Initialized
+INFO - 2023-06-23 06:56:17 --> CSRF cookie sent
+INFO - 2023-06-23 06:56:17 --> Input Class Initialized
+INFO - 2023-06-23 06:56:17 --> URI Class Initialized
+INFO - 2023-06-23 06:56:17 --> Language Class Initialized
+INFO - 2023-06-23 06:56:17 --> Router Class Initialized
+ERROR - 2023-06-23 06:56:17 --> 404 Page Not Found: Assets/datatables
+INFO - 2023-06-23 06:56:17 --> Output Class Initialized
+INFO - 2023-06-23 06:56:17 --> Security Class Initialized
+DEBUG - 2023-06-23 06:56:17 --> Global POST, GET and COOKIE data sanitized
+INFO - 2023-06-23 06:56:17 --> CSRF cookie sent
+INFO - 2023-06-23 06:56:17 --> Input Class Initialized
+INFO - 2023-06-23 06:56:17 --> Language Class Initialized
+ERROR - 2023-06-23 06:56:17 --> 404 Page Not Found: Assets/js
+ERROR - 2023-06-23 06:56:17 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R17\application\vendor/autoload.php was not found.
+INFO - 2023-06-23 06:56:17 --> Config Class Initialized
+INFO - 2023-06-23 06:56:17 --> Hooks Class Initialized
+DEBUG - 2023-06-23 06:56:17 --> UTF-8 Support Enabled
+INFO - 2023-06-23 06:56:17 --> Utf8 Class Initialized
+INFO - 2023-06-23 06:56:17 --> URI Class Initialized
+INFO - 2023-06-23 06:56:17 --> Router Class Initialized
+INFO - 2023-06-23 06:56:17 --> Output Class Initialized
+INFO - 2023-06-23 06:56:17 --> Security Class Initialized
+DEBUG - 2023-06-23 06:56:17 --> Global POST, GET and COOKIE data sanitized
+INFO - 2023-06-23 06:56:17 --> CSRF cookie sent
+INFO - 2023-06-23 06:56:17 --> Input Class Initialized
+INFO - 2023-06-23 06:56:17 --> Language Class Initialized
+ERROR - 2023-06-23 06:56:17 --> 404 Page Not Found: Assets/css
+ERROR - 2023-06-23 06:56:17 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R17\application\vendor/autoload.php was not found.
+ERROR - 2023-06-23 06:56:17 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R17\application\vendor/autoload.php was not found.
+ERROR - 2023-06-23 06:56:17 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R17\application\vendor/autoload.php was not found.
+INFO - 2023-06-23 06:56:17 --> Config Class Initialized
+INFO - 2023-06-23 06:56:17 --> Config Class Initialized
+INFO - 2023-06-23 06:56:17 --> Hooks Class Initialized
+INFO - 2023-06-23 06:56:17 --> Hooks Class Initialized
+INFO - 2023-06-23 06:56:17 --> Config Class Initialized
+INFO - 2023-06-23 06:56:17 --> Hooks Class Initialized
+DEBUG - 2023-06-23 06:56:17 --> UTF-8 Support Enabled
+DEBUG - 2023-06-23 06:56:17 --> UTF-8 Support Enabled
+INFO - 2023-06-23 06:56:17 --> Utf8 Class Initialized
+INFO - 2023-06-23 06:56:17 --> Utf8 Class Initialized
+DEBUG - 2023-06-23 06:56:17 --> UTF-8 Support Enabled
+INFO - 2023-06-23 06:56:17 --> URI Class Initialized
+INFO - 2023-06-23 06:56:17 --> URI Class Initialized
+INFO - 2023-06-23 06:56:17 --> Utf8 Class Initialized
+INFO - 2023-06-23 06:56:17 --> URI Class Initialized
+INFO - 2023-06-23 06:56:17 --> Router Class Initialized
+INFO - 2023-06-23 06:56:17 --> Router Class Initialized
+INFO - 2023-06-23 06:56:17 --> Router Class Initialized
+INFO - 2023-06-23 06:56:17 --> Output Class Initialized
+INFO - 2023-06-23 06:56:17 --> Output Class Initialized
+INFO - 2023-06-23 06:56:17 --> Security Class Initialized
+INFO - 2023-06-23 06:56:17 --> Output Class Initialized
+INFO - 2023-06-23 06:56:17 --> Security Class Initialized
+DEBUG - 2023-06-23 06:56:17 --> Global POST, GET and COOKIE data sanitized
+INFO - 2023-06-23 06:56:17 --> Security Class Initialized
+INFO - 2023-06-23 06:56:17 --> CSRF cookie sent
+DEBUG - 2023-06-23 06:56:17 --> Global POST, GET and COOKIE data sanitized
+INFO - 2023-06-23 06:56:17 --> Input Class Initialized
+DEBUG - 2023-06-23 06:56:17 --> Global POST, GET and COOKIE data sanitized
+INFO - 2023-06-23 06:56:17 --> CSRF cookie sent
+INFO - 2023-06-23 06:56:17 --> Language Class Initialized
+INFO - 2023-06-23 06:56:17 --> CSRF cookie sent
+INFO - 2023-06-23 06:56:17 --> Input Class Initialized
+INFO - 2023-06-23 06:56:17 --> Input Class Initialized
+ERROR - 2023-06-23 06:56:17 --> 404 Page Not Found: Assets/js
+INFO - 2023-06-23 06:56:17 --> Language Class Initialized
+INFO - 2023-06-23 06:56:17 --> Language Class Initialized
+ERROR - 2023-06-23 06:56:17 --> 404 Page Not Found: Chrm/my-assets
+ERROR - 2023-06-23 06:56:17 --> 404 Page Not Found: Assets/datatables
+ERROR - 2023-06-23 07:02:33 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R17\application\vendor/autoload.php was not found.
+INFO - 2023-06-23 07:02:33 --> Config Class Initialized
+INFO - 2023-06-23 07:02:33 --> Hooks Class Initialized
+DEBUG - 2023-06-23 07:02:33 --> UTF-8 Support Enabled
+INFO - 2023-06-23 07:02:33 --> Utf8 Class Initialized
+INFO - 2023-06-23 07:02:33 --> URI Class Initialized
+INFO - 2023-06-23 07:02:33 --> Router Class Initialized
+INFO - 2023-06-23 07:02:33 --> Output Class Initialized
+INFO - 2023-06-23 07:02:33 --> Security Class Initialized
+DEBUG - 2023-06-23 07:02:33 --> Global POST, GET and COOKIE data sanitized
+INFO - 2023-06-23 07:02:33 --> CSRF cookie sent
+INFO - 2023-06-23 07:02:33 --> Input Class Initialized
+INFO - 2023-06-23 07:02:33 --> Language Class Initialized
+INFO - 2023-06-23 07:02:33 --> Loader Class Initialized
+INFO - 2023-06-23 07:02:33 --> Helper loaded: url_helper
+INFO - 2023-06-23 07:02:33 --> Helper loaded: file_helper
+INFO - 2023-06-23 07:02:33 --> Helper loaded: form_helper
+INFO - 2023-06-23 07:02:33 --> Helper loaded: lang_helper
+INFO - 2023-06-23 07:02:33 --> Database Driver Class Initialized
+INFO - 2023-06-23 07:02:33 --> Session: Class initialized using 'files' driver.
+INFO - 2023-06-23 07:02:33 --> Parser Class Initialized
+INFO - 2023-06-23 07:02:33 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2023-06-23 07:02:33 --> Pagination Class Initialized
+INFO - 2023-06-23 07:02:33 --> Form Validation Class Initialized
+INFO - 2023-06-23 07:02:33 --> Controller Class Initialized
+DEBUG - 2023-06-23 07:02:33 --> Auth class already loaded. Second attempt ignored.
+DEBUG - 2023-06-23 07:02:33 --> Session class already loaded. Second attempt ignored.
+INFO - 2023-06-23 07:02:33 --> Model "Hrm_model" initialized
+INFO - 2023-06-23 07:02:33 --> File loaded: D:\wamp\www\R17\application\views\hr/add_timesheet.php
+DEBUG - 2023-06-23 07:02:33 --> Parser class already loaded. Second attempt ignored.
+INFO - 2023-06-23 07:02:33 --> File loaded: D:\wamp\www\R17\application\views\include/top_menu.php
+INFO - 2023-06-23 07:02:33 --> File loaded: D:\wamp\www\R17\application\views\include/admin_loggedin_info.php
+INFO - 2023-06-23 07:02:33 --> Model "Products" initialized
+INFO - 2023-06-23 07:02:33 --> Model "Web_settings" initialized
+INFO - 2023-06-23 08:02:33 --> Model "reports" initialized
+INFO - 2023-06-23 08:02:33 --> Model "Users" initialized
+INFO - 2023-06-23 08:02:34 --> File loaded: D:\wamp\www\R17\application\views\include/admin_header.php
+ERROR - 2023-06-23 08:02:34 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R17\application\views\include\admin_footer.php 108
+ERROR - 2023-06-23 08:02:34 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\include\admin_footer.php 108
+ERROR - 2023-06-23 08:02:34 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\include\admin_footer.php 108
+ERROR - 2023-06-23 08:02:34 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R17\application\views\include\admin_footer.php 120
+ERROR - 2023-06-23 08:02:34 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\include\admin_footer.php 120
+ERROR - 2023-06-23 08:02:34 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\include\admin_footer.php 120
+ERROR - 2023-06-23 08:02:34 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R17\application\views\include\admin_footer.php 123
+ERROR - 2023-06-23 08:02:34 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\include\admin_footer.php 123
+ERROR - 2023-06-23 08:02:34 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\include\admin_footer.php 123
+INFO - 2023-06-23 08:02:34 --> File loaded: D:\wamp\www\R17\application\views\include/admin_footer.php
+INFO - 2023-06-23 08:02:34 --> File loaded: D:\wamp\www\R17\application\views\admin_html_template.php
+INFO - 2023-06-23 08:02:34 --> Final output sent to browser
+DEBUG - 2023-06-23 08:02:34 --> Total execution time: 0.8596
+ERROR - 2023-06-23 07:02:34 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R17\application\vendor/autoload.php was not found.
+ERROR - 2023-06-23 07:02:34 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R17\application\vendor/autoload.php was not found.
+INFO - 2023-06-23 07:02:34 --> Config Class Initialized
+INFO - 2023-06-23 07:02:34 --> Config Class Initialized
+INFO - 2023-06-23 07:02:34 --> Hooks Class Initialized
+INFO - 2023-06-23 07:02:34 --> Hooks Class Initialized
+DEBUG - 2023-06-23 07:02:34 --> UTF-8 Support Enabled
+DEBUG - 2023-06-23 07:02:34 --> UTF-8 Support Enabled
+INFO - 2023-06-23 07:02:34 --> Utf8 Class Initialized
+INFO - 2023-06-23 07:02:34 --> Utf8 Class Initialized
+INFO - 2023-06-23 07:02:34 --> URI Class Initialized
+INFO - 2023-06-23 07:02:34 --> URI Class Initialized
+INFO - 2023-06-23 07:02:34 --> Router Class Initialized
+INFO - 2023-06-23 07:02:34 --> Output Class Initialized
+INFO - 2023-06-23 07:02:34 --> Router Class Initialized
+INFO - 2023-06-23 07:02:34 --> Security Class Initialized
+INFO - 2023-06-23 07:02:34 --> Output Class Initialized
+DEBUG - 2023-06-23 07:02:34 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2023-06-23 07:02:34 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R17\application\vendor/autoload.php was not found.
+INFO - 2023-06-23 07:02:34 --> CSRF cookie sent
+INFO - 2023-06-23 07:02:34 --> Security Class Initialized
+INFO - 2023-06-23 07:02:34 --> Input Class Initialized
+DEBUG - 2023-06-23 07:02:34 --> Global POST, GET and COOKIE data sanitized
+INFO - 2023-06-23 07:02:34 --> Config Class Initialized
+INFO - 2023-06-23 07:02:34 --> Language Class Initialized
+INFO - 2023-06-23 07:02:34 --> CSRF cookie sent
+INFO - 2023-06-23 07:02:34 --> Hooks Class Initialized
+INFO - 2023-06-23 07:02:34 --> Input Class Initialized
+ERROR - 2023-06-23 07:02:34 --> 404 Page Not Found: Assets/css
+DEBUG - 2023-06-23 07:02:34 --> UTF-8 Support Enabled
+INFO - 2023-06-23 07:02:34 --> Language Class Initialized
+INFO - 2023-06-23 07:02:34 --> Utf8 Class Initialized
+ERROR - 2023-06-23 07:02:34 --> 404 Page Not Found: Assets/datatables
+INFO - 2023-06-23 07:02:34 --> URI Class Initialized
+INFO - 2023-06-23 07:02:34 --> Router Class Initialized
+INFO - 2023-06-23 07:02:34 --> Output Class Initialized
+INFO - 2023-06-23 07:02:34 --> Security Class Initialized
+DEBUG - 2023-06-23 07:02:34 --> Global POST, GET and COOKIE data sanitized
+INFO - 2023-06-23 07:02:34 --> CSRF cookie sent
+INFO - 2023-06-23 07:02:34 --> Input Class Initialized
+INFO - 2023-06-23 07:02:34 --> Language Class Initialized
+ERROR - 2023-06-23 07:02:34 --> 404 Page Not Found: Assets/js
+ERROR - 2023-06-23 07:02:34 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R17\application\vendor/autoload.php was not found.
+ERROR - 2023-06-23 07:02:34 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R17\application\vendor/autoload.php was not found.
+ERROR - 2023-06-23 07:02:34 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R17\application\vendor/autoload.php was not found.
+INFO - 2023-06-23 07:02:34 --> Config Class Initialized
+INFO - 2023-06-23 07:02:34 --> Hooks Class Initialized
+INFO - 2023-06-23 07:02:34 --> Config Class Initialized
+INFO - 2023-06-23 07:02:34 --> Config Class Initialized
+INFO - 2023-06-23 07:02:34 --> Hooks Class Initialized
+INFO - 2023-06-23 07:02:34 --> Hooks Class Initialized
+DEBUG - 2023-06-23 07:02:34 --> UTF-8 Support Enabled
+DEBUG - 2023-06-23 07:02:34 --> UTF-8 Support Enabled
+INFO - 2023-06-23 07:02:34 --> Utf8 Class Initialized
+DEBUG - 2023-06-23 07:02:34 --> UTF-8 Support Enabled
+INFO - 2023-06-23 07:02:34 --> Utf8 Class Initialized
+INFO - 2023-06-23 07:02:34 --> Utf8 Class Initialized
+INFO - 2023-06-23 07:02:34 --> URI Class Initialized
+INFO - 2023-06-23 07:02:34 --> URI Class Initialized
+INFO - 2023-06-23 07:02:34 --> URI Class Initialized
+INFO - 2023-06-23 07:02:34 --> Router Class Initialized
+INFO - 2023-06-23 07:02:34 --> Router Class Initialized
+INFO - 2023-06-23 07:02:34 --> Router Class Initialized
+INFO - 2023-06-23 07:02:34 --> Output Class Initialized
+INFO - 2023-06-23 07:02:34 --> Output Class Initialized
+INFO - 2023-06-23 07:02:34 --> Output Class Initialized
+INFO - 2023-06-23 07:02:34 --> Security Class Initialized
+INFO - 2023-06-23 07:02:34 --> Security Class Initialized
+INFO - 2023-06-23 07:02:34 --> Security Class Initialized
+DEBUG - 2023-06-23 07:02:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-06-23 07:02:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-06-23 07:02:34 --> Global POST, GET and COOKIE data sanitized
+INFO - 2023-06-23 07:02:34 --> CSRF cookie sent
+INFO - 2023-06-23 07:02:34 --> CSRF cookie sent
+INFO - 2023-06-23 07:02:34 --> CSRF cookie sent
+INFO - 2023-06-23 07:02:34 --> Input Class Initialized
+INFO - 2023-06-23 07:02:34 --> Input Class Initialized
+INFO - 2023-06-23 07:02:34 --> Input Class Initialized
+INFO - 2023-06-23 07:02:34 --> Language Class Initialized
+INFO - 2023-06-23 07:02:34 --> Language Class Initialized
+INFO - 2023-06-23 07:02:34 --> Language Class Initialized
+ERROR - 2023-06-23 07:02:34 --> 404 Page Not Found: Assets/datatables
+ERROR - 2023-06-23 07:02:34 --> 404 Page Not Found: Chrm/my-assets
+ERROR - 2023-06-23 07:02:34 --> 404 Page Not Found: Assets/js
+ERROR - 2023-06-23 07:02:37 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R17\application\vendor/autoload.php was not found.
+ERROR - 2023-06-23 07:02:37 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R17\application\vendor/autoload.php was not found.
+INFO - 2023-06-23 07:02:37 --> Config Class Initialized
+INFO - 2023-06-23 07:02:37 --> Config Class Initialized
+INFO - 2023-06-23 07:02:37 --> Hooks Class Initialized
+INFO - 2023-06-23 07:02:37 --> Hooks Class Initialized
+DEBUG - 2023-06-23 07:02:37 --> UTF-8 Support Enabled
+DEBUG - 2023-06-23 07:02:37 --> UTF-8 Support Enabled
+INFO - 2023-06-23 07:02:37 --> Utf8 Class Initialized
+INFO - 2023-06-23 07:02:37 --> Utf8 Class Initialized
+INFO - 2023-06-23 07:02:37 --> URI Class Initialized
+INFO - 2023-06-23 07:02:37 --> URI Class Initialized
+INFO - 2023-06-23 07:02:37 --> Router Class Initialized
+INFO - 2023-06-23 07:02:37 --> Router Class Initialized
+INFO - 2023-06-23 07:02:37 --> Output Class Initialized
+INFO - 2023-06-23 07:02:37 --> Output Class Initialized
+INFO - 2023-06-23 07:02:37 --> Security Class Initialized
+INFO - 2023-06-23 07:02:37 --> Security Class Initialized
+DEBUG - 2023-06-23 07:02:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2023-06-23 07:02:37 --> Global POST, GET and COOKIE data sanitized
+INFO - 2023-06-23 07:02:37 --> CSRF cookie sent
+INFO - 2023-06-23 07:02:37 --> CSRF cookie sent
+INFO - 2023-06-23 07:02:37 --> CSRF token verified
+INFO - 2023-06-23 07:02:37 --> CSRF token verified
+INFO - 2023-06-23 07:02:37 --> Input Class Initialized
+INFO - 2023-06-23 07:02:37 --> Input Class Initialized
+INFO - 2023-06-23 07:02:37 --> Language Class Initialized
+INFO - 2023-06-23 07:02:37 --> Language Class Initialized
+INFO - 2023-06-23 07:02:37 --> Loader Class Initialized
+INFO - 2023-06-23 07:02:37 --> Loader Class Initialized
+INFO - 2023-06-23 07:02:37 --> Helper loaded: url_helper
+INFO - 2023-06-23 07:02:37 --> Helper loaded: url_helper
+INFO - 2023-06-23 07:02:37 --> Helper loaded: file_helper
+INFO - 2023-06-23 07:02:37 --> Helper loaded: file_helper
+INFO - 2023-06-23 07:02:37 --> Helper loaded: form_helper
+INFO - 2023-06-23 07:02:37 --> Helper loaded: form_helper
+INFO - 2023-06-23 07:02:37 --> Helper loaded: lang_helper
+INFO - 2023-06-23 07:02:37 --> Helper loaded: lang_helper
+INFO - 2023-06-23 07:02:37 --> Database Driver Class Initialized
+INFO - 2023-06-23 07:02:37 --> Database Driver Class Initialized
+INFO - 2023-06-23 07:02:37 --> Session: Class initialized using 'files' driver.
+INFO - 2023-06-23 07:02:37 --> Parser Class Initialized
+INFO - 2023-06-23 07:02:37 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2023-06-23 07:02:37 --> Pagination Class Initialized
+INFO - 2023-06-23 07:02:37 --> Form Validation Class Initialized
+INFO - 2023-06-23 07:02:37 --> Controller Class Initialized
+DEBUG - 2023-06-23 07:02:37 --> Auth class already loaded. Second attempt ignored.
+DEBUG - 2023-06-23 07:02:37 --> Session class already loaded. Second attempt ignored.
+INFO - 2023-06-23 07:02:37 --> Model "Hrm_model" initialized
+INFO - 2023-06-23 07:02:37 --> Final output sent to browser
+DEBUG - 2023-06-23 07:02:37 --> Total execution time: 0.0135
+INFO - 2023-06-23 07:02:37 --> Session: Class initialized using 'files' driver.
+INFO - 2023-06-23 07:02:37 --> Parser Class Initialized
+INFO - 2023-06-23 07:02:37 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2023-06-23 07:02:37 --> Pagination Class Initialized
+INFO - 2023-06-23 07:02:37 --> Form Validation Class Initialized
+INFO - 2023-06-23 07:02:37 --> Controller Class Initialized
+DEBUG - 2023-06-23 07:02:37 --> Auth class already loaded. Second attempt ignored.
+DEBUG - 2023-06-23 07:02:37 --> Session class already loaded. Second attempt ignored.
+INFO - 2023-06-23 07:02:37 --> Model "Hrm_model" initialized
+INFO - 2023-06-23 07:02:37 --> Final output sent to browser
+DEBUG - 2023-06-23 07:02:37 --> Total execution time: 0.0345
+ERROR - 2023-06-23 07:11:23 --> $config['composer_autoload'] is set to TRUE but D:\wamp\www\R17\application\vendor/autoload.php was not found.
+INFO - 2023-06-23 07:11:23 --> Config Class Initialized
+INFO - 2023-06-23 07:11:23 --> Hooks Class Initialized
+DEBUG - 2023-06-23 07:11:23 --> UTF-8 Support Enabled
+INFO - 2023-06-23 07:11:23 --> Utf8 Class Initialized
+INFO - 2023-06-23 07:11:23 --> URI Class Initialized
+INFO - 2023-06-23 07:11:23 --> Router Class Initialized
+INFO - 2023-06-23 07:11:23 --> Output Class Initialized
+INFO - 2023-06-23 07:11:23 --> Security Class Initialized
+DEBUG - 2023-06-23 07:11:23 --> Global POST, GET and COOKIE data sanitized
+INFO - 2023-06-23 07:11:23 --> CSRF cookie sent
+INFO - 2023-06-23 07:11:23 --> Input Class Initialized
+INFO - 2023-06-23 07:11:23 --> Language Class Initialized
+INFO - 2023-06-23 07:11:23 --> Loader Class Initialized
+INFO - 2023-06-23 07:11:23 --> Helper loaded: url_helper
+INFO - 2023-06-23 07:11:23 --> Helper loaded: file_helper
+INFO - 2023-06-23 07:11:23 --> Helper loaded: form_helper
+INFO - 2023-06-23 07:11:23 --> Helper loaded: lang_helper
+INFO - 2023-06-23 07:11:23 --> Database Driver Class Initialized
+INFO - 2023-06-23 07:11:23 --> Session: Class initialized using 'files' driver.
+INFO - 2023-06-23 07:11:23 --> Parser Class Initialized
+INFO - 2023-06-23 07:11:23 --> Language file loaded: language/english/pagination_lang.php
+INFO - 2023-06-23 07:11:23 --> Pagination Class Initialized
+INFO - 2023-06-23 07:11:23 --> Form Validation Class Initialized
+INFO - 2023-06-23 07:11:23 --> Controller Class Initialized
+DEBUG - 2023-06-23 07:11:23 --> Auth class already loaded. Second attempt ignored.
+DEBUG - 2023-06-23 07:11:23 --> Session class already loaded. Second attempt ignored.
+INFO - 2023-06-23 07:11:23 --> Model "Hrm_model" initialized
+ERROR - 2023-06-23 07:11:23 --> Severity: Notice --> Undefined variable: employees D:\wamp\www\R17\application\views\hr\timesheet_list.php 304
+ERROR - 2023-06-23 07:11:23 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\hr\timesheet_list.php 304
+ERROR - 2023-06-23 07:11:23 --> Severity: Notice --> Undefined variable: employees D:\wamp\www\R17\application\views\hr\timesheet_list.php 308
+ERROR - 2023-06-23 07:11:23 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\hr\timesheet_list.php 308
+ERROR - 2023-06-23 07:11:23 --> Severity: Notice --> Undefined variable: employees D:\wamp\www\R17\application\views\hr\timesheet_list.php 311
+ERROR - 2023-06-23 07:11:23 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\hr\timesheet_list.php 311
+ERROR - 2023-06-23 07:11:23 --> Severity: Notice --> Undefined variable: employees D:\wamp\www\R17\application\views\hr\timesheet_list.php 304
+ERROR - 2023-06-23 07:11:23 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\hr\timesheet_list.php 304
+ERROR - 2023-06-23 07:11:23 --> Severity: Notice --> Undefined variable: employees D:\wamp\www\R17\application\views\hr\timesheet_list.php 308
+ERROR - 2023-06-23 07:11:23 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\hr\timesheet_list.php 308
+ERROR - 2023-06-23 07:11:23 --> Severity: Notice --> Undefined variable: employees D:\wamp\www\R17\application\views\hr\timesheet_list.php 311
+ERROR - 2023-06-23 07:11:23 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\hr\timesheet_list.php 311
+INFO - 2023-06-23 07:11:23 --> File loaded: D:\wamp\www\R17\application\views\hr/timesheet_list.php
+DEBUG - 2023-06-23 07:11:23 --> Parser class already loaded. Second attempt ignored.
+INFO - 2023-06-23 07:11:23 --> File loaded: D:\wamp\www\R17\application\views\include/top_menu.php
+INFO - 2023-06-23 07:11:23 --> File loaded: D:\wamp\www\R17\application\views\include/admin_loggedin_info.php
+INFO - 2023-06-23 07:11:23 --> Model "Products" initialized
+INFO - 2023-06-23 07:11:23 --> Model "Web_settings" initialized
+INFO - 2023-06-23 08:11:23 --> Model "reports" initialized
+INFO - 2023-06-23 08:11:23 --> Model "Users" initialized
+INFO - 2023-06-23 08:11:24 --> File loaded: D:\wamp\www\R17\application\views\include/admin_header.php
+ERROR - 2023-06-23 08:11:24 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R17\application\views\include\admin_footer.php 108
+ERROR - 2023-06-23 08:11:24 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\include\admin_footer.php 108
+ERROR - 2023-06-23 08:11:24 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\include\admin_footer.php 108
+ERROR - 2023-06-23 08:11:24 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R17\application\views\include\admin_footer.php 120
+ERROR - 2023-06-23 08:11:24 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\include\admin_footer.php 120
+ERROR - 2023-06-23 08:11:24 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\include\admin_footer.php 120
+ERROR - 2023-06-23 08:11:24 --> Severity: Notice --> Undefined variable: email_setting D:\wamp\www\R17\application\views\include\admin_footer.php 123
+ERROR - 2023-06-23 08:11:24 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\include\admin_footer.php 123
+ERROR - 2023-06-23 08:11:24 --> Severity: Notice --> Trying to access array offset on value of type null D:\wamp\www\R17\application\views\include\admin_footer.php 123
+INFO - 2023-06-23 08:11:24 --> File loaded: D:\wamp\www\R17\application\views\include/admin_footer.php
+INFO - 2023-06-23 08:11:24 --> File loaded: D:\wamp\www\R17\application\views\admin_html_template.php
+INFO - 2023-06-23 08:11:24 --> Final output sent to browser
+DEBUG - 2023-06-23 08:11:24 --> Total execution time: 0.9180
