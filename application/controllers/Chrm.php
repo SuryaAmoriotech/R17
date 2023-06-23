@@ -31,6 +31,8 @@ class Chrm extends CI_Controller {
        $data['dailybreak'] = $this->Hrm_model->get_dailybreak();
        
        $data['duration'] = $this->Hrm_model->get_duration_data();
+
+       $data['administrator'] = $this->Hrm_model->administrator_data();
    
          $content                  = $this->parser->parse('hr/emp_payslip_permission', $data, true);
          $this->template->full_admin_html_view($content);
@@ -397,6 +399,35 @@ public function add_state_taxes_detail($tax=0) {
     // $this->template->full_admin_html_view($content);
     // }
 
+    public function add_adm_data(){
+        $CI = & get_instance();
+        $CI->auth->check_admin_auth();
+        $CI->load->model('Hrm_model');
+        $postData = $this->input->post('data_name');
+        $postData = $this->input->post('data_adres');
+
+        //  print_r($postData); die();
+
+        $data = $this->Hrm_model->insert_adsrs_data($postData);
+        echo json_encode($data);
+    }
+
+
+
+    public function insert_data_adsr(){
+        $CI = & get_instance();
+        $CI->auth->check_admin_auth();
+        $CI->load->model('Hrm_model');
+    $data = array(
+        'adm_name'   => $this->input->post('adms_name',TRUE),
+        'adm_address'=> $this->input->post('address',TRUE),
+        'create_by'       => $this->session->userdata('user_id'),
+  );
+//   print_r($data); die();
+    // $result = $this->Customers->customer_entry($data);
+    $data = $this->Hrm_model->insert_adsrs_data($data);
+    echo json_encode($data);
+    }
 
 
 
