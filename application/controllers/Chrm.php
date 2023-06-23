@@ -41,6 +41,113 @@ class Chrm extends CI_Controller {
 
 
 
+        public function officeloan_edit($transaction_id) {
+            $this->load->model('Hrm_model');
+            $CI = & get_instance();
+            $CI->load->model('Web_settings');
+            $CI->load->model('Invoices');
+           $CI->load->model('Settings');
+
+           $office_loan_datas = $this->Hrm_model->office_loan_datas($transaction_id);
+
+         
+
+           $bank_name = $CI->db->select('bank_id,bank_name')
+           ->from('bank_add')
+           ->get()
+           ->result_array();
+           $data['bank_list']   =  $CI->Web_settings->bank_list();
+            
+           
+           $paytype=$CI->Invoices->payment_type();
+           $CI = & get_instance();
+           $CI->load->model('Web_settings');
+
+
+           $data['payment_typ']  =$paytype;
+           $data['bank_name']  =$bank_name;
+          
+        //    print_r( $data['bank_name']);
+        $person_listdaa =  $CI->Settings->office_loan_person();
+
+           $data=array(
+            'id' =>$office_loan_datas[0]['id'],
+            'person_id' =>$office_loan_datas[0]['person_id'],
+            'date'  =>$office_loan_datas[0]['date'],
+            'debit' => $office_loan_datas[0]['debit'],
+            'details' => $office_loan_datas[0]['details'],
+            'phone' => $office_loan_datas[0]['phone'],
+           'paytype' => $office_loan_datas[0]['paytype'],
+           'bank_name1' => $office_loan_datas[0]['bank_name'],
+           'transaction_id' => $office_loan_datas[0]['transaction_id'],
+           'person_list' =>$person_listdaa ,
+
+           'bank_name' =>$bank_name,
+           'payment_typ' =>$paytype,
+
+           );
+             $content                  = $this->parser->parse('hr/edit_officeloan', $data, true);
+             $this->template->full_admin_html_view($content);
+            }
+        
+
+
+
+            public function office_loan_inserthtml($transaction_id) {
+                $CC = & get_instance();
+                $CA = & get_instance();
+                $CA->load->model('invoice_design');
+     
+                $CI = & get_instance();
+                $CI->auth->check_admin_auth();
+                $CC->load->model('invoice_content');
+               
+                $this->load->model('Hrm_model');
+
+                //  $data['title']            = display('manage_employee');
+                 $office_loan_datas = $this->Hrm_model->office_loan_datas($transaction_id);
+                 $datacontent = $CC->invoice_content->retrieve_data();
+                 $dataw = $CA->invoice_design->retrieve_data();
+
+                 $data=array(
+                //     'curn_info_default' =>$curn_info_default[0]['currency_name'],
+                //     'currency'  =>$currency_details[0]['currency'],
+                    'header'=> $dataw[0]['header'],
+                    // 'logo'=> $setting[0]['invoice_logo'],
+                    'color'=> $dataw[0]['color'],
+                    'template'=> $dataw[0]['template'],
+
+                   'person_id'      => $office_loan_datas[0]['person_id'],
+                    'date'     => $office_loan_datas[0]['date'],
+                    'debit'   => $office_loan_datas[0]['debit'],
+                    'details'   => $office_loan_datas[0]['details'],
+                    'phone'   => $office_loan_datas[0]['phone'],
+                    'paytype'   => $office_loan_datas[0]['paytype'],
+                    'paytype'   => $office_loan_datas[0]['paytype'],
+                    'paytype'   => $office_loan_datas[0]['paytype'],
+
+                    'company'=> $datacontent,
+                    'office_loan_datas' => $office_loan_datas
+                );
+
+                // print_r($office_loan_datas); die();
+
+                print_r($dataw[0]['color']);
+
+                $content = $this->load->view('hr/office_loan_html', $data, true);
+                $this->template->full_admin_html_view($content);
+                }
+
+
+
+
+
+
+
+
+
+
+
 
         public function manage_timesheet() {
             $this->load->model('Hrm_model');
@@ -53,7 +160,17 @@ class Chrm extends CI_Controller {
     
 
 
+            public function manage_officeloan() {
+                $this->load->model('Hrm_model');
+                 $data['title']            = display('manage_employee');
 
+                 $data['office_loan_list']    = $this->Hrm_model->office_loan_list();
+
+ 
+                 $content                  = $this->parser->parse('hr/officeloan_list', $data, true);
+                $this->template->full_admin_html_view($content);
+                }
+        
 
 
 
@@ -96,6 +213,7 @@ public function timesheed_inserted_data($id) {
            $CI = & get_instance();
            $CC = & get_instance();
            $CA = & get_instance();
+
            $w = & get_instance();
            $w->load->model('Ppurchases');
            $CI->load->model('Invoices');
@@ -161,6 +279,7 @@ public function timesheed_inserted_data($id) {
     $datacontent = $CC->invoice_content->retrieve_data();
     
     $employeeinfo = $CC->Hrm_model->employeeinfo();
+
 
     print_r($employeeinfo);
     
@@ -243,14 +362,18 @@ public function add_designation_data(){
         $CI->load->model('Web_settings');
           $CI->load->model('Invoices');
          $CI->load->model('Settings');
-$data['person_list'] =  $CI->Settings->office_loan_person();
-  $bank_name = $CI->db->select('bank_id,bank_name')
+         $data['person_list'] =  $CI->Settings->office_loan_person();
+  
+         $bank_name = $CI->db->select('bank_id,bank_name')
         ->from('bank_add')
         ->get()
         ->result_array();
          $data['bank_list']   =  $CI->Web_settings->bank_list();
            $paytype=$CI->Invoices->payment_type();
-    $CI = & get_instance();
+        $CI = & get_instance();
+  
+  
+  
     $CI->load->model('Web_settings');
        $data['payment_typ']  =$paytype;
          $data['bank_name']  =$bank_name;
@@ -543,13 +666,14 @@ public function add_state_taxes_detail($tax=0) {
         $data_empolyee['country'] = $this->input->post('country');
         $data_empolyee['city'] = $this->input->post('city');
         $data_empolyee['zip'] = $this->input->post('zip');
+        $data_empolyee['create_by'] =$this->session->userdata('user_id');
     //     echo '<pre>';
     //    print_r($data_empolyee); exit();
     //    echo '</pre>';
        $this->db->insert('employee_history', $data_empolyee);
     //    echo $this->db->last_query(); exit();
        $this->session->set_flashdata('message', display('save_successfully'));
-       redirect(base_url('Chrm/add_employee'));
+       redirect(base_url('Chrm/manage_employee'));
     }
 
 
@@ -627,7 +751,7 @@ public function add_state_taxes_detail($tax=0) {
      $data['title']            = display('manage_employee');
      $data['employee_list']    = $this->Hrm_model->employee_list();
 
-     print_r($data['employee_list']);
+    //  print_r($data['employee_list']);
 
      $content                  = $this->parser->parse('hr/employee_list', $data, true);
     $this->template->full_admin_html_view($content);

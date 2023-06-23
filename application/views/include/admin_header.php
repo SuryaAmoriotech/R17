@@ -756,7 +756,7 @@ if($_SESSION['u_type']==2)
 
 
 
-                                           <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/add_office_loan"><?php echo display("office_loan");?></a></li>
+                                           <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/manage_officeloan"><?php echo display("office_loan");?></a></li>
                     
 
 
@@ -1599,9 +1599,10 @@ break;
                                           <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/add_expense_item"><?php echo display("expense");?></a></li>
                     
 
+                                          
+                                          <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/manage_officeloan"><?php echo display("office_loan");?></a></li>
 
-
-                                           <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/add_office_loan"><?php echo display("office_loan");?></a></li>
+                                           <!-- <li class="treeview  "><a href="<?php// echo base_url(); ?>/Chrm/add_office_loan"><?php echo display("office_loan");?></a></li> -->
                     
 
 

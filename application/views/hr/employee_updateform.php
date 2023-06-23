@@ -24,12 +24,12 @@
             <i class="pe-7s-note2"></i>
         </div>
         <div class="header-title">
-            <h1><?php echo ('Edit Hrm') ?></h1>
+            <h1><?php echo ('Edit Employee') ?></h1>
             <small></small>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="pe-7s-home"></i> <?php echo display('home') ?></a></li>
                 <li><a href="#"><?php echo display('hrm') ?></a></li>
-                <li class="active" style="color:orange"><?php echo html_escape($title) ?></li>
+                <li class="active" style="color:orange"><?php echo html_escape('Edit Employee') ?></li>
             </ol>
         </div>
     </section>
@@ -64,7 +64,12 @@
             <div class="col-sm-12">
                 <div class="panel panel-bd lobidrag">
                     <div class="panel-heading">
-                        <div class="panel-title">
+                        <div class="panel-title" style="height:35px;">
+
+                        <div class="panel-title form_employee"  style="float:right ;">
+                            <a href="<?php echo base_url('Chrm/manage_employee') ?>"   style="color:white;background-color: #38469f;"  class="btn btn-info m-b-5 m-r-2"><i class="ti-align-justify"> </i> Manage Employee </a>
+                            </div>
+
                         </div>
                     </div>
                   
@@ -826,8 +831,7 @@ Payment Type
                     
 
                     <div class="form-group text-right">
-                        <button type="reset"  style="color:white;background-color: #38469f;" class="btn btn-primary w-md m-b-5"><?php echo display('reset') ?></button>
-                        <button type="submit" style="color:white;background-color: #38469f;" class="btn btn-success w-md m-b-5"><?php echo display('save') ?></button>
+                        <button type="submit" style="color:white;background-color: #38469f;    float: left;" class="btn btn-success w-md m-b-5"><?php echo display('save') ?></button>
                     </div>
                 <?php echo form_close() ?>
                     </div>

@@ -354,7 +354,8 @@
 <!------ add new designation_modal -->  
 <div class="modal fade" id="designation_modal" role="dialog">
 
-<div class="modal-dialog" role="document">
+<!-- <div class="modal-dialog" role="document"> -->
+<div class="modal-dialog modal-lg" >
 
     <div class="modal-content">
 
@@ -569,7 +570,6 @@ increase your refund or reduce any amount of tax that you
 owe</p>
                             </div>
 
-                            <div class="nxtBtn text-right"><button type="text"  style="color:white;background-color: #38469f;" class="next_pg btn btn-success w-md m-b-5">Next</button></div>
 
                         </div>
 
@@ -822,7 +822,6 @@ from you. See the instructions for your income tax return.</p>
 
             
 
-            <input type="submit" class="btn" style="color:white;background-color: #38469f;" value=<?php echo display('Submit') ?>>
 
         </div>
 
@@ -952,7 +951,7 @@ $('#for_numrows,#pagesControllers').hide();
  lineHeight : 1.2,
  margin : 0.2,
  maxLineWidth : pageWidth - margin *1,
-               filename: 'tax_details'+'.pdf',
+               filename: 'employee_form'+'.pdf',
                allowTaint: true,
                html2canvas: { scale: 3 },
                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
@@ -964,7 +963,7 @@ for (var i = 1; i <= totalPages; i++) {
   pdf.setFontSize(10);
   pdf.setTextColor(150);
 }
-}).save('Time_sheet.pdf');
+}).save('employee_form.pdf');
   setTimeout( function(){
     $('#for_numrows,#pagesControllers').show();
   }, 4500 );

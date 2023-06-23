@@ -133,7 +133,7 @@
 
 
 
-        <select name="designation" id="designation" class="form-control" style="width: 100%;"required>
+        <select name="designation"  class="form-control" style="width: 100%;"required>
 
 <option value="">Select Designation</option>
 
@@ -163,7 +163,7 @@ Payment Type
 <div class="col-sm-7">
 
 
-<select name="rate_type" id="paytype" class="form-control" style="width: 100%;" >
+<select name="rate_type"  class="form-control" style="width: 100%;" >
 
       <option value="">Select Type</option>
 

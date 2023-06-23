@@ -33,12 +33,12 @@ th{
             <i class="pe-7s-note2"></i>
         </div>
         <div class="header-title">
-            <h1><?php echo display('Sale Invoice') ?></h1>
-            <small><?php echo display('invoice_details') ?></small>
+            <h1><?php echo ('Employee Invoice') ?></h1>
+            <small></small>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="pe-7s-home"></i> <?php echo display('home') ?></a></li>
-                <li><a href="#"><?php echo display('invoice') ?></a></li>
-                <li class="active"><?php echo display('invoice_details') ?></li>
+                <li><a href="#"><?php echo display('hrm') ?></a></li>
+                <li class="active"><?php echo ('Employee Invoice') ?></li>
             </ol>
         </div>
     </section>
@@ -77,10 +77,68 @@ th{
     <div class="container" id="content">
         <?php
   
-    if($template==4)
+    if($template==1)
             {
             ?>
+    <div class="brand-section"  style="background-color:<?php echo $color; ?>">
 
+<div class="row" >
+
+
+
+     <div class="col-sm-4" style="color:white;font-weight:bold;" id='company_info'>
+   
+     <b><?php echo display('Company name') ?> : </b><?php echo $company[0]['business_name']; ?><br>
+        <b>  <?php echo display('Address ') ?>: </b><?php echo $company[0]['address']; ?><br>
+        <b> <?php echo display('Email ') ?>: </b><?php echo $company[0]['email']; ?><br>
+        <b>  <?php echo display('Contact ') ?>: </b><?php echo $company[0]['phone']; ?><br>
+   </div>
+
+
+
+
+<div class="col-sm-5 text-center" style="color:white;"><h3><?php echo $header; ?></h3></div>
+
+<div class="col-sm-3"><img src="<?php echo  base_url().$logo; ?>" style='width: 70%;'></div>
+
+
+
+
+     </div>
+     </div>
+
+        <div class="body-section">
+            <div class="row">
+            <div class="col-6">
+            <table id="one" >
+            <tr><td  class="key"><?php echo display('first_name') ?></td><td style="width:10px;">:</td><td calss="value"><?php  echo $first_name; ?></td></tr>
+        <tr><td  class="key"><?php echo display('last_name') ?></td><td style="width:10px;">:</td><td calss="value"><?php echo $last_name ;?></td></tr>
+        <tr><td class="key"><?php echo display('Designation') ?></td><td style="width:10px;">:</td><td calss="value"><?php  echo $designation;?></td></tr>
+        <tr><td  class="key"><?php echo display('Payment Type') ?></td><td style="width:10px;">:</td><td calss="value"><?php  echo  $rate_type ; ?></td></tr>
+        <tr><td  class="key"><?php echo display('phone') ?></td><td style="width:10px;">:</td><td calss="value"><?php echo $phone; ?></td></tr>
+        <tr><td  class="key"><?php echo ('Per hour cost') ?></td><td style="width:7px;">:</td><td calss="value" style="white-space: pre-wrap;"><?php echo $hrate; ?> </td></tr>
+        <tr><td  class="key"><?php echo display('email') ?></td><td style="width:7px;">:</td><td calss="value" style="white-space: pre-wrap;"><?php  echo $email; ?> </td></tr>
+        <tr><td  class="key"><?php echo display('zip') ?></td><td style="width:7px;">:</td><td calss="value" style="white-space: pre-wrap;"> <?php  echo $zip; ?></td></tr>
+    
+</table>
+
+                </div>
+                <div class="col-6">
+                <table id="two">
+                <tr><td  class="key"><?php echo display('blood_group') ?></td><td style="width:10px;">:</td><td calss="value"><?php  echo $blood_group ; ?></td></tr>
+     <tr><td  class="key"><?php echo ('Social Security Number') ?></td><td style="width:10px;">:</td><td calss="value"><?php  echo $social_security_number; ?></td></tr>
+     <tr><td  class="key"><?php echo ('Routing number') ?></td><td style="width:10px;">:</td><td calss="value"><?php  echo $routing_number ?></td></tr>
+     <tr><td  class="key"><?php echo display('address_line_1') ?></td><td style="width:10px;">:</td><td calss="value"><?php  echo $address_line_1; ?></td></tr>
+     <tr><td  class="key"><?php echo display('address_line_2') ?></td><td style="width:10px;">:</td><td calss="value"><?php  echo $address_line_2; ?></td></tr>
+     <tr><td  class="key"><?php echo display('country') ?></td><td style="width:7px;">:</td><td calss="value" style="white-space: pre-wrap;"> <?php  echo $country; ?></td></tr>
+     <tr><td  class="key"><?php echo display('city') ?></td><td style="width:10px;">:</td><td calss="value"><?php  echo $city; ?></td></tr>
+</table>
+    </div>
+               
+             
+            </div>
+            <br>
+        </div>
 
         <?php 
 }
@@ -92,10 +150,74 @@ th{
 
 
 
-elseif($template==1)
+elseif($template==2)
 {
 ?>  
         <div class="brand-section"  style="background-color:<?php echo $color; ?>">
+
+<div class="row" >
+
+     <div class="col-sm-2"><img src="<?php echo  base_url().$logo; ?>" style='width: 100%;'> </div>
+
+        
+<div class="col-sm-6 text-center" style="color:white;"><h3><?php echo $header; ?></h3></div>
+
+<div class="col-sm-4" style="color:white;font-weight:bold;" id='company_info'>          
+<b><?php echo display('Company name') ?> : </b><?php echo $company[0]['business_name']; ?><br>
+        <b>  <?php echo display('Address ') ?>: </b><?php echo $company[0]['address']; ?><br>
+        <b> <?php echo display('Email ') ?>: </b><?php echo $company[0]['email']; ?><br>
+        <b>  <?php echo display('Contact ') ?>: </b><?php echo $company[0]['phone']; ?><br>
+  </div>
+
+
+
+
+
+
+
+
+
+     </div>
+     </div>
+
+        <div class="body-section">
+            <div class="row">
+            <div class="col-6">
+            <table id="one" >
+            <tr><td  class="key"><?php echo display('first_name') ?></td><td style="width:10px;">:</td><td calss="value"><?php  echo $first_name; ?></td></tr>
+        <tr><td  class="key"><?php echo display('last_name') ?></td><td style="width:10px;">:</td><td calss="value"><?php echo $last_name ;?></td></tr>
+        <tr><td class="key"><?php echo display('Designation') ?></td><td style="width:10px;">:</td><td calss="value"><?php  echo $designation;?></td></tr>
+        <tr><td  class="key"><?php echo display('Payment Type') ?></td><td style="width:10px;">:</td><td calss="value"><?php  echo  $rate_type ; ?></td></tr>
+        <tr><td  class="key"><?php echo display('phone') ?></td><td style="width:10px;">:</td><td calss="value"><?php echo $phone; ?></td></tr>
+        <tr><td  class="key"><?php echo ('Per hour cost') ?></td><td style="width:7px;">:</td><td calss="value" style="white-space: pre-wrap;"><?php echo $hrate; ?> </td></tr>
+        <tr><td  class="key"><?php echo display('email') ?></td><td style="width:7px;">:</td><td calss="value" style="white-space: pre-wrap;"><?php  echo $email; ?> </td></tr>
+        <tr><td  class="key"><?php echo display('zip') ?></td><td style="width:7px;">:</td><td calss="value" style="white-space: pre-wrap;"> <?php  echo $zip; ?></td></tr>
+    
+</table>
+
+                </div>
+                <div class="col-6">
+                <table id="two">
+                <tr><td  class="key"><?php echo display('blood_group') ?></td><td style="width:10px;">:</td><td calss="value"><?php  echo $blood_group ; ?></td></tr>
+     <tr><td  class="key"><?php echo ('Social Security Number') ?></td><td style="width:10px;">:</td><td calss="value"><?php  echo $social_security_number; ?></td></tr>
+     <tr><td  class="key"><?php echo ('Routing number') ?></td><td style="width:10px;">:</td><td calss="value"><?php  echo $routing_number ?></td></tr>
+     <tr><td  class="key"><?php echo display('address_line_1') ?></td><td style="width:10px;">:</td><td calss="value"><?php  echo $address_line_1; ?></td></tr>
+     <tr><td  class="key"><?php echo display('address_line_2') ?></td><td style="width:10px;">:</td><td calss="value"><?php  echo $address_line_2; ?></td></tr>
+     <tr><td  class="key"><?php echo display('country') ?></td><td style="width:7px;">:</td><td calss="value" style="white-space: pre-wrap;"> <?php  echo $country; ?></td></tr>
+     <tr><td  class="key"><?php echo display('city') ?></td><td style="width:10px;">:</td><td calss="value"><?php  echo $city; ?></td></tr>
+</table>
+    </div>
+               
+             
+            </div>
+            <br>
+        </div>
+        <?php 
+}
+elseif($template==3)
+{
+?>
+     <div class="brand-section"  style="background-color:<?php echo $color; ?>">
 
 <div class="row" >
 
@@ -151,12 +273,6 @@ elseif($template==1)
             </div>
             <br>
         </div>
-        <?php 
-}
-elseif($template==2)
-{
-?>
- 
         <?php 
 
 }
@@ -389,7 +505,7 @@ setTimeout( function(){
     pdf.setFontSize(10);
     pdf.setTextColor(150);
   }
-  }).save('timesheet_<?php echo $invoicenumber.'.pdf'  ?>');
+  }).save('Employee_<?php echo $invoicenumber.'.pdf'  ?>');
     callback1();
     callback2();
  }, 3000 );

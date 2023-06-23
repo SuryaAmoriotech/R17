@@ -79,9 +79,13 @@ textarea:focus, input:focus{
             <div class="col-sm-12">
                 <div class="panel panel-bd lobidrag">
                     <div class="panel-heading">
-                        <div class="panel-title">
-                            <h4><?php echo display('add_office_loan') ?> </h4>
-                        </div>
+                        <div class="panel-title" style="height:35px;">
+                       
+                        <div class="panel-title form_employee"  style="float:right ;">
+                            <a href="<?php echo base_url('Chrm/manage_officeloan') ?>"   style="color:white;background-color: #38469f;"  class="btn btn-info m-b-5 m-r-2"><i class="ti-align-justify"> </i> Manage Office Loan </a>
+                            </div>
+                    
+                    </div>
                     </div>
                    <?php echo form_open_multipart('Cloan/submit_loan',array('class' => 'form-vertical','id' => 'inflow_entry' ))?>
                     <div class="panel-body">
@@ -92,7 +96,7 @@ textarea:focus, input:focus{
                                 <select class="form-control" name="person_id" id="nameofficeloanperson" tabindex="1">
                                     <option><?php echo display('select_one')?></option>
                                 <?php  foreach($person_list as $person) {?>  
-                                    <option value="<?php  echo $person['id'] ?>"><?php  echo $person['first_name']." ".$person['last_name']?></option>
+                                    <option value="<?php  echo $person['first_name']." ".$person['last_name']?>"><?php  echo $person['first_name']." ".$person['last_name']?></option>
                               <?php }  ?>
                                 </select>
                             </div>
@@ -145,24 +149,25 @@ textarea:focus, input:focus{
                                 <div class="col-sm-6">
                                    <select name="bank_id" class="form-control"  id="bankpayment">
                                         <option value=""><?php echo display('select_one') ?></option>
-                                        <?php foreach($bank_name as $bank){
-                                           // echo $bank['bank_id'];
-                                            ?>
-                                          
-                                            <option value="<?php echo $bank['bank_id']?>"><?php echo $bank['bank_name'];?></option>
+                                        <?php foreach($bank_name as $bank){ ?>                                          
+                                           <option value="<?php echo $bank['bank_id']?>"><?php echo $bank['bank_name'];?></option>
                                         <?php }?>
                                     </select>
                                  
                                 </div>
+
                                  <div class="col-sm-2">
                                  <a data-toggle="modal" href="#add_bank_info"  style="color:white;background-color:#38469f;" class="btn btn-primary"><i class="fa fa-university"></i></a>
                                </div>
+
+
+
                                 </div>
                         
                         <div class="form-group row">
                             <label for="date" class="col-sm-3 col-form-label"><?php echo display('date') ?> <i class="text-danger"></i></label>
                             <div class="col-sm-6">
-                               <input type="text" class="form-control datepicker" name="date" id="date" value="<?php echo date("Y-m-d");?>" placeholder="<?php echo display('date') ?>" tabindex="4"/>
+                               <input type="date" class="form-control datepicker" name="date" id="date" value="<?php echo date("Y-m-d");?>" placeholder="<?php echo display('date') ?>" tabindex="4"/>
                             </div>
                         </div>
 
@@ -173,12 +178,25 @@ textarea:focus, input:focus{
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="example-text-input" class="col-sm-3 col-form-label"></label>
+                     
+  <div class="form-group row">
                             <div class="col-sm-6">
+                            <?php  $transaction_id = $this->auth->generator(10);  ?>
+
+                                <input type="hidden" class="form-control" name="transaction_id" id="transaction_id"  value="<?php echo $transaction_id; ?> " tabindex="4"/>
+
+                            </div>
+                        </div>
+                        
+                    
+
+                        <div class="form-group row">
+                            <label for="example-text-input" ></label>
+                            <!-- <div class="col-sm-1"> -->
                                 <!-- <input type="reset" class="btn btn-danger" value="<?php echo display('reset') ?>" tabindex="6"/> -->
                                 <input type="submit" id="add-deposit" style="color:white;background-color:#38469f;" class="btn" name="add-deposit" value="<?php echo display('save') ?>" tabindex="7"/>
-                            </div>
+                            <!-- </div> -->
+
                         </div>
                     </div>
                     <?php echo form_close()?>

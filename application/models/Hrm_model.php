@@ -30,6 +30,19 @@ class Hrm_model extends CI_Model {
     }
     
 
+    public function office_loan_list(){
+
+        $this->db->select('*');
+        $this->db->from('person_ledger');
+         $this->db->where('create_by',$this->session->userdata('user_id'));
+         $query = $this->db->get();
+        //  echo $this->db->last_query(); die();
+         if ($query->num_rows() > 0) {
+           return $query->result_array();
+         }
+         return false;
+    }
+    
 
 
 
@@ -48,7 +61,22 @@ class Hrm_model extends CI_Model {
     
 
 
+    public function office_loan_datas($transaction_id){
 
+        $this->db->select('*');
+        $this->db->from('person_ledger');
+        
+        $this->db->where('transaction_id', $transaction_id);
+
+         $this->db->where('create_by',$this->session->userdata('user_id'));
+         $query = $this->db->get();
+        //  echo $this->db->last_query(); die();
+         if ($query->num_rows() > 0) {
+           return $query->result_array();
+         }
+         return false;
+    }
+    
 
 
 
@@ -95,16 +123,14 @@ class Hrm_model extends CI_Model {
 
     public function insert_adsrs_data($data) {
 
-        // $this->db->insert('administrator', $data);
-
-
         $this->db->select('*');
         $this->db->from('administrator');
-        // $this->db->where('customer_name', $data['customer_name']);
         $this->db->where('create_by',$this->session->userdata('user_id'));
         $query = $this->db->get();
+
         $this->db->insert('administrator', $data);
-        return $query->result_array();
+        // return $query->result_array();
+        return $query;
 
        //echo $this->db->last_query();
     }
@@ -467,31 +493,94 @@ $sql3="UPDATE state_and_tax SET tax = replace(replace(tax, ',,', ','), ',', ',')
 
    // Employee list
 
+
+
+
+//    public function employee_list(){
+
+//        $this->db->select('a.*,b.designation');
+
+//         $this->db->from('employee_history a');
+
+//         $this->db->join('designation b','a.designation = b.id');
+
+//         $this->db->where('a.create_by',$this->session->userdata('user_id'));
+
+//         $this->db->order_by('a.id', 'DESC');
+
+//         $query = $this->db->get();
+
+// // echo $this->db->last_query(); die();
+
+//         if ($query->num_rows() > 0) {
+
+//             return $query->result_array();
+
+//         }
+
+//         return false;
+
+//    }
+
+
+
+
    public function employee_list(){
 
-       $this->db->select('a.*,b.designation');
+     $this->db->select('a.*,b.designation');
+     $this->db->from('employee_history a');
+     $this->db->join('designation b','a.designation = b.designation');
+     $this->db->where('a.create_by',$this->session->userdata('user_id'));
+     $this->db->order_by('a.designation', 'DESC');
+     $query = $this->db->get();
+    //  echo $this->db->last_query(); die();
+     if ($query->num_rows() > 0) {
+       return $query->result_array();
+     }
+     return false;
+}
 
-        $this->db->from('employee_history a');
 
-        $this->db->join('designation b','a.designation = b.id');
-
-        $this->db->where('a.create_by',$this->session->userdata('user_id'));
-
-        $this->db->order_by('a.id', 'DESC');
-
+      public function employee_details($id){
+        $this->db->select('*');
+        $this->db->from('employee_history ');
+        // $this->db->join('designation b','a.designation = b.designation');
+        $this->db->where('id', $id);
         $query = $this->db->get();
-
-// echo $this->db->last_query(); die();
-
+    //  echo $this->db->last_query(); die();
         if ($query->num_rows() > 0) {
-
             return $query->result_array();
-
         }
-
         return false;
-
    }
+
+//    public function employee_details($id){
+
+//     $this->db->select('a.*,b.designation');
+
+//     $this->db->from('employee_history a');
+
+//     $this->db->join('designation b','a.designation = b.designation');
+
+//     $this->db->where('a.id', $id);
+
+//     $query = $this->db->get();
+//  echo $this->db->last_query(); die();
+// // 
+//     if ($query->num_rows() > 0) {
+
+//         return $query->result_array();
+
+//     }
+
+//     return false;
+
+// }
+
+
+
+
+
 
    // Employee Edit data
 
@@ -575,27 +664,6 @@ $sql3="UPDATE state_and_tax SET tax = replace(replace(tax, ',,', ','), ',', ',')
 
 
 
-      public function employee_details($id){
-
-        $this->db->select('a.*,b.designation');
-
-        $this->db->from('employee_history a');
-
-        $this->db->join('designation b','a.designation = b.id');
-
-        $this->db->where('a.id', $id);
-
-        $query = $this->db->get();
-
-        if ($query->num_rows() > 0) {
-
-            return $query->result_array();
-
-        }
-
-        return false;
-
-   }
 
 }
 

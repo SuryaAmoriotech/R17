@@ -120,33 +120,50 @@ class Cloan extends CI_Controller {
          $content = $this->parser->parse('settings/add_office_loan', $data, true);
         $this->template->full_admin_html_view($content);
     }
+
+
+
+    
      public function submit_loan() {
         $personid = $this->input->post('person_id',TRUE);
         $personinfo = $this->db->select('first_name,last_name')->from('employee_history')->where('id',$personid)->get()->row();
+        // print_r($headname);
+echo $this->db->last_query();die();
         $headname = $personid.'-'.$personinfo->first_name." ".$personinfo->last_name;
+        // print_r($headname);
         $headcid = $this->db->select('HeadCode')->from('acc_coa')->where('HeadName',$headname)->get()->row()->HeadCode;
-       // echo $this->db->last_query();
-        $transaction_id = $this->auth->generator(10);
+ 
+        // echo $this->db->last_query();
+        //  print_r($HeadCode);
+
+
 
     $bank_id = $this->input->post('bank_id',TRUE);
-  //  echo "Bank id :".$bank_id;
+// echo "Bank id :".$bank_id;
         if(!empty($bank_id)){
        $bankname = $this->db->select('bank_name')->from('bank_add')->where('bank_id',$bank_id)->get()->row()->bank_name;
-  //  echo $this->db->last_query();
+//  echo $this->db->last_query();
        $bankcoaid = $this->db->select('HeadCode')->from('acc_coa')->where('HeadName',$bankname)->get()->row()->HeadCode;
-       //// echo $this->db->last_query();
+    //  echo $this->db->last_query(); die();
    }else{
     $bankcoaid='';
    }
 //echo "Bank_COA_id".$bankcoaid;
         $data = array(
-            'transaction_id' => $transaction_id,
+            'transaction_id' => $this->input->post('transaction_id',TRUE),
             'person_id'      => $this->input->post('person_id',TRUE),
             'debit'          => $this->input->post('ammount',TRUE),
             'date'           => $this->input->post('date',TRUE),
             'details'        => $this->input->post('details',TRUE),
+            'phone'          => $this->input->post('phone',TRUE),
+            'create_by'      => $this->session->userdata('user_id'),
+            'paytype'          => $this->input->post('paytype',TRUE),
+            'bank_name'          => $this->input->post('bank_id',TRUE),
             'status'         => 1
-        );
+          );
+
+        //  print_r($data); die()
+
         $loan = array(
           'VNo'            =>  $transaction_id,
           'Vtype'          =>  'LNR',
@@ -195,20 +212,20 @@ class Cloan extends CI_Controller {
             $this->db->insert('acc_transaction',$loan);
                if($this->input->post('paytype',TRUE) == display('bank_payment')){
         $this->db->insert('acc_transaction',$bankc);
-       // echo $this->db->last_query();
+    //    echo $this->db->last_query();
          $this->session->set_userdata(array('message' => display('successfully_added')));
-           // redirect(base_url('Chrm/add_office_loan'));
+           redirect(base_url('Chrm/manage_officeloan'));
         }
            else{
         $this->db->insert('acc_transaction',$cc);
-         // echo $this->db->last_query();
+          echo $this->db->last_query();
            $this->session->set_userdata(array('message' => display('successfully_added')));
-         //   redirect(base_url('Chrm/add_office_loan'));
+          redirect(base_url('Chrm/manage_officeloan'));
         }
          
         } else {
             $this->session->set_userdata(array('error_message' => display('not_added')));
-          //  redirect(base_url('Chrm/add_office_loan'));
+          redirect(base_url('Chrm/add_office_loan'));
         }
     }
     public function add_loan_payment() {
@@ -217,6 +234,15 @@ class Cloan extends CI_Controller {
        $content = $this->parser->parse('settings/add_officeloan_payment', $data, true);
         $this->template->full_admin_html_view($content);
     }
+
+
+
+
+
+
+
+
+
   #================Submit loan Payment==============#
 
     public function submit_payment() {
@@ -241,8 +267,13 @@ class Cloan extends CI_Controller {
             'credit'         => $this->input->post('ammount',TRUE),
             'date'           => $this->input->post('date',TRUE),
             'details'        => $this->input->post('details',TRUE),
+            'phone'          => $this->input->post('phone',TRUE),
+            'create_by'      => $this->session->userdata('user_id'),
             'status'         => 2
         );
+// echo "////".$this->input->post('transaction_id',TRUE);
+//         print_r($data); die();
+
         $paidloan = array(
           'VNo'            =>  $transaction_id,
           'Vtype'          =>  'LNP',
@@ -289,21 +320,21 @@ class Cloan extends CI_Controller {
 
 
         $result = $this->Settings->submit_payment($data);
-        if ($result) {
-            $this->db->insert('acc_transaction',$paidloan);
-            if($this->input->post('paytype',TRUE) == 2){
-        $this->db->insert('acc_transaction',$bankc);
+        // if ($result) {
+        //     $this->db->insert('acc_transaction',$paidloan);
+        //     if($this->input->post('paytype',TRUE) == 2){
+        // $this->db->insert('acc_transaction',$bankc);
        
-        }
-            if($this->input->post('paytype',TRUE) == 1){
-        $this->db->insert('acc_transaction',$cc);
-        }
-            $this->session->set_userdata(array('message' => display('successfully_added')));
-            redirect(base_url('Cloan/add_loan_payment'));
-        } else {
-            $this->session->set_userdata(array('error_message' => display('not_added')));
-            redirect(base_url('Cloan/add_loan_payment'));
-        }
+        // }
+        //     if($this->input->post('paytype',TRUE) == 1){
+        // $this->db->insert('acc_transaction',$cc);
+        // }
+        //     $this->session->set_userdata(array('message' => display('successfully_added')));
+        //     redirect(base_url('Cloan/add_loan_payment'));
+        // } else {
+        //     $this->session->set_userdata(array('error_message' => display('not_added')));
+        //     redirect(base_url('Cloan/add_loan_payment'));
+        // }
     }
         //Person loan search by phone number
     public function loan_phone_search_by_name() {

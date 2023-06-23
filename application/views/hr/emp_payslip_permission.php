@@ -556,8 +556,26 @@ $.ajax({
           for(var i = 0; i < data1.length; i++) {
     var option = $('<option/>').attr('value', data1[i].adms_name).text(data1[i].adms_name);
     $select.append(option); // append new options
-}
+
+
+$("#insert_adm").find('input:text').val(''); 
+   $("#bodyModal1").html("New Customer Added Successfully");
+      $('#myModal1').modal('show');
+      $('#add_admst').modal('hide');
+    //  $('#customer_name').show();
+    
+     $('#insert_adm')[0].reset();
+
+      window.setTimeout(function(){
+       $('#myModal1').modal('hide');
+       $('.modal-backdrop').remove();
+
+},2500);
+
     }
+}
+
+
 });
 });
 

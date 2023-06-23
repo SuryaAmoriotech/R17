@@ -27,12 +27,12 @@
             <i class="pe-7s-note2"></i>
         </div>
         <div class="header-title">
-            <h1><?php echo display('hrm') ?></h1>
+            <h1><?php echo ('Employee Info') ?></h1>
             <small></small>
             <ol class="breadcrumb">
                 <li><a href=""><i class="pe-7s-home"></i> <?php echo display('home') ?></a></li>
                 <li><a href="#"><?php echo display('hrm') ?></a></li>
-                <li class="active"><?php echo display('manage_employee') ?></li>
+                <li class="active"><?php echo ('Employee Info') ?></li>
             </ol>
         </div>
     </section>
@@ -62,6 +62,14 @@
             $this->session->unset_userdata('error_message');
         }
         ?>
+
+
+
+
+<!-- <div class="panel-title form_employee"  style="float:right ;">
+                            </div> -->
+
+                            <a href="<?php echo base_url('Chrm/manage_employee') ?>"   style="color:white;background-color: #38469f;float:right;"  class="btn btn-info m-b-5 m-r-2"><i class="ti-align-justify"> </i> Manage Employee </a>
 
    <div class="row">
     <div class="col-sm-12 col-md-4">
