@@ -18,6 +18,52 @@ class Chrm extends CI_Controller {
 
 
 
+
+    public function employee_payslip_permission($id) {
+        $this->load->model('Hrm_model');
+         $data['title']            = display('Payment_Administration');
+     
+        $data['employee_name'] = $this->Hrm_model->employee_name();
+
+        $data['payment_terms'] = $this->Hrm_model->get_payment_terms();
+   
+
+       $data['dailybreak'] = $this->Hrm_model->get_dailybreak();
+       
+       $data['duration'] = $this->Hrm_model->get_duration_data();
+
+       $data['administrator'] = $this->Hrm_model->administrator_data();
+   
+         $content                  = $this->parser->parse('hr/emp_payslip_permission', $data, true);
+         $this->template->full_admin_html_view($content);
+        }
+    
+
+
+
+
+        public function manage_timesheet() {
+            $this->load->model('Hrm_model');
+             $data['title']            = display('manage_employee');
+             $data['timesheet_list']    = $this->Hrm_model->timesheet_list();
+             $content                  = $this->parser->parse('hr/timesheet_list', $data, true);
+            $this->template->full_admin_html_view($content);
+            }
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
     public function add_dailybreak_info(){
         $CI = & get_instance();
         $CI->auth->check_admin_auth();
@@ -38,14 +84,6 @@ class Chrm extends CI_Controller {
 
 
 
-
-    public function manage_timesheet() {
-        $this->load->model('Hrm_model');
-         $data['title']            = display('manage_employee');
-         $data['timesheet_list']    = $this->Hrm_model->timesheet_list();
-         $content                  = $this->parser->parse('hr/timesheet_list', $data, true);
-        $this->template->full_admin_html_view($content);
-        }
 
 
      
@@ -104,6 +142,59 @@ public function timesheed_inserted_data($id) {
 
      //Designation form
 
+<<<<<<< HEAD
+
+
+
+     public function pay_slip() {
+
+        $CC = & get_instance();
+        $CI = & get_instance();
+
+
+        $CC->load->model('invoice_content');
+        $CI->load->model('Hrm_model');
+
+
+
+    $data['title'] = display('pay_slip');
+
+    $datacontent = $CC->invoice_content->retrieve_data();
+    
+    $employeeinfo = $CC->Hrm_model->employeeinfo();
+
+    print_r($employeeinfo);
+    
+    $data=array(
+    'company'=> $datacontent,
+    // 'business_name' => $datacontent,
+    'business_name'=> $datacontent[0]['business_name'],
+    'address'=> $datacontent[0]['address'],
+    'email'=> $datacontent[0]['email'],
+    'phone'=> $datacontent[0]['phone'],
+
+    'templ_name'=> $employeeinfo[0]['templ_name'],
+    'job_title'=> $employeeinfo[0]['job_title'],
+   
+
+      );
+
+// print_r($data); die();
+
+    $content = $this->parser->parse('hr/pay_slip', $data, true);
+    $this->template->full_admin_html_view($content);
+    }
+
+
+
+
+
+
+
+
+
+
+=======
   public function pay_slip() {
 // print_r($_POST);
     $this->load->model('Hrm_model');
@@ -178,6 +269,7 @@ public function timesheed_inserted_data($id) {
     //$this->template->full_admin_html_view($content);
     }
   }
+>>>>>>> 7c550ccba047e57765faef8227f4daa874aaa519
     public function pay_slip_list() {
     $data['title'] = display('pay_slip_list');
     $content = $this->parser->parse('hr/pay_slip_list', $data, true);
@@ -388,6 +480,35 @@ public function add_state_taxes_detail($tax=0) {
     // $this->template->full_admin_html_view($content);
     // }
 
+    public function add_adm_data(){
+        $CI = & get_instance();
+        $CI->auth->check_admin_auth();
+        $CI->load->model('Hrm_model');
+        $postData = $this->input->post('data_name');
+        $postData = $this->input->post('data_adres');
+
+        //  print_r($postData); die();
+
+        $data = $this->Hrm_model->insert_adsrs_data($postData);
+        echo json_encode($data);
+    }
+
+
+
+    public function insert_data_adsr(){
+        $CI = & get_instance();
+        $CI->auth->check_admin_auth();
+        $CI->load->model('Hrm_model');
+    $data = array(
+        'adm_name'   => $this->input->post('adms_name',TRUE),
+        'adm_address'=> $this->input->post('address',TRUE),
+        'create_by'       => $this->session->userdata('user_id'),
+  );
+//   print_r($data); die();
+    // $result = $this->Customers->customer_entry($data);
+    $data = $this->Hrm_model->insert_adsrs_data($data);
+    echo json_encode($data);
+    }
 
 
 
@@ -586,9 +707,14 @@ public function add_state_taxes_detail($tax=0) {
     $this->load->model('Hrm_model');
      $data['title']            = display('manage_employee');
      $data['employee_list']    = $this->Hrm_model->employee_list();
+
+     print_r($data['employee_list']);
+
      $content                  = $this->parser->parse('hr/employee_list', $data, true);
     $this->template->full_admin_html_view($content);
     }
+
+
     // Employee Update form
    public function employee_update_form($id) {
     $this->load->model('Hrm_model');
@@ -598,6 +724,20 @@ public function add_state_taxes_detail($tax=0) {
      $content                  = $this->parser->parse('hr/employee_updateform', $data, true);
      $this->template->full_admin_html_view($content);
     }
+
+
+
+
+
+ 
+    
+
+
+
+
+
+
+
 //     // Update employee
     public function update_employee(){
         $this->load->model('Hrm_model');
@@ -661,4 +801,81 @@ public function add_state_taxes_detail($tax=0) {
      $content                  = $this->parser->parse('hr/resumepdf', $data, true);
      $this->template->full_admin_html_view($content);
     }
+
+
+  // create employee
+  public function create_employee(){
+    $this->load->model('Hrm_model');
+    
+
+
+  $this->form_validation->set_rules('first_name',display('first_name'),'required|max_length[100]');
+  $this->form_validation->set_rules('last_name',display('last_name'),'required|max_length[100]');
+  $this->form_validation->set_rules('designation',display('designation'),'required|max_length[100]');
+  $this->form_validation->set_rules('phone',display('phone'),'max_length[20]');
+  $this->form_validation->set_rules('hrate',display('salary'),'max_length[20]');
+    #-------------------------------#
+    if ($this->form_validation->run()) {
+     if ($_FILES['image']['name']) {
+        $config['upload_path'] = 'assets/images/employee/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = "*";
+        $config['max_width'] = "*";
+        $config['max_height'] = "*";
+        $config['encrypt_name'] = TRUE;
+
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload('image')) {
+            $error = array('error' => $this->upload->display_errors());
+            $this->session->set_userdata(array('error_message' => $this->upload->display_errors()));
+            // redirect(base_url('Chrm/add_employee'));
+        } else {
+            $image = $this->upload->data();
+            $image_url = base_url() . "assets/images/employee/" . $image['file_name'];
+        }
+    }
+
+
+     $postData = [
+            'first_name'    => $this->input->post('first_name',true),
+            'last_name'     => $this->input->post('last_name',true),
+            'designation'   => $this->input->post('designation',true),
+            'phone'         => $this->input->post('phone',true),
+            'image'         => $image_url,
+            'rate_type'     => $this->input->post('rate_type',true),
+            'email'         => $this->input->post('email',true),
+            'hrate'         => $this->input->post('hrate',true),
+            'address_line_1'=> $this->input->post('address_line_1',true),
+            'address_line_2'=> $this->input->post('address_line_2',true),
+            'blood_group'   => $this->input->post('blood_group',true),
+            'social_security_number'   => $this->input->post('social_security_number',true),
+            'routing_number'   => $this->input->post('routing_number',true),
+            'country'       => $this->input->post('country',true),
+            'city'          => $this->input->post('city',true),
+            'zip'           => $this->input->post('zip',true),
+        ];   
+
+        // pritn
+
+         if ($this->Hrm_model->create_employee($postData)) { 
+            $this->session->set_flashdata('message', display('save_successfully'));
+             redirect("Chrm/manage_employee"); 
+        } else {
+            $this->session->set_flashdata('error_message',  display('please_try_again'));
+             redirect("Chrm/manage_employee");
+        }
+          } else {
+            $this->session->set_flashdata('error_message',  display('please_try_again'));
+             redirect("Chrm/add_employee");
+        }
+         
+}
+
+
+
+
+
+
+
+
 }

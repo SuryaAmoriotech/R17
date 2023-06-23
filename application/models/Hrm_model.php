@@ -30,6 +30,33 @@ class Hrm_model extends CI_Model {
     }
     
 
+
+
+
+    public function administrator_data(){
+
+        $this->db->select('*');
+        $this->db->from('administrator');
+         $this->db->where('create_by',$this->session->userdata('user_id'));
+         $query = $this->db->get();
+        //  echo $this->db->last_query(); die();
+         if ($query->num_rows() > 0) {
+           return $query->result_array();
+         }
+         return false;
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
     public function employee_name() {
 
         $this->db->select('*');
@@ -46,13 +73,53 @@ class Hrm_model extends CI_Model {
     }
 
 
+
+    
+
+    public function employeeinfo() {
+
+        $this->db->select('*');
+        $this->db->from('timesheet_info');
+         $this->db->where('create_by',$this->session->userdata('user_id'));
+         $query = $this->db->get();
+    //    echo $this->db->last_query();
+       if ($query->num_rows() > 0) {
+        return $query->result_array();
+
+    }
+        return false;
+
+    }
+
+
+
+    public function insert_adsrs_data($data) {
+
+        // $this->db->insert('administrator', $data);
+
+
+        $this->db->select('*');
+        $this->db->from('administrator');
+        // $this->db->where('customer_name', $data['customer_name']);
+        $this->db->where('create_by',$this->session->userdata('user_id'));
+        $query = $this->db->get();
+        $this->db->insert('administrator', $data);
+        return $query->result_array();
+
+       //echo $this->db->last_query();
+    }
+
+
+
+
+
+
     public function get_payment_terms(){
 
         $this->db->select('*');
         $this->db->from('payment_terms');
         $this->db->where('create_by' ,$this->session->userdata('user_id'));
         $query = $this->db->get();
-        return $query->result_array();
     }
     
 
@@ -80,7 +147,7 @@ class Hrm_model extends CI_Model {
         return $query->result_array();
     }
     
-    
+
     public function get_duration_data(){
         
         $this->db->select('*');
@@ -414,7 +481,7 @@ $sql3="UPDATE state_and_tax SET tax = replace(replace(tax, ',,', ','), ',', ',')
 
         $query = $this->db->get();
 
-
+// echo $this->db->last_query(); die();
 
         if ($query->num_rows() > 0) {
 

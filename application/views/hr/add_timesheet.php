@@ -68,7 +68,7 @@
                   
                     <!-- <form id="insert_timesheet"  method="post">   -->
                   
-                    <?php echo form_open_multipart('Chrm/pay_slip','id="validate"', ) ?>
+                    <?php echo form_open_multipart('Chrm/pay_slip','id="validate"' ) ?>
 
                   <?php  $id=random_int(100000, 999999); ?>
                   
