@@ -17,14 +17,12 @@ class Chrm extends CI_Controller {
     }
 
 
-
-
-    public function employee_payslip_permission($id) {
+    public function edit_timesheet($id) {
         $this->load->model('Hrm_model');
          $data['title']            = display('Payment_Administration');
      
         $data['employee_name'] = $this->Hrm_model->employee_name();
-
+$data['designation'] = $this->db->select('designation')->from('employee_history')->where('id',$data['employee_name'][0]['id'])->get()->row()->designation;
         $data['payment_terms'] = $this->Hrm_model->get_payment_terms();
    
 
@@ -33,6 +31,29 @@ class Chrm extends CI_Controller {
        $data['duration'] = $this->Hrm_model->get_duration_data();
 
        $data['administrator'] = $this->Hrm_model->administrator_data();
+          $data['time_sheet_data'] = $this->Hrm_model->time_sheet_data($id);
+      // print_r($data);
+   
+         $content                  = $this->parser->parse('hr/edit_timesheet', $data, true);
+         $this->template->full_admin_html_view($content);
+        }
+
+    public function employee_payslip_permission($id) {
+        $this->load->model('Hrm_model');
+         $data['title']            = display('Payment_Administration');
+     
+        $data['employee_name'] = $this->Hrm_model->employee_name();
+$data['designation'] = $this->db->select('designation')->from('employee_history')->where('id',$data['employee_name'][0]['id'])->get()->row()->designation;
+        $data['payment_terms'] = $this->Hrm_model->get_payment_terms();
+   
+
+       $data['dailybreak'] = $this->Hrm_model->get_dailybreak();
+       
+       $data['duration'] = $this->Hrm_model->get_duration_data();
+
+       $data['administrator'] = $this->Hrm_model->administrator_data();
+          $data['time_sheet_data'] = $this->Hrm_model->time_sheet_data($id);
+     //  print_r($data);
    
          $content                  = $this->parser->parse('hr/emp_payslip_permission', $data, true);
          $this->template->full_admin_html_view($content);
@@ -129,6 +150,7 @@ public function timesheed_inserted_data($id) {
 
      //Designation form
 
+
      public function pay_slip1() {
 
         $CC = & get_instance();
@@ -194,109 +216,14 @@ public function pay_slip_list()
     $this->template->full_admin_html_view($content);
 }
 
+ 
 
 
-
-
-  public function pay_slip() {
-// echo $timesheet_id; die();
-// print_r($_POST);
-    $this->load->model('Hrm_model');
-    $data['title'] = display('pay_slip');
-        $data_timesheet['templ_name'] = $this->input->post('templ_name');
-        $data_timesheet['duration'] = $this->input->post('duration');
-        $data_timesheet['job_title'] = $this->input->post('job_title');
-        $data_timesheet['dailybreak'] = $this->input->post('dailybreak');
-        $data_timesheet['payment_term'] = $this->input->post('payment_term');
-        $data_timesheet['month'] = $this->input->post('date_range');
-        $data_timesheet['timesheet_id'] =  $this->input->post('tsheet_id');    
-        $data_timesheet['create_by'] =$this->session->userdata('user_id');
-
-
-        $date1 = $this->input->post('date');
-        $day1 = $this->input->post('day');
-        $time_start1 = $this->input->post('start');
-        $time_end1 = $this->input->post('end');
-<<<<<<< HEAD
-        $hours_per_day1 = $this->input->post('timeSum');
-        $purchase_id_1 = $this->db->where('templ_name', $this->input->post('templ_name'))->where('month', $this->input->post('date_range'));
-        $q=$this->db->get('timesheet_info');
-         // echo $this->db->last_query(); 
-=======
-        $hours_per_day1 = $this->input->post('sum');
-               $purchase_id_1 = $this->db->where('templ_name', $this->input->post('templ_name'))->where('month', $this->input->post('date_range'));
-        $q=$this->db->get('timesheet_info');
-      //   echo $this->db->last_query(); 
->>>>>>> ec79b6f9189abe42b0d5c82a3d495ea13a66acb5
-        $row = $q->row_array();
-    if(!empty($row['timesheet_id'])){
-        $this->session->set_userdata("timesheet_id_old",$row['timesheet_id']);
-   $this->db->where('timesheet_id', $this->session->userdata("timesheet_id_old"));
-  $this->db->delete('timesheet_info');
-<<<<<<< HEAD
-    // echo $this->db->last_query(); 
-       $this->db->insert('timesheet_info', $data_timesheet);
-      // echo $this->db->last_query(); 
-   }
-    else{
-    $this->db->insert('timesheet_info', $data_timesheet);
-    // echo $this->db->last_query(); 
+    public function pay_slip_list() {
+    $data['title'] = display('pay_slip_list');
+    $content = $this->parser->parse('hr/pay_slip_list', $data, true);
+    $this->template->full_admin_html_view($content);
     }
-    $purchase_id_2 = $this->db->select('timesheet_id')->from('timesheet_info')->where('templ_name',$this->input->post('templ_name'))->get()->row()->timesheet_id;
-    echo $this->db->last_query(); 
-        $this->session->set_userdata("timesheet_id_new",$purchase_id_2);
-        $this->db->where('timesheet_id', $this->session->userdata("timesheet_id_old"));
-        $this->db->delete('timesheet_info_details');
-      // echo $this->db->last_query(); 
-=======
-   // echo $this->db->last_query(); 
-       $this->db->insert('timesheet_info', $data_timesheet);
-    //  echo $this->db->last_query(); 
-   }
-    else{
-    $this->db->insert('timesheet_info', $data_timesheet);
- //   echo $this->db->last_query(); 
-    }
-    $purchase_id_2 = $this->db->select('timesheet_id')->from('timesheet_info')->where('templ_name',$this->input->post('templ_name'))->get()->row()->timesheet_id;
-  //  echo $this->db->last_query(); 
-    $this->session->set_userdata("timesheet_id_new",$purchase_id_2);
-        $this->db->where('timesheet_id', $this->session->userdata("timesheet_id_old"));
-        $this->db->delete('timesheet_info_details');
-     // echo $this->db->last_query(); 
->>>>>>> ec79b6f9189abe42b0d5c82a3d495ea13a66acb5
-         for ($i = 0, $n = count($date1); $i < $n; $i++) {
-           
-            $date = $date1[$i];
-            $day = $day1[$i];
-            $time_start = $time_start1[$i];
-            $time_end = $time_end1[$i];
-            $hours_per_day = $hours_per_day1[$i];
-           
-
-
-            $data1 = array(
-              'timesheet_id' =>$this->session->userdata("timesheet_id_new"),
-                'Date'    => $date,
-                'Day'      => $day,
-                'time_start'  => $time_start,
-                'time_end'   =>  $time_end,
-                'hours_per_day' => $hours_per_day,           
-                'created_by' => $this->session->userdata('user_id')
-              
-             
-        );
-
-       $this->db->insert('timesheet_info_details', $data1);
-
-       //  echo $this->db->last_query(); 
-
-            
-    $this->session->set_flashdata('message', display('save_successfully'));
-      redirect("Chrm/manage_timesheet");
-   // $content = $this->parser->parse('hr/pay_slip', $data, true);
-    //$this->template->full_admin_html_view($content);
-    }
-  }
 
 
 public function add_state(){
