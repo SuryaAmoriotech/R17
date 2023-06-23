@@ -122,7 +122,7 @@ public function timesheed_inserted_data($id) {
         $day1 = $this->input->post('day');
         $time_start1 = $this->input->post('start');
         $time_end1 = $this->input->post('end');
-        $hours_per_day1 = $this->input->post('timeSum');
+        $hours_per_day1 = $this->input->post('sum');
                $purchase_id_1 = $this->db->where('templ_name', $this->input->post('templ_name'))->where('month', $this->input->post('date_range'));
         $q=$this->db->get('timesheet_info');
          echo $this->db->last_query(); 

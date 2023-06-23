@@ -307,82 +307,7 @@
 									</tr>
 								</thead>
 								<tbody id="tBody">
-                                    <!-- <tr>
-                                        <td>01-01-2022</td>
-                                        <td>Saturday</td>
-                                        <td>08:00</td>
-                                        <td>017:00</td>
-                                        <td>08:00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>02-01-2022</td>
-                                        <td>Sunday</td>
-                                        <td><input type="text" class="start"/></td>
-                                        <td><input type="text" class="end"/></td>
-                                        <td>7.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>03-01-2022</td>
-                                        <td>Monday</td>
-                                        <td><input type="text" class="start"/></td>
-                                        <td><input type="text" class="end"/></td>
-                                        <td><input type="text" class="working_hours"/></td>
-                                       
-                                    </tr>
-                                    <tr>
-                                        <td>04-01-2022</td>
-                                        <td>Tuesday</td>
-                                        <td>09:00</td>
-                                        <td>09:00</td>
-                                        <td>7.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>05-01-2022</td>
-                                        <td>Wednesday</td>
-                                        <td>09:00</td>
-                                        <td>09:00</td>
-                                        <td>7.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>06-01-2022</td>
-                                        <td>Thursday</td>
-                                        <td>09:00</td>
-                                        <td>09:00</td>
-                                        <td>7.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>07-01-2022</td>
-                                        <td>Friday</td>
-                                        <td>09:00</td>
-                                        <td>09:00</td>
-                                        <td>7.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>01-01-2022</td>
-                                        <td>Saturday</td>
-                                        <td>09:00</td>
-                                        <td>09:00</td>
-                                        <td>7.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>08-01-2022</td>
-                                        <td>Sunday</td>
-                                        <td>09:00</td>
-                                        <td>09:00</td>
-                                        <td>7.00</td>
-                                    </tr>
-
-                                     <tr>
-                    <td colspan="4" class="text-right">Total hours worked:</td>  
-                    <td>160</td>
-                 
-                                </tr>
-                                <tr>
-                    <td colspan="4" class="text-right">Total days worked:</td>  
-                    <td>20</td>
-                 
-                                </tr> -->
-                                             
+                                   
                     
 								</tbody>
                                
@@ -921,7 +846,7 @@ var csrfHash = '<?php echo $this->security->get_csrf_hash();?>';
 
 $(function() {
 
-var start = moment().subtract(29, 'days');
+var start = moment().subtract(7, 'days');
 var end = moment();
 
 function cb(start, end) {
@@ -965,14 +890,20 @@ console.log(s_split[2]+"/"+ s_split[1]+"/"+ s_split[0]+"/"+Days);
           newDate = new Date(validDate); //create date object
           newDate.setDate(validDate.getDate() + i); //increment set date
           //append results to table
+           var date=$('#date_'+i).html();
+   // date=date.replace(/ /g,"");
+   // var end=document.getElementById(`finishTime${monStartWeekDays[i]}`).value;
+//      var sum=document.getElementById(`hoursWorked${monStartWeekDays[i]}`).value;
+    var day=$('#day_'+i).html();
+ //   day=day.replace("/","");
           $('#tBody').append( `
           <tr >
             
-            <td  class="date" id="date_`+i+`">`+`${newDate.getDate()} / ${newDate.getMonth() + 1} / ${newDate.getFullYear()}</td>
-            <td  class="day" id="day_`+i+`">`+`${weekDays[newDate.getDay()].slice(0,3)}</td>
-            <td class="start-time">    <input    id="startTime${monStartWeekDays[i]}"    class="hasTimepicker start"  type="time"   /></td>
-            <td class="finish-time">   <input    id="finishTime${monStartWeekDays[i]}"   class="hasTimepicker end"    type="time"   /></td></td>
-            <td class="hours-worked">  <input    id="hoursWorked${monStartWeekDays[i]}"  class="timeSum"              type="text"   /></td></td>
+            <td  class="date" id="date_`+i+`"><input type="hidden" value="`+`${newDate.getDate()}/${newDate.getMonth() + 1}/${newDate.getFullYear()}" name="date[]"   />`+`${newDate.getDate()} / ${newDate.getMonth() + 1} / ${newDate.getFullYear()}</td>
+            <td  class="day" id="day_`+i+`"><input type="hidden" value="`+`${weekDays[newDate.getDay()].slice(0,3)}" name="day[]"   />`+`${weekDays[newDate.getDay()].slice(0,3)}</td>
+            <td class="start-time_`+i+`">    <input    id="startTime${monStartWeekDays[i]}"  name="start[]"  class="hasTimepicker start" type="time"   /></td>
+            <td class="finish-time_`+i+`">   <input    id="finishTime${monStartWeekDays[i]}"   name="end[]" class="hasTimepicke end"   type="time"   /></td></td>
+            <td class="hours-worked_`+i+`">  <input    id="hoursWorked${monStartWeekDays[i]}"  name="sum[]" class="timeSum"             type="text"   /></td></td>
         
             
         
@@ -985,16 +916,8 @@ console.log(s_split[2]+"/"+ s_split[1]+"/"+ s_split[0]+"/"+Days);
 
           ` );
 
-   var date=$('#date_'+i).html();
-   date=date.replace(/ /g,"");
-  
-   var day=$('#day_'+i).html();
-    day=day.replace("/","");
-    $('#tBody').append('<tr style="display:none;"><td  class="date"><input name="date[]"  type="text" value='+date+'/></td><td  class="day"><input name="day[]"  type="text" value='+day+'/></td>'+
-            '<td class="start-time">    <input    id="startTime${monStartWeekDays[i]}"    class="hasTimepicker start"  type="time"   /></td>'+
-            '<td class="finish-time">   <input    id="finishTime${monStartWeekDays[i]}"   class="hasTimepicker end"    type="time"   /></td></td>'+
-            '<td class="hours-worked">  <input    id="hoursWorked${monStartWeekDays[i]}"  class="timeSum"              type="text"   /></td></td>'+ '</tr> ' );
-        }
+      
+ }
         
 });
 
