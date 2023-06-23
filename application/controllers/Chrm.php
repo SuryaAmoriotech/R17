@@ -142,6 +142,7 @@ public function timesheed_inserted_data($id) {
 
      //Designation form
 
+<<<<<<< HEAD
 
 
 
@@ -193,6 +194,81 @@ public function timesheed_inserted_data($id) {
 
 
 
+=======
+  public function pay_slip() {
+// print_r($_POST);
+    $this->load->model('Hrm_model');
+    $data['title'] = display('pay_slip');
+        $data_timesheet['templ_name'] = $this->input->post('templ_name');
+        $data_timesheet['duration'] = $this->input->post('duration');
+        $data_timesheet['job_title'] = $this->input->post('job_title');
+        $data_timesheet['dailybreak'] = $this->input->post('dailybreak');
+        $data_timesheet['payment_term'] = $this->input->post('payment_term');
+        $data_timesheet['month'] = $this->input->post('date_range');
+        $data_timesheet['timesheet_id'] =  $this->input->post('tsheet_id');    
+        $data_timesheet['create_by'] =$this->session->userdata('user_id');
+
+
+         $date1 = $this->input->post('date');
+        $day1 = $this->input->post('day');
+        $time_start1 = $this->input->post('start');
+        $time_end1 = $this->input->post('end');
+        $hours_per_day1 = $this->input->post('timeSum');
+               $purchase_id_1 = $this->db->where('templ_name', $this->input->post('templ_name'))->where('month', $this->input->post('date_range'));
+        $q=$this->db->get('timesheet_info');
+         echo $this->db->last_query(); 
+        $row = $q->row_array();
+    if(!empty($row['timesheet_id'])){
+        $this->session->set_userdata("timesheet_id_old",$row['timesheet_id']);
+   $this->db->where('timesheet_id', $this->session->userdata("timesheet_id_old"));
+  $this->db->delete('timesheet_info');
+    echo $this->db->last_query(); 
+       $this->db->insert('timesheet_info', $data_timesheet);
+      echo $this->db->last_query(); 
+   }
+    else{
+    $this->db->insert('timesheet_info', $data_timesheet);
+    echo $this->db->last_query(); 
+    }
+    $purchase_id_2 = $this->db->select('timesheet_id')->from('timesheet_info')->where('templ_name',$this->input->post('templ_name'))->get()->row()->timesheet_id;
+    echo $this->db->last_query(); 
+    $this->session->set_userdata("timesheet_id_new",$purchase_id_2);
+        $this->db->where('timesheet_id', $this->session->userdata("timesheet_id_old"));
+        $this->db->delete('timesheet_info_details');
+      echo $this->db->last_query(); 
+         for ($i = 0, $n = count($date1); $i < $n; $i++) {
+           
+            $date = $date1[$i];
+            $day = $day1[$i];
+            $time_start = $time_start1[$i];
+            $time_end = $time_end1[$i];
+            $hours_per_day = $hours_per_day1[$i];
+           
+
+
+            $data1 = array(
+              'timesheet_id' =>$this->session->userdata("timesheet_id_new"),
+                'Date'    => $date,
+                'Day'      => $day,
+                'time_start'  => $time_start,
+                'time_end'   =>  $time_end,
+                'hours_per_day' => $hours_per_day,           
+                'created_by' => $this->session->userdata('user_id')
+              
+             
+        );
+
+       $this->db->insert('timesheet_info_details', $data1);
+
+         echo $this->db->last_query(); 
+
+            
+    $this->session->set_flashdata('message', display('save_successfully'));
+    $content = $this->parser->parse('hr/pay_slip', $data, true);
+    $this->template->full_admin_html_view($content);
+    }
+  }
+>>>>>>> 7c550ccba047e57765faef8227f4daa874aaa519
     public function pay_slip_list() {
     $data['title'] = display('pay_slip_list');
     $content = $this->parser->parse('hr/pay_slip_list', $data, true);
@@ -341,7 +417,7 @@ public function add_state_taxes_detail($tax=0) {
 
    public function add_taxes_detail() {
      $tax = $this->input->post('tax');
-    $data['taxinfo'] = $this->db->select("*")->from('federal_tax')->get()->result_array();
+    $data['taxinfo'] = $this->db->select("*")->from('federal_tax')->where('tax','Federal Income tax')->get()->result_array();
     // $data['taxinfo'] = $this->db->select("*")->from('federal_tax')->where('tax',$tax)->get()->result_array();
     // print_r($data['taxinfo']); die();
     // echo $this->db->last_query(); die();
@@ -352,19 +428,20 @@ public function add_state_taxes_detail($tax=0) {
     }
     public function socialsecurity_detail() {
     // $tax = $this->input->post('tax');
-    $data['taxinfo'] = $this->db->select("*")->from('federal_tax')->get()->result_array();
+    $data['taxinfo'] = $this->db->select("*")->from('federal_tax')->where('tax','Social Security')->get()->result_array();
     $data['title'] = display('add_taxes_detail');
+ 
     $content = $this->parser->parse('hr/social_security_list', $data, true);
     $this->template->full_admin_html_view($content);
     }
     public function medicare_detail() {
-    $data['taxinfo'] = $this->db->select("*")->from('federal_tax')->get()->result_array();
+    $data['taxinfo'] = $this->db->select("*")->from('federal_tax')->where('tax','Medicare')->get()->result_array();
     $data['title'] = display('add_taxes_detail');
     $content = $this->parser->parse('hr/medicare_list', $data, true);
     $this->template->full_admin_html_view($content);
     }
     public function federalunemployment_detail() {
-    $data['taxinfo'] = $this->db->select("*")->from('federal_tax')->get()->result_array();
+    $data['taxinfo'] = $this->db->select("*")->from('federal_tax')->where('tax','Federal unemployment')->get()->result_array();
     $data['title'] = display('add_taxes_detail');
     $content = $this->parser->parse('hr/federalunemployment_list', $data, true);
     $this->template->full_admin_html_view($content);

@@ -74,7 +74,7 @@
 
             ?>
 
-            <div class="alert alert-info alert-dismissable">
+            <div class="alert alert-info alert-dismissable" style="color:white;background-color:#38469f;">
 
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 
@@ -94,7 +94,7 @@
 
             ?>
 
-            <div class="alert alert-danger alert-dismissable">
+            <div class="alert alert-danger alert-dismissable" style="color:white;background-color:#38469f;">
 
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 
@@ -110,7 +110,9 @@
 
         ?>
 
-
+<script>
+    $('.alert').delay(1000).fadeOut('slow');
+    </script>
 
         <!-- Manage Category -->
 
@@ -139,7 +141,7 @@
                     <div class="col-sm-3">
                     <a href="<?php echo base_url('Chrm/add_employee') ?>" class="btn btnclr dropdown-toggle" style="color:white;background-color: #337ab7;border-color: #2e6da4;"> <?php echo ('Add Employee') ?></a>
                 
-                    <a  class="btn btnclr dropdown-toggle"  aria-hidden="true" style="color:white;background-color:#38469f;"  data-toggle="modal" data-target="#designation_modal" ><i><?php echo ('Form instructions') ?></i></a>
+                    <a  class="btn btnclr dropdown-toggle"  aria-hidden="true" style="color:white;background-color:#38469f;"  data-toggle="modal" data-target="#designation_modal" ><?php echo ('Form instructions') ?></a>
 
                 </div>
 
@@ -208,7 +210,7 @@
             <div class="panel-title" >
                <div id="for_filter_by" class="for_filter_by" style="display: inline;text-align:right;"><label for="filter_by"><?php echo display('Filter By') ?>&nbsp;&nbsp;
                 
-                   </label><select id="filterby" style="border-radius:5px;height:25px;">
+                   </label><select id="filterby" style="border-radius:5px;height:24px;">
                     <option value="1"><?php echo display('Sl') ?></option>
                   <option value="2"><?php echo display('Name') ?></option>
 <option value="3"><?php echo ('Designation') ?></option>
@@ -229,9 +231,9 @@
             </div>
                 </div>
 
-                <div id="printableArea">
+                <div id="">
 
-                        <div class="table-responsive"  id="content">
+                        <div class="table-responsive"  id="printableArea">
 
                             <table id="ProfarmaInvList" class="table table-bordered table-striped table-hover datatable" id="ProfarmaInvList" >
 
@@ -354,9 +356,9 @@
 <!------ add new designation_modal -->  
 <div class="modal fade" id="designation_modal" role="dialog">
 
-<div class="modal-dialog" role="document">
+<div class="modal-dialog" role="document" style="margin-right: 900px;">
 
-    <div class="modal-content">
+    <div class="modal-content" style="width: 1200px;">
 
         <div class="modal-header" style="color:white;background-color:#38469f;" >
 
@@ -396,15 +398,7 @@
 
                 <div class="panel panel-bd lobidrag">
 
-                    <div class="panel-heading">
-
-                        <div class="panel-title">
-
-                            <h4>Form instructions</h4>
-
-                        </div>
-
-                    </div>
+                 
 
                   
 
@@ -569,7 +563,7 @@ increase your refund or reduce any amount of tax that you
 owe</p>
                             </div>
 
-                            <div class="nxtBtn text-right"><button type="text"  style="color:white;background-color: #38469f;" class="next_pg btn btn-success w-md m-b-5">Next</button></div>
+                          
 
                         </div>
 
@@ -822,7 +816,7 @@ from you. See the instructions for your income tax return.</p>
 
             
 
-            <input type="submit" class="btn" style="color:white;background-color: #38469f;" value=<?php echo display('Submit') ?>>
+          
 
         </div>
 
@@ -943,7 +937,7 @@ $('#cmd').click(function() {
 
 var pdf = new jsPDF('p','pt','a4');
 $('#for_numrows,#pagesControllers').hide();
-  const invoice = document.getElementById("content");
+  const invoice = document.getElementById("printableArea");
            console.log(invoice);
            console.log(window);
            var pageWidth = 8.5;

@@ -70,14 +70,14 @@
                   
                     <?php echo form_open_multipart('Chrm/pay_slip','id="validate"' ) ?>
 
-                  
+                  <?php  $id=random_int(100000, 999999); ?>
                   
                     <div class="panel-body">
                         <div class="form-group row">
                             <div class="col-sm-6">
                                 <label for="customer" class="col-sm-4 col-form-label">Employee Name<i class="text-danger">*</i></label>
                                 <div class="col-sm-8">
-
+<input type="hidden" id="tsheet_id" value="<?php echo $id ; ?>" name="tsheet_id" />
 
                                         
                                         <select name="templ_name" id="templ_name" class="form-control"    tabindex="3" style="width100">
@@ -211,7 +211,7 @@
                             <div class="col-sm-6">
                             <label for="dailybreak" class="col-sm-4 col-form-label">Date Range</label>
                             <div class="col-sm-8">
-                                <input id="reportrange" type="text" class="form-control"/>
+                                <input id="reportrange" name="date_range" type="text" class="form-control"/>
     
                           
                              
@@ -390,10 +390,8 @@
           
                                 <tr style="text-align:end"> 
                                              <td colspan="4" class="text-right">Total hours worked:</td>  
-                                             <!-- <td>160</td> -->
-                                             <!-- console.log(total_net.toFixed(3)); -->
-                                             <!-- <td class="total_net" name="total_net" style="border:none;width: 40px;"></td> -->
-                                             <input  type="text"   readonly id="total_net"  name="total_net"     />                
+                                        
+                                            <td> <input  type="text"   readonly id="total_net"  name="total_net" />    </td>             
                                           
                                             </tr> 
 
@@ -970,8 +968,8 @@ console.log(s_split[2]+"/"+ s_split[1]+"/"+ s_split[0]+"/"+Days);
           $('#tBody').append( `
           <tr >
             
-            <td class="date">${newDate.getDate()} / ${newDate.getMonth() + 1} / ${newDate.getFullYear()}</td>
-            <td class="day">${weekDays[newDate.getDay()].slice(0,3)}</td>
+            <td  class="date" id="date_`+i+`">`+`${newDate.getDate()} / ${newDate.getMonth() + 1} / ${newDate.getFullYear()}</td>
+            <td  class="day" id="day_`+i+`">`+`${weekDays[newDate.getDay()].slice(0,3)}</td>
             <td class="start-time">    <input    id="startTime${monStartWeekDays[i]}"    class="hasTimepicker start"  type="time"   /></td>
             <td class="finish-time">   <input    id="finishTime${monStartWeekDays[i]}"   class="hasTimepicker end"    type="time"   /></td></td>
             <td class="hours-worked">  <input    id="hoursWorked${monStartWeekDays[i]}"  class="timeSum"              type="text"   /></td></td>
@@ -987,7 +985,15 @@ console.log(s_split[2]+"/"+ s_split[1]+"/"+ s_split[0]+"/"+Days);
 
           ` );
 
-   
+   var date=$('#date_'+i).html();
+   date=date.replace(/ /g,"");
+  
+   var day=$('#day_'+i).html();
+    day=day.replace("/","");
+    $('#tBody').append('<tr style="display:none;"><td  class="date"><input name="date[]"  type="text" value='+date+'/></td><td  class="day"><input name="day[]"  type="text" value='+day+'/></td>'+
+            '<td class="start-time">    <input    id="startTime${monStartWeekDays[i]}"    class="hasTimepicker start"  type="time"   /></td>'+
+            '<td class="finish-time">   <input    id="finishTime${monStartWeekDays[i]}"   class="hasTimepicker end"    type="time"   /></td></td>'+
+            '<td class="hours-worked">  <input    id="hoursWorked${monStartWeekDays[i]}"  class="timeSum"              type="text"   /></td></td>'+ '</tr> ' );
         }
         
 });
@@ -1035,7 +1041,7 @@ var converted = parseTime(startTime - timeToSubtract);
 
   });
 //   console.log(total_net.toFixed(3));
-$('#total_net').val(total_net.toFixed(3)).trigger('change');
+$('#total_net').val(total_net.toFixed(2)).trigger('change');
 
 });
 

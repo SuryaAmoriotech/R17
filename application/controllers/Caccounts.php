@@ -314,7 +314,7 @@ $year = date("Y");
                 'employer'    => $samount,
                 'employee'      => $eamount,
                 'details'            => $arate,
-                'single'   =>  $samount."-".$eamount,
+                'single'   =>  $sfrom."-".$sto,
                 'tax_filling' => $tffrom."-".$tfto,           
                 'married' => $mfrom."-".$mto,
                 'head_household' => $hhfrom."-".$hhto,
@@ -341,7 +341,80 @@ $year = date("Y");
             redirect("Chrm/add_state_taxes_detail/".$tname); 
     }
 
+    public function create_tax_federal(){
+      
 
+  $tax_name= $this->input->post('tax_name',TRUE);
+   $url= $this->input->post('url',TRUE);
+$year = date("Y"); 
+
+        $start_amount = $this->input->post('employer',TRUE);
+        $end_amount = $this->input->post('employee',TRUE);
+        $details = $this->input->post('details',TRUE);
+        $single_from = $this->input->post('single_from',TRUE);
+        $single_to = $this->input->post('single_to',TRUE);
+        $tax_filling_from = $this->input->post('tax_filling_from',TRUE);
+        $tax_filling_to = $this->input->post('tax_filling_to',TRUE);
+        $married_from = $this->input->post('married_from',TRUE);
+        $married_to = $this->input->post('married_to',TRUE);
+        $head_household_from = $this->input->post('head_household_from',TRUE);
+        $head_household_to = $this->input->post('head_household_to',TRUE);
+
+// print_r( $head_household_to); die();
+
+
+     //   echo count($slab_no);
+               $this->db->where('tax',$tax_name);
+                //   echo $this->db->last_query(); die();
+
+         $this->db->delete('federal_tax');
+         echo $this->db->last_query();
+       for ($i = 0, $n = count($details); $i < $n; $i++) {
+           
+            $samount = $start_amount[$i];
+            $eamount = $end_amount[$i];
+            $arate = $details[$i];
+            $sfrom = $single_from[$i];
+            $sto = $single_to[$i];
+            $tffrom = $tax_filling_from[$i];
+            $tfto = $tax_filling_to[$i];
+            $mfrom = $married_from[$i];
+            $mto = $married_to[$i];
+            $hhfrom = $head_household_from[$i];
+            $hhto = $head_household_to[$i];
+
+
+            $data1 = array(
+                'year'  => $year,
+                'employer'    => $samount,
+                'employee'      => $eamount,
+                'details'            => $arate,
+                'single'   =>  $sfrom."-".$sto,
+                'tax_filling' => $tffrom."-".$tfto,           
+                'married' => $mfrom."-".$mto,
+                'head_household' => $hhfrom."-".$hhto,
+                'tax'  =>$tax_name
+             
+        );
+
+        //   print_r($data1);  
+
+
+
+         $this->db->insert('federal_tax', $data1);
+
+         echo $this->db->last_query(); 
+
+      
+
+        
+
+
+
+            }
+            $this->session->set_flashdata('message', display('save_successfully'));
+            redirect("Chrm/".$url); 
+    }
 
     #==============TAX Entry==============#
     public function tax_entry()

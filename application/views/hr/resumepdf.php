@@ -27,7 +27,7 @@
             <i class="pe-7s-note2"></i>
         </div>
         <div class="header-title">
-            <h1><?php echo display('hrm') ?></h1>
+            <h1><?php echo display('Employee Details') ?></h1>
             <small></small>
             <ol class="breadcrumb">
                 <li><a href=""><i class="pe-7s-home"></i> <?php echo display('home') ?></a></li>

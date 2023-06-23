@@ -24,7 +24,7 @@
             <i class="pe-7s-note2"></i>
         </div>
         <div class="header-title">
-            <h1><?php echo ('Edit Hrm') ?></h1>
+            <h1><?php echo display('Employee Details') ?></h1>
             <small></small>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="pe-7s-home"></i> <?php echo display('home') ?></a></li>
@@ -826,8 +826,8 @@ Payment Type
                     
 
                     <div class="form-group text-right">
-                        <button type="reset"  style="color:white;background-color: #38469f;" class="btn btn-primary w-md m-b-5"><?php echo display('reset') ?></button>
-                        <button type="submit" style="color:white;background-color: #38469f;" class="btn btn-success w-md m-b-5"><?php echo display('save') ?></button>
+                     
+                        <button type="submit" style="float:center;color:white;background-color: #38469f;" class="btn  w-md m-b-5"><?php echo display('save') ?></button>
                     </div>
                 <?php echo form_close() ?>
                     </div>
