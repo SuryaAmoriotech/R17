@@ -715,7 +715,7 @@ if($_SESSION['u_type']==2)
                                       <li class="treeview  "><a href="<?php echo base_url(); ?>/Csettings/bank_list"><?php  echo display('manage_bank'); ?></a></li>
                                                       <li class="treeview  "><a href="<?php echo base_url(); ?>/Csettings/bank_transaction"><?php  echo display('bank_transaction'); ?></a></li>
                 
-                                      <li class="treeview  "><a href="<?php echo base_url(); ?>/Csettings/bank_ledger"><?php  echo display('bank_ledger'); ?></a></li>
+                                      <li class="treeview  "><a href="<?php echo base_url(); ?>/Csettings/ledger_lists"><?php  echo display('bank_ledger'); ?></a></li>
                                 </ul>
             </li>
                     <!-- Bank menu end -->

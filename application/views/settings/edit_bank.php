@@ -92,20 +92,20 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="signature_pic" class="col-sm-3 col-form-label"><?php echo display('signature_pic') ?></label>
+                        <!-- <div class="form-group row">
+                            <label for="signature_pic" class="col-sm-3 col-form-label"><?php //echo display('signature_pic') ?></label>
                             <div class="col-sm-6">
-                                <input type="file" class="form-control" name="signature_pic" id="signature_pic" placeholder="<?php echo display('signature_pic') ?>" tabindex="5" />
+                                <input type="file" class="form-control" name="signature_pic" id="signature_pic" placeholder="<?php //echo display('signature_pic') ?>" tabindex="5" />
                             </div>
-                        </div>
+                        </div> -->
 
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <label for="signature_pic" class="col-sm-3 col-form-label"></label>
                             <div class="col-sm-6">
-                                <input type="hidden" name="old_pic"  value="<?php echo $bank_list[0]['signature_pic']?>"/>
-                                <img src="<?php echo $bank_list[0]['signature_pic']?>" class="img img-responsive" height="80" width="80">
+                                <input type="hidden" name="old_pic"  value="<?php //echo $bank_list[0]['signature_pic']?>"/>
+                                <img src="<?php //echo $bank_list[0]['signature_pic']?>" class="img img-responsive" height="80" width="80">
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-4 col-form-label"></label>

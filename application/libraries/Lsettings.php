@@ -399,6 +399,39 @@ class Lsettings {
         return $bankList;
     }
 
+    public function list_ledger()
+    {
+        $CI = & get_instance();
+        $CI->load->model('Settings');
+        $CI->load->model('Web_settings');
+        $bank_list = $CI->Settings->get_bank_list();
+
+
+        if (!empty($bank_list)) {
+            foreach ($bank_list as $index => $value) {
+                $bb = $CI->Settings->bank_balance($value['bank_name']);
+                 $bank_list[$index]['balance'] = (!empty($bb[0]['balance'])?$bb[0]['balance']:0);
+            }
+        }
+
+        $i = 0;
+        if (!empty($bank_list)) {
+            foreach ($bank_list as $k => $v) {
+                $i++;
+                $bank_list[$k]['sl'] = $i;
+            }
+        }
+        $currency_details = $CI->Web_settings->retrieve_setting_editdata();
+        $data = array(
+            'title'     => display('bank_list'),
+            'bank_list' => $bank_list,
+            'currency'  => $currency_details[0]['currency'],
+            'position'  => $currency_details[0]['currency_position'],
+        );
+        $bankList = $CI->parser->parse('settings/ledger_list', $data, true);
+        return $bankList;
+    }
+
     #=============Bank show by id=======#
 
     public function bank_show_by_id($bank_id) {
@@ -424,16 +457,19 @@ class Lsettings {
 
     #============bank ledger=============#
 
-    public function bank_ledger($bank_id = null,$from= null,$to= null) {
+    public function bank_ledger($bank_id = null) {
+        // echo $bank_id; die();
         $CI = & get_instance();
         $CI->load->model('Settings');
         $CI->load->model('Reports');
         $CI->load->model('Web_settings');
         $bank_list = $CI->Settings->get_bank_list();
-        $from_date = (!empty($from)?$from:date('Y-m-d'));
-        $to_date = (!empty($to)?$to:date('Y-m-d'));
+        // $from_date = (!empty($from)?$from:date('Y-m-d'));
+        // $to_date = (!empty($to)?$to:date('Y-m-d'));
         $bank_info = $CI->Settings->bank_info($bank_id);
-        $ledger = $CI->Settings->bank_ledger($bank_info[0]['bank_name'],$from_date,$to_date);
+        // print_r($bank_info); die();
+        $ledger = $CI->Settings->bank_ledger($bank_info[0]['bank_name']);
+        // $ledger = $CI->Settings->bank_ledger($bank_info[0]['bank_name'],$from_date,$to_date);
         $total_ammount = 0;
         $total_credit = 0;
         $total_debit = 0;

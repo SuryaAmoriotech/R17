@@ -39,7 +39,7 @@
 
         <div class="header-title">
 
-            <h1>Manage Bank</h1>
+            <h1>Bank Ledger List</h1>
 
             <small><?php echo ""; ?></small>
 
@@ -49,7 +49,7 @@
 
                 <li><a href="#">Bank</a></li>
 
-                <li class="active" style="color:orange;">Manage Bank</li>
+                <li class="active" style="color:orange;">Bank Ledger List</li>
 
             </ol>
 
@@ -113,7 +113,7 @@ if (isset($error_message)) {
                     <div class="panel-body"> 
                         <div class="row">
                         <div class="col-sm-4">
-						<a href="<?php echo base_url('Csettings/index') ?>" class="btnclr btn m-b-5 m-r-2" style="color:white;background-color: #337ab7;border-color: #2e6da4;"> Create Bank</a>
+						<!-- <a href="<?php //echo base_url('Csettings/index') ?>" class="btnclr btn m-b-5 m-r-2" style="color:white;background-color: #337ab7;border-color: #2e6da4;"> Create Bank</a> -->
 
                     <!-- <a href="<?php echo base_url('Cinvoice/add_product_csv') ?>" class="btnclr btn btn-primary m-b-5 m-r-2 text-white"><i class="ti-plus"> </i> &nbsp;  <?php //echo display('Add Invoice (CSV)') ?> </a> -->
        
@@ -253,8 +253,7 @@ $today = date('Y-m-d');
 		<td data-col="5" class="5">{branch}</td>
 		<td data-col="6" class="6"><?php echo (($position==0)?"$currency {balance}":"{balance} $currency") ?></td>
 		<td data-col="7" class="7">
-		<a href="<?php echo base_url().'Csettings/edit_bank/{bank_id}'; ?>" class="btnclr btn m-b-5 m-r-2" data-toggle="tooltip" data-placement="left" title="" data-original-title="<?php echo display('update') ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-	    <a href="<?php echo base_url().'Csettings/delete_bank/{bank_id}'; ?>" class="btnclr btn m-b-5 m-r-2" onclick="return confirm('Are you sure you want to delete this bank?');" data-toggle="tooltip" data-placement="left" title="" data-original-title="<?php echo display('delete') ?>"><i class="fa fa-trash" aria-hidden="true"></i></a>
+		<a href="<?php echo base_url().'Csettings/bank_ledgers/{bank_id}'; ?>" class="btnclr btn m-b-5 m-r-2" data-toggle="tooltip" data-placement="left" title="" data-original-title="view"><i class="fa fa-eye" aria-hidden="true"></i></a>
 		</td>
 
 	</tr>

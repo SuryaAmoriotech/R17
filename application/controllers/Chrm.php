@@ -49,19 +49,6 @@ class Chrm extends CI_Controller {
              $content                  = $this->parser->parse('hr/timesheet_list', $data, true);
             $this->template->full_admin_html_view($content);
             }
-    
-    
-
-
-
-
-
-
-
-
-
-
-
 
 
     public function add_dailybreak_info(){
@@ -142,11 +129,7 @@ public function timesheed_inserted_data($id) {
 
      //Designation form
 
-<<<<<<< HEAD
-
-
-
-     public function pay_slip() {
+     public function pay_slip1() {
 
         $CC = & get_instance();
         $CI = & get_instance();
@@ -190,11 +173,6 @@ public function timesheed_inserted_data($id) {
 
 
 
-
-
-
-
-=======
   public function pay_slip() {
 // print_r($_POST);
     $this->load->model('Hrm_model');
@@ -268,7 +246,7 @@ public function timesheed_inserted_data($id) {
     $this->template->full_admin_html_view($content);
     }
   }
->>>>>>> 7c550ccba047e57765faef8227f4daa874aaa519
+
     public function pay_slip_list() {
     $data['title'] = display('pay_slip_list');
     $content = $this->parser->parse('hr/pay_slip_list', $data, true);

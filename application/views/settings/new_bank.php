@@ -78,6 +78,7 @@
                         </div>
                     </div>
                    <?php echo form_open_multipart('Csettings/add_new_bank',array('class' => 'form-vertical','id' => 'validate' ))?>
+                   <!-- <form> -->
                     <div class="panel-body">
 
                     	<div class="form-group row">
@@ -97,7 +98,7 @@
                         <div class="form-group row">
                             <label for="ac_no" class="col-sm-3 col-form-label"><?php echo display('ac_no') ?> <i class="text-danger">*</i></label>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" name="ac_no" id="ac_no" required="" placeholder="<?php echo display('ac_no') ?>" tabindex="3"/>
+                                <input type="text" class="form-control" name="ac_number" id="ac_number" required="" placeholder="<?php echo display('ac_no') ?>" tabindex="3"/>
                             </div>
                         </div>
 
@@ -108,22 +109,24 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="signature_pic" class="col-sm-3 col-form-label"><?php echo display('signature_pic') ?></label>
+                        <!-- <div class="form-group row">
+                            <label for="signature_pic" class="col-sm-3 col-form-label"><?php //echo display('signature_pic') ?></label>
                             <div class="col-sm-6">
                                 <input type="file" class="form-control" name="signature_pic" id="signature_pic" placeholder="<?php echo display('signature_pic') ?>" tabindex="5"/>
                             </div>
-                        </div>
+                        </div> -->
 
 
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-4 col-form-label"></label>
                             <div class="col-sm-6">
                                 <input type="reset" class="btnclr btn m-b-5 m-r-2" value="<?php echo display('reset') ?>" tabindex="5"/>
-                                <input type="submit" id="add-deposit" class="btnclr btn m-b-5 m-r-2" name="add-deposit" value="<?php echo display('save') ?>" tabindex="6"/>
+                                <input type="submit" id="add-deposit" class="btnclr btn m-b-5 m-r-2 insert_data" name="add-deposit" value="<?php echo display('save') ?>" tabindex="6"/>
+                                <input type="hidden" name="<?php echo $this->security->get_csrf_token_name();?>" value="<?php echo $this->security->get_csrf_hash();?>">
                             </div>
                         </div>
                     </div>
+                <!-- </form> -->
                     <?php echo form_close()?>
                 </div>
             </div>
@@ -132,5 +135,27 @@
 </div>
 <!-- Add new bank end -->
 
+<!-- <script>
+var csrfName = '<?php //echo $this->security->get_csrf_token_name();?>';
+var csrfHash = '<?php //echo $this->security->get_csrf_hash();?>';
 
+    $(".insert_data").click(function(event){
+    event.preventDefault();
+    var bank_name = $('#bank_name').val();
+    var ac_name = $('#ac_name').val();
+    var ac_number	 = $('#ac_number').val();
+    var branch = $('#branch').val();
+
+    $.ajax({
+            type:"POST",
+            url:"<?php //echo base_url(); ?>Csettings/add_bank",
+            data:{<?php //echo $this->security->get_csrf_token_name();?>: csrfHash,bank_name:bank_name,ac_name:ac_name,ac_number:ac_number,branch:branch},
+            success:function (data) {
+                
+            }
+    });
+
+});
+
+</script> -->
 

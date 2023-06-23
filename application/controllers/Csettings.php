@@ -25,7 +25,7 @@ class Csettings extends CI_Controller {
     #================Add new bank==============#
 
     public function add_new_bank() {
-   $coa = $this->Settings->headcode();
+        $coa = $this->Settings->headcode();
            if($coa->HeadCode!=NULL){
                 $headcode=$coa->HeadCode+1;
            }else{
@@ -39,12 +39,15 @@ class Csettings extends CI_Controller {
             'bank_id'   => $this->auth->generator(10),
             'bank_name' => $this->input->post('bank_name',TRUE),
             'ac_name'   => $this->input->post('ac_name',TRUE),
-            'ac_number' => $this->input->post('ac_no',TRUE),
+            'ac_number' => $this->input->post('ac_number',TRUE),
             'branch'    => $this->input->post('branch',TRUE),
-           'country' => $this->input->post('country',TRUE),
+            'country' => $this->input->post('country',TRUE),
             'currency'    => $this->input->post('currency1',TRUE),
             'status'   => 1
         );
+        // print_r($data); die();
+        $this->db->insert('bank_add',$data);
+        // echo $this->db->last_query(); die();
 
             $bank_coa = [
              'HeadCode'         => $headcode,
@@ -63,10 +66,10 @@ class Csettings extends CI_Controller {
         ];
         $bankinfo = $this->Settings->bank_entry($data);
 
-            $this->db->insert('acc_coa',$bank_coa);
-
+         $this->db->insert('acc_coa',$bank_coa);
+         redirect(base_url('Csettings/bank_list'));
         
-     echo json_encode($bankinfo);
+    //  echo json_encode($bankinfo);
        
     }
 
@@ -128,11 +131,12 @@ class Csettings extends CI_Controller {
 
     #==============Bank Ledger============#
 
-    public function bank_ledger() {
-        $bank_id = $this->input->post('bank_id',TRUE);
-        $from    = $this->input->post('from_date',TRUE);
-        $to      = $this->input->post('to_date',TRUE);
-        $content = $this->lsettings->bank_ledger($bank_id,$from,$to);
+    public function bank_ledgers($bank_id) {
+        // $bank_id = $this->input->post('bank_id',TRUE);
+        // $from    = $this->input->post('from_date',TRUE);
+        // $to      = $this->input->post('to_date',TRUE);
+        // $content = $this->lsettings->bank_ledger($bank_id,$from,$to);
+        $content = $this->lsettings->bank_ledger($bank_id);
         $this->template->full_admin_html_view($content);
     }
 
@@ -458,6 +462,22 @@ class Csettings extends CI_Controller {
         $to_date = $this->input->post('to_date',TRUE) ? $this->input->post('to_date',TRUE) : $today;
         $content = $this->lsettings->person_loan_search_by_date($person_id, $from_date, $to_date);
 
+        $this->template->full_admin_html_view($content);
+    }
+
+    public function ledger_lists()
+    {
+        $content = $this->lsettings->list_ledger();
+        $this->template->full_admin_html_view($content);
+    }
+
+    public function delete_bank($bank_id)
+    {
+        // $delete_banks = $this->Settings->banks_delete($bank_id);
+  
+        $this->db->where('bank_id', $bank_id);
+        $this->db->delete('bank_add');
+        redirect('Csettings/bank_list');
         $this->template->full_admin_html_view($content);
     }
 
