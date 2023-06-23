@@ -77,11 +77,14 @@ class Cloan extends CI_Controller {
                 $headcode="10203020001";
             }
         $data = array(
-            'person_id'      => $person_id,
-            'person_name'    => $this->input->post('name',TRUE),
-            'person_phone'   => $this->input->post('phone',TRUE),
-            'person_address' => $this->input->post('address',TRUE),
-            'status' => 1
+       'transaction_id' => $transaction_id,
+            'person_id'      => $this->input->post('person_id',TRUE),
+            'credit'         => $this->input->post('ammount',TRUE),
+            'date'           => $this->input->post('date',TRUE),
+            'details'        => $this->input->post('details',TRUE),
+            'phone'          => $this->input->post('phone',TRUE),
+            'create_by'      => $this->session->userdata('user_id'),
+            'status'         => 2
         );
          $loan_coa = [
              'HeadCode'         => $headcode,

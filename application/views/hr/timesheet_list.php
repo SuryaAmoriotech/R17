@@ -300,9 +300,9 @@
                     <?php echo form_open() ?>
 
 
-          <a href="<?php echo base_url() . 'Chrm/employee_payslip_permission/'.$timsht['id']; ?>" class="btnclr btn m-b-5 m-r-2" data-toggle="tooltip" data-placement="left" title="<?php echo display('update') ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+          <a href="<?php echo base_url() . 'Chrm/edit_timesheet/'.$timsht['timesheet_id']; ?>" class="btnclr btn m-b-5 m-r-2" data-toggle="tooltip" data-placement="left" title="<?php echo display('update') ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 
-              
+               <a href="<?php echo base_url() . 'Chrm/employee_payslip_permission/'.$timsht['timesheet_id']; ?>" class="btnclr btn m-b-5 m-r-2" data-toggle="tooltip" data-placement="left" title="Administrator Update"><i class="fas fa-user-tie" aria-hidden="true"></i></a>
 
                <a class="btnclr btn m-b-5 m-r-2" href="<?php echo base_url('Chrm/timesheed_inserted_data/'.$employees['id'])?>"><i class="fa fa-download" aria-hidden="true"></i></a>
              

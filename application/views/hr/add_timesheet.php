@@ -15,6 +15,7 @@
 
 
 <style>
+       input {border:0;outline:0;}
     .work_table td {
         height: 36px;
     }
@@ -59,9 +60,9 @@
         <div class="row">
             <div class="col-sm-12">                
                 <div class="panel panel-bd lobidrag">
-                    <div class="panel-heading">
+                    <div class="panel-heading" style="height: 50px;">
                         <div class="panel-title">
-                            <!-- <h4>Employee Timesheet</h4> -->
+                               <a style="float:right;background-color:#38469f;color:white;" href="<?php echo base_url('Chrm/manage_timesheet') ?>" class="btn  m-b-5 m-r-2"><i class="ti-align-justify"> </i> <?php echo "Manage TimeSheet" ?> </a>
                         </div>
                     </div>
                     <!-- <?php// echo form_open('Cquotation/insert_quotation', array('class' => 'form-vertical', 'id' => 'insert_quotation')) ?> -->
@@ -298,12 +299,12 @@
                         <div class="table-responsive work_table col-md-12">
 		                    <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="PurList"> 
 								<thead>
-									<tr>
+									<tr style="text-align:center;">
 										<th class="col-md-2">Date</th>
 										<th class="col-md-1">Day</th>
-										<th class="col-md-2">Time started (HH:MM)</th>
-										<th class="col-md-2">Time completed (HH:MM)</th>
-										<th class="col-md-5">Hours()Calculate based on time started and completed & - 1 hour break</th>
+										<th class="col-md-2">Start Time (HH:MM)</th>
+										<th class="col-md-2">End Time (HH:MM)</th>
+										<th class="col-md-5"> Hours()</th>
 									</tr>
 								</thead>
 								<tbody id="tBody">
@@ -314,9 +315,9 @@
                                 <tfoot>
           
                                 <tr style="text-align:end"> 
-                                             <td colspan="4" class="text-right">Total hours worked:</td>  
+                                                   <td colspan="4" class="text-right" style="font-weight:bold;">Total Hours :</td> 
                                         
-                                            <td> <input  type="text"   readonly id="total_net"  name="total_net" />    </td>             
+                                            <td style="text-align: start;"> <input  type="text"   readonly id="total_net"  name="total_net" />    </td>             
                                           
                                             </tr> 
 
@@ -331,7 +332,7 @@
                                         
 		                </div>
 
-                        <input type="submit" style="float:right;color:white;background-color: #38469f;" value="Generate pay slip"   class="btn btn-info m-b-5 m-r-2"/> 
+                        <input type="submit" style="float:left;color:white;background-color: #38469f;" value="Submit"   class="btn btn-info m-b-5 m-r-2"/> 
 
                     </div>               
                     <!-- <?php //echo form_close() ?> -->
