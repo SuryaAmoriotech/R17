@@ -270,7 +270,6 @@
                      foreach($timesheet_list as $timsht){?>
 
 
-<?php  print_r($timesheet_list);  ?>
 
 
                     <tr>
@@ -301,7 +300,7 @@
                     <?php echo form_open() ?>
 
 
-          <a href="<?php echo base_url() . 'Chrm/employee_update_form/'.$employees['id']; ?>" class="btnclr btn m-b-5 m-r-2" data-toggle="tooltip" data-placement="left" title="<?php echo display('update') ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+          <a href="<?php echo base_url() . 'Chrm/employee_payslip_permission/'.$timsht['id']; ?>" class="btnclr btn m-b-5 m-r-2" data-toggle="tooltip" data-placement="left" title="<?php echo display('update') ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 
               
 

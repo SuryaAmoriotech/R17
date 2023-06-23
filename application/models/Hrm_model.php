@@ -34,7 +34,7 @@ class Hrm_model extends CI_Model {
 
         $this->db->select('*');
         $this->db->from('employee_history');
-         $this->db->where('created_by',$this->session->userdata('user_id'));
+         $this->db->where('create_by',$this->session->userdata('user_id'));
          $query = $this->db->get();
     //    echo $this->db->last_query();
        if ($query->num_rows() > 0) {
@@ -44,6 +44,34 @@ class Hrm_model extends CI_Model {
         return false;
 
     }
+
+
+
+    
+
+    public function employeeinfo() {
+
+        $this->db->select('*');
+        $this->db->from('timesheet_info');
+         $this->db->where('create_by',$this->session->userdata('user_id'));
+         $query = $this->db->get();
+    //    echo $this->db->last_query();
+       if ($query->num_rows() > 0) {
+        return $query->result_array();
+
+    }
+        return false;
+
+    }
+
+
+
+
+
+
+
+
+
 
 
     public function get_payment_terms(){
@@ -80,7 +108,7 @@ class Hrm_model extends CI_Model {
         return $query->result_array();
     }
     
-    
+
     public function get_duration_data(){
         
         $this->db->select('*');
@@ -414,7 +442,7 @@ $sql3="UPDATE state_and_tax SET tax = replace(replace(tax, ',,', ','), ',', ',')
 
         $query = $this->db->get();
 
-
+// echo $this->db->last_query(); die();
 
         if ($query->num_rows() > 0) {
 

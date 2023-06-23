@@ -1,4 +1,3 @@
-<!-- Add new tax start -->
 
 <style>
     .payTop_details p{
@@ -84,14 +83,19 @@
 
             <div class="panel-body">
 
+            <div class="container" id="content">
 
 <div class="payTop_details row">
 
     <div class="col-md-6">
         <p>
-            ABSSOLUTE MARBLE & GRANITE CORP
+            <!-- ABSSOLUTE MARBLE & GRANITE CORP
             <span>1300 Taylors Lane</span>
-            <span>Cinnomantion NJ 08077</span>
+            <span>Cinnomantion NJ 08077</span> -->
+            <?php echo $business_name; ?><br>
+            <?php echo $address; ?><br> 
+            <?php echo $email; ?><br>
+            <?php echo $phone; ?>
         </p>
 
         <div style="float: right;">1308-5812
@@ -104,10 +108,11 @@
 
 <div class="Employee_details row">
 
-    <p>Ankul Sen</p>
+    <!-- <p>Ankul Sen</p>
     <p>28 BROWNSTONE BLVD</p>
-      <p>VOORHEES NJ 08043</p>
-
+      <p>VOORHEES NJ 08043</p> -->
+      <?php echo $templ_name; ?><br>
+            <?php echo $job_title; ?>
 
 </div>
 
@@ -327,11 +332,13 @@
                          
                         </tfoot>
                      </table>
+                     <a id="download" style="color:white;background-color:#38469f;" class='btn btn-primary'><?php echo display('Download') ?></a>  
 
             </div>
 
         </div>
 
+    </div>
     </div>
 
 </div>
@@ -343,7 +350,6 @@
     </section>
 
 </div>
-
 
 
 
