@@ -751,7 +751,7 @@ if($_SESSION['u_type']==2)
                                             <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/payroll_setting"><?php  echo display('Payroll settings');?></a></li>
                     
 
-                                          <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/add_expense_item"><?php echo display("expense");?></a></li>
+                                          <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/expense_list"><?php echo display("expense");?></a></li>
                     
 
 
@@ -1596,7 +1596,7 @@ break;
                                             <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/payroll_setting"><?php  echo display('Payroll settings');?></a></li>
                     
 
-                                          <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/add_expense_item"><?php echo display("expense");?></a></li>
+                                          <li class="treeview  "><a href="<?php echo base_url(); ?>/Chrm/expense_list"><?php echo display("expense");?></a></li>
                     
 
 

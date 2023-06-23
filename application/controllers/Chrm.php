@@ -79,7 +79,7 @@ class Chrm extends CI_Controller {
 
 
 public function timesheed_inserted_data($id) {
-        //    echo $id; die();
+           echo $id; die();
            $CI = & get_instance();
            $CC = & get_instance();
            $CA = & get_instance();
@@ -169,11 +169,37 @@ public function timesheed_inserted_data($id) {
     }
 
 
+// Pdf Pass Data List
+public function time_list($timesheet_id = null)
+{
+   $CI = & get_instance();
+   $CI->load->model('invoice_content');
+   $datacontent = $CI->invoice_content->retrieve_data();
+   print_r($datacontent);
+   $data = array(
+    'company' =>  $datacontent
+   );
+   $content = $this->parser->parse('hr/pay_slip', $data, true);
+    $this->template->full_admin_html_view($content);
+}
+
+
+// Manage Pay Slip Lists
+public function pay_slip_list() 
+{
+    $data['title'] = display('pay_slip_list');
+    $data['timesheet_list'] = $this->db->select('*')->from('timesheet_info')->get()->result_array();
+    // print_r($data['timesheet_list']); 
+    $content = $this->parser->parse('hr/pay_slip_list', $data, true);
+    $this->template->full_admin_html_view($content);
+}
+
 
 
 
 
   public function pay_slip() {
+// echo $timesheet_id; die();
 // print_r($_POST);
     $this->load->model('Hrm_model');
     $data['title'] = display('pay_slip');
@@ -187,33 +213,33 @@ public function timesheed_inserted_data($id) {
         $data_timesheet['create_by'] =$this->session->userdata('user_id');
 
 
-         $date1 = $this->input->post('date');
+        $date1 = $this->input->post('date');
         $day1 = $this->input->post('day');
         $time_start1 = $this->input->post('start');
         $time_end1 = $this->input->post('end');
         $hours_per_day1 = $this->input->post('timeSum');
-               $purchase_id_1 = $this->db->where('templ_name', $this->input->post('templ_name'))->where('month', $this->input->post('date_range'));
+        $purchase_id_1 = $this->db->where('templ_name', $this->input->post('templ_name'))->where('month', $this->input->post('date_range'));
         $q=$this->db->get('timesheet_info');
-         echo $this->db->last_query(); 
+         // echo $this->db->last_query(); 
         $row = $q->row_array();
     if(!empty($row['timesheet_id'])){
         $this->session->set_userdata("timesheet_id_old",$row['timesheet_id']);
    $this->db->where('timesheet_id', $this->session->userdata("timesheet_id_old"));
   $this->db->delete('timesheet_info');
-    echo $this->db->last_query(); 
+    // echo $this->db->last_query(); 
        $this->db->insert('timesheet_info', $data_timesheet);
-      echo $this->db->last_query(); 
+      // echo $this->db->last_query(); 
    }
     else{
     $this->db->insert('timesheet_info', $data_timesheet);
-    echo $this->db->last_query(); 
+    // echo $this->db->last_query(); 
     }
     $purchase_id_2 = $this->db->select('timesheet_id')->from('timesheet_info')->where('templ_name',$this->input->post('templ_name'))->get()->row()->timesheet_id;
     echo $this->db->last_query(); 
-    $this->session->set_userdata("timesheet_id_new",$purchase_id_2);
+        $this->session->set_userdata("timesheet_id_new",$purchase_id_2);
         $this->db->where('timesheet_id', $this->session->userdata("timesheet_id_old"));
         $this->db->delete('timesheet_info_details');
-      echo $this->db->last_query(); 
+      // echo $this->db->last_query(); 
          for ($i = 0, $n = count($date1); $i < $n; $i++) {
            
             $date = $date1[$i];
@@ -247,11 +273,6 @@ public function timesheed_inserted_data($id) {
     }
   }
 
-    public function pay_slip_list() {
-    $data['title'] = display('pay_slip_list');
-    $content = $this->parser->parse('hr/pay_slip_list', $data, true);
-    $this->template->full_admin_html_view($content);
-    }
 
 public function add_state(){
   $CI = & get_instance();
@@ -778,6 +799,107 @@ public function add_state_taxes_detail($tax=0) {
      $content                  = $this->parser->parse('hr/resumepdf', $data, true);
      $this->template->full_admin_html_view($content);
     }
+    
+
+    // Expense List Data
+    public function expense_list()
+    {
+       $data['expen_list'] = $this->db->select('*')->from('expense')->get()->result_array();
+       // print_r($data['expen_list']); 
+       $content = $this->parser->parse('hr/expense_list', $data, true);
+       $this->template->full_admin_html_view($content);
+    }
+
+    // Delete Expense
+    public function delete_expense($id = null)
+    {
+        // echo $id; die();
+        $this->db->where('id', $id);
+        $this->db->delete('expense');
+        redirect('Chrm/expense_list');
+        $this->template->full_admin_html_view($content);
+    }
+
+    // Edit Expense Data
+    public function edit_expense($id)
+    {  
+       $this->load->library('lsettings');
+       $content = $this->lsettings->expense_show_by_id($id);
+       $this->template->full_admin_html_view($content);  
+    }
+
+    // Pdf Download Expenses
+    public function expense_download($id)
+    {
+        $CI = & get_instance();
+        $CC = & get_instance();
+        $CA = & get_instance();
+        $CI->load->model('Web_settings');
+        $CI->load->model('Hrm_model');
+        $CA->load->model('invoice_design');
+        $CC->load->model('invoice_content');
+
+
+        $expense_pdf = $CI->Hrm_model->pdf_expense($id);
+         // print_r($expense_pdf); 
+
+        $setting=  $CI->Web_settings->retrieve_setting_editdata();
+        $dataw = $CA->invoice_design->retrieve_data();
+        // print_r($dataw); die();
+        $datacontent = $CC->invoice_content->retrieve_data();
+        $currency_details = $CI->Web_settings->retrieve_setting_editdata();
+        $curn_info_default = $CI->db->select('*')->from('currency_tbl')->where('icon',$currency_details[0]['currency'])->get()->result_array();
+
+        $data=array(
+            'curn_info_default' =>$curn_info_default[0]['currency_name'],
+            'currency'  =>$currency_details[0]['currency'],
+            'header'=> $dataw[0]['header'],
+            'logo'=> $setting[0]['invoice_logo'],
+            'color'=> $dataw[0]['color'],
+            'template'=> $dataw[0]['template'],
+            'company'=> $datacontent,
+            'expense_pdf' => $expense_pdf
+        );
+
+        $content = $this->load->view('hr/expense_html_pdf', $data, true);
+
+        $this->template->full_admin_html_view($content);
+    }
+
+
+    public function update_expense($id)
+    {
+       $this->load->library('lsettings');
+       $content = $this->lsettings->update_expense_id($id);
+       $this->template->full_admin_html_view($content);
+        redirect('Chrm/expense_list');
+    }
+
+
+
+   // Expense Insert data
+    public function create_expense()
+    {
+        $this->form_validation->set_rules('expense_name',display('expense_name'),'required|max_length[100]');
+        $this->form_validation->set_rules('expense_date',display('expense_date'),'required|max_length[100]');
+        $this->form_validation->set_rules('expense_payment_date',display('expense_payment_date'),'required|max_length[100]');
+
+         $postData = [
+            'expense_name'    => $this->input->post('expense_name',true),
+            'expense_date'     => $this->input->post('expense_date',true),
+            'expense_amount'   => $this->input->post('expense_amount',true),
+            'total_amount'         => $this->input->post('total_amount',true),
+            'expense_payment_date'     => $this->input->post('expense_payment_date',true),
+            'description'         => $this->input->post('description',true),
+            'created_by' => $this->session->userdata('user_id')
+        ];
+
+        $this->db->insert('expense',$postData);
+        // echo $this->db->last_query(); die();
+        redirect(base_url('Chrm/expense_list'));
+    }
+
+
 
 
   // create employee
@@ -830,7 +952,12 @@ public function add_state_taxes_detail($tax=0) {
             'country'       => $this->input->post('country',true),
             'city'          => $this->input->post('city',true),
             'zip'           => $this->input->post('zip',true),
-        ];   
+        ];  
+
+        // $this->db->insert('acc_coa',$postData);
+        // redirect(base_url('Csettings/bank_list'));
+
+
 
         // pritn
 

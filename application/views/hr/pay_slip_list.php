@@ -60,13 +60,11 @@
 
                                     <th><?php echo display('sl') ?></th>
 
-                                  
 
-                                 
+                                    <th>Duration</th>
 
-                                    <th>Employee Name</th>
-
-                                    <th>Pay Slip Generated Date</th>
+                                    <th>Job Title</th>
+                                    <th>Month</th>
 
                                
 
@@ -77,17 +75,20 @@
                                 </thead>
 
                                 <tbody>
-
+                                <?php $s = 1; foreach ($timesheet_list as $key => $list) { ?>
                                     <tr role="row" class="odd">
-
-                                           <td tabindex="0">1</td>
-                                      
-                                        <td>Ankul Sen</td>
-                                        <td>20 - NOV - 2021</td>
-                                       
-                                        <td>  <a href="<?php echo base_url('Chrm/pay_slip') ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="View Pay Slip"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
+ 
+                                        <td tabindex="0"><?php echo $s; ?></td>
+                                        <td><?php echo $list['duration']; ?></td>
+                                        <td><?php echo $list['job_title']; ?></td>
+                                        <td><?php echo $list['month']; ?></td>
+                                        <td><a href="<?php echo base_url('Chrm/time_list/'.$list['timesheet_id']) ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="left" title="" data-original-title="View Pay Slip"><i class="fa fa-window-restore" aria-hidden="true"></i></a>
                                         </td>
+                                        <input type="hidden" value="<?php echo $list['timesheet_id']; ?>">
+                                        <input type="hidden" value="<?php echo $list['create_by']; ?>">
                                     </tr>
+
+                                <?php $s++; } ?>
 
                                 </tbody>
 

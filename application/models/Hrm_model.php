@@ -28,11 +28,55 @@ class Hrm_model extends CI_Model {
          }
          return false;
     }
+
+    // Update Expense
+
+    public function update_expense_id($id)
+    {
+        $data = array(
+            'expense_name' => $this->input->post('expense_name',TRUE),
+            'expense_date' => $this->input->post('expense_date',TRUE),
+            'expense_amount' => $this->input->post('expense_amount',TRUE),
+            'total_amount' => $this->input->post('total_amount',TRUE),
+            'expense_payment_date' => $this->input->post('expense_payment_date',TRUE),
+            'description' => $this->input->post('description',TRUE),
+        );
+        
+        $this->db->where('id', $id);
+        $this->db->update('expense', $data);
+        // echo $this->db->last_query(); die();
+        return true;
+    }
+
+
+
+    //Get expense by id
+    public function get_expense_by_id($id) {
+        $this->db->select('*');
+        $this->db->from('expense');
+        $this->db->where('id', $id);
+        $query = $this->db->get();
+        // echo $this->db->last_query(); die();
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        }
+        return false;
+    }
+
+    // Pdf Download Expense
+    public function pdf_expense($id)
+    {
+        $this->db->select('*');
+        $this->db->from('expense');
+        $this->db->where('id', $id);
+        $query = $this->db->get();
+        // echo $this->db->last_query(); die();
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        }
+        return false;
+    }
     
-
-
-
-
     public function administrator_data(){
 
         $this->db->select('*');

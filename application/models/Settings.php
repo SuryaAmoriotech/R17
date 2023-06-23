@@ -335,17 +335,20 @@ class Settings extends CI_Model {
     }
 
     //Get bank by id
-    public function get_bank_by_id($bank_id) {
-        $this->db->select('*');
-        $this->db->from('bank_add');
-        $this->db->where('bank_id', $bank_id);
-        $this->db->where('status', 1);
-        $query = $this->db->get();
-        if ($query->num_rows() > 0) {
-            return $query->result_array();
-        }
-        return false;
-    }
+    // public function get_bank_by_id($bank_id) {
+    //     $this->db->select('*');
+    //     $this->db->from('bank_add');
+    //     $this->db->where('bank_id', $bank_id);
+    //     $this->db->where('status', 1);
+    //     $query = $this->db->get();
+    //     if ($query->num_rows() > 0) {
+    //         return $query->result_array();
+    //     }
+    //     return false;
+    // }
+
+    public function 
+
 
     //Bank updaet by id
     public function bank_update_by_id($bank_id) {

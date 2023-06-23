@@ -92,10 +92,10 @@
             <!-- ABSSOLUTE MARBLE & GRANITE CORP
             <span>1300 Taylors Lane</span>
             <span>Cinnomantion NJ 08077</span> -->
-            <?php echo $business_name; ?><br>
-            <?php echo $address; ?><br> 
-            <?php echo $email; ?><br>
-            <?php echo $phone; ?>
+           <?php echo $company[0]['business_name']; ?><br>
+           <?php echo $company[0]['address']; ?><br> 
+           <?php echo $company[0]['email']; ?><br>
+           <?php echo $company[0]['phone']; ?>
         </p>
 
         <div style="float: right;">1308-5812
@@ -111,8 +111,8 @@
     <!-- <p>Ankul Sen</p>
     <p>28 BROWNSTONE BLVD</p>
       <p>VOORHEES NJ 08043</p> -->
-      <?php echo $templ_name; ?><br>
-            <?php echo $job_title; ?>
+      Test<br>
+      Test
 
 </div>
 

@@ -5,17 +5,6 @@
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
 
-
-
-
-
-
-
-
-
-
-
-
 <div class="content-wrapper">
 
     <section class="content-header">
@@ -36,9 +25,9 @@
 
                 <li><a href="#"><i class="pe-7s-home"></i> <?php echo display('home') ?></a></li>
 
-                <li><a href="#"><?php echo display('hrm') ?></a></li>
+                <li><a href="#"><?php echo display('expense_edit') ?></a></li>
 
-                <li class="active" style="color:orange">Add Expense Item</li>
+                <li class="active" style="color:orange">Edit Expense</li>
 
             </ol>
 
@@ -134,7 +123,7 @@ textarea:focus, input:focus{
 
 
 
-                         <?php echo form_open_multipart('Chrm/create_expense','id="validate"') ?>
+                         <?php echo form_open_multipart('Chrm/update_expense/'.$expense_list[0]['id'],'id="validate"') ?>
 
                     <div class="form-group row">
 
@@ -142,14 +131,14 @@ textarea:focus, input:focus{
 
                         <div class="col-sm-4">
 
-                            <input name="expense_name" class="form-control" type="text" placeholder="Expenses Name" required id="expense_name">
-
+                            <input name="expense_name" class="form-control" type="text" placeholder="Expenses Name" required id="expense_name" value="<?php echo $expense_list[0]['expense_name']?>">
+                            <input type="hidden" name="oldname" value="<?php echo $expense_list[0]['expense_name']?>">
                         </div>
 
                          <label for="last_name" class="col-sm-2 col-form-div">Date<i class="text-danger">*</i></label>
 
                         <div class="col-sm-4">
-                    <input class="datepicker form-control" type="date" size="50" name="expense_date" id="expense_date" required value="" tabindex="4" />
+                    <input class="datepicker form-control" type="date" size="50" name="expense_date" id="expense_date" required  tabindex="4" value="<?php echo $expense_list[0]['expense_date']?>" />
                         </div>
 
                     </div>
@@ -159,8 +148,8 @@ textarea:focus, input:focus{
                         <label for="designation" class="col-sm-2 col-form-div">Amount <i class="text-danger">*</i></label>
 
                         <div class="col-sm-4">
-                        <span class='form-control' style='background-color: #eee;'><?php   echo $currency; ?>
-                <input name="expense_amount"  type="text" placeholder="Amount" required id="expense_amount">
+                        <span class='form-control' style='background-color: #eee;'><?php echo $currency; ?>
+                <input name="expense_amount"  type="text" placeholder="Amount" required id="expense_amount" value="<?php echo $expense_list[0]['expense_amount']?>">
     </span>
                         </div>
 
@@ -168,7 +157,7 @@ textarea:focus, input:focus{
 
                         <div class="col-sm-4">
                         <span class='form-control' style='background-color: #eee;'><?php   echo $currency; ?>
-                            <input name="total_amount"  type="text" placeholder="Total_amount" id="phone" required>
+                            <input name="total_amount"  type="text" placeholder="Total_amount" id="phone" value="<?php echo $expense_list[0]['total_amount']?>" required>
     </span>
                         </div>
 
@@ -180,7 +169,7 @@ textarea:focus, input:focus{
 
                         <div class="col-sm-4">
 
-                           <input class="datepicker form-control" type="date" size="50" name="expense_payment_date" id="expense_payment_date" required value="" tabindex="4" />
+                           <input class="datepicker form-control" type="date" size="50" name="expense_payment_date" id="expense_payment_date" value="<?php echo $expense_list[0]['expense_payment_date']?>" required  tabindex="4" />
                         </div>
 
 
@@ -188,8 +177,11 @@ textarea:focus, input:focus{
                     <label for="address_line_1" class="col-sm-2 col-form-div">Description</label>
 
                         <div class="col-sm-4">
+                          
 
-                           <textarea name="description" class="form-control" placeholder="<?php echo display('address_line_1') ?>" id="address_line_1"></textarea> 
+                          <input name="description" class="form-control" type="text" placeholder="<?php echo display('description') ?>" required id="address_line_1" value="<?php echo $expense_list[0]['description']?>">
+                            <input type="hidden" value="<?php echo $expense_list[0]['description']?>">
+                           <!-- <textarea name="description" class="form-control" value="<?php //echo $expense_list[0]['description']?>" placeholder="<?php //echo display('description') ?>" id="address_line_1"></textarea>  -->
 
                         </div>
                          

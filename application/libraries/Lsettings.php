@@ -446,6 +446,38 @@ class Lsettings {
         return $bankList;
     }
 
+    // Expense Edit Data
+    public function expense_show_by_id($id)
+    {
+        $CI = & get_instance();
+        $CI->load->model('Hrm_model');
+        $CI->load->model('Web_settings');
+        $currency_details = $CI->Web_settings->retrieve_setting_editdata();
+        $currency =  $currency_details[0]['currency'];
+        $expense_list = $CI->Hrm_model->get_expense_by_id($id);
+        // print_r($list);
+        $data = array(
+            'expense_list' => $expense_list,
+            'currency' => $currency
+        );
+        // print_r($data);
+        $expenseList = $CI->parser->parse('hr/edit_expense', $data, true);
+        return $expenseList;
+    }
+
+
+    // Update Expense
+    public function update_expense_id($id)
+    {
+        $CI = & get_instance();
+        $CI->load->model('Hrm_model');
+        $CI->load->model('Web_settings');
+        $currency_details = $CI->Web_settings->retrieve_setting_editdata();
+        $currency =  $currency_details[0]['currency'];
+        $update_expense_list = $CI->Hrm_model->update_expense_id($id);
+        return true;
+    }
+
     #=============Bank Update by id=======#
 
     public function bank_update_by_id($bank_id) {
