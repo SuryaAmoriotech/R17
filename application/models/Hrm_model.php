@@ -30,6 +30,33 @@ class Hrm_model extends CI_Model {
     }
     
 
+
+
+
+    public function administrator_data(){
+
+        $this->db->select('*');
+        $this->db->from('administrator');
+         $this->db->where('create_by',$this->session->userdata('user_id'));
+         $query = $this->db->get();
+        //  echo $this->db->last_query(); die();
+         if ($query->num_rows() > 0) {
+           return $query->result_array();
+         }
+         return false;
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
     public function employee_name() {
 
         $this->db->select('*');
@@ -66,8 +93,21 @@ class Hrm_model extends CI_Model {
 
 
 
+    public function insert_adsrs_data($data) {
+
+        // $this->db->insert('administrator', $data);
 
 
+        $this->db->select('*');
+        $this->db->from('administrator');
+        // $this->db->where('customer_name', $data['customer_name']);
+        $this->db->where('create_by',$this->session->userdata('user_id'));
+        $query = $this->db->get();
+        $this->db->insert('administrator', $data);
+        return $query->result_array();
+
+       //echo $this->db->last_query();
+    }
 
 
 
@@ -80,7 +120,6 @@ class Hrm_model extends CI_Model {
         $this->db->from('payment_terms');
         $this->db->where('create_by' ,$this->session->userdata('user_id'));
         $query = $this->db->get();
-        return $query->result_array();
     }
     
 

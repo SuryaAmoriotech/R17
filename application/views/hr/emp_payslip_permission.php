@@ -324,10 +324,21 @@
          
 
 
-                        <div id="" >
-<label for="aadhar">Administrator Name<i class="text-danger">*</i></label> 
-<input type="text" id="cheque_no" name="cheque_no"   class="form-control" requried /><br />
+<label for="administrator_person">Administrator Name<i class="text-danger">*</i></label> 
 
+
+<select name="administrator_person" id="administrator_person"  class="form-control" style="width:400px;"  data-placeholder="<?php echo display('select_one'); ?>">                                   
+<option value=""> Select Administrator Name </option>
+        <?php foreach($administrator as $adv){ ?>
+<option value="<?php echo $adv['adm_id'] ; ?>"><?php echo $adv['adm_name'] ; ?></option>
+<?php    }?>
+
+</select>
+
+
+<div>
+<a  class="client-add-btn btn" aria-hidden="true" style="color:white;background-color:#38469f;"  data-toggle="modal" data-target="#add_admst" ><i class="fa fa-plus"></i></a>
+</div>
 </div>
 
 
@@ -335,6 +346,12 @@
 
 
 
+
+
+
+
+
+<div class="panel-title">
 
 <label for="selector">Select Payment Method
 <i class="text-danger">*</i>
@@ -424,4 +441,129 @@
         document.getElementById("ps").style.display = "none";
     }
 }
+</script>
+
+
+
+<!------ add new Duration-->  
+<div class="modal fade" id="add_admst" role="dialog">
+
+<div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+
+        <div class="modal-header" style="color:white;background-color:#38469f;" >
+
+            
+
+            <a href="#" class="close" data-dismiss="modal">&times;</a>
+
+            <h4 class="modal-title"><?php echo ('Add New Administrator ') ?></h4>
+
+        </div>
+
+        
+
+        <div class="modal-body">
+
+            <div id="customeMessage" class="alert hide"></div>
+
+  <form id="insert_adm" method="post">
+
+    <div class="panel-body">
+
+<input type ="hidden" name="csrf_test_name" id="" value="<?php echo $this->security->get_csrf_hash();?>">
+
+        <div class="form-group row">
+
+            <label for="adms_name" class="col-sm-4 col-form-label" style="width: auto;"><?php echo ('Administrator Name') ?> <i class="text-danger">*</i></label>
+            <div class="col-sm-6">
+                <input class="form-control" name ="adms_name" id="adms_name" type="text" placeholder="Administrator Name" style="width: 200px;"  required="" tabindex="1">
+
+            </div>
+
+
+
+     
+</div>
+
+
+<input type ="hidden" name="csrf_test_name" id="" value="<?php echo $this->security->get_csrf_hash();?>">
+
+
+
+<div class="form-group row">
+
+<label for="address" class="col-sm-3 col-form-label" style="width: auto;"><?php echo ('Administrator Address') ?> </label>
+
+<div class="col-sm-4">
+
+    <input class="form-control" name ="address" id="address" type="text" placeholder="Administrator Adress" style="width: 200px;"  required="" tabindex="1">
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+    </div>
+        </div>
+
+        <div class="modal-footer">
+            <a href="#" class="btn" style="color:white;background-color:#38469f;" data-dismiss="modal"><?php echo display('Close') ?> </a>
+            <input type="submit" class="btn" style="color:white;background-color: #38469f;" value=<?php echo display('Submit') ?>>
+        </div>
+
+                                </form>
+
+    </div><!-- /.modal-content -->
+
+</div><!-- /.modal-dialog -->
+
+</div><!-- /.modal -->
+
+
+    
+<script>
+ var csrfName = '<?php echo $this->security->get_csrf_token_name();?>';
+var csrfHash = '<?php echo $this->security->get_csrf_hash();?>';
+
+      
+    $('#insert_adm').submit(function (event) {
+        event.preventDefault();
+
+var dataString = {
+    dataString : $("#insert_adm").serialize()
+};
+dataString[csrfName] = csrfHash;
+$.ajax({
+    type:"POST",
+    dataType:"json",
+    url:"<?php echo base_url(); ?>Chrm/insert_data_adsr",
+    data:$("#insert_adm").serialize(),
+    success:function (data1) {
+
+    var $select = $('select#insert_adm');
+        $select.empty();
+
+          for(var i = 0; i < data1.length; i++) {
+    var option = $('<option/>').attr('value', data1[i].adms_name).text(data1[i].adms_name);
+    $select.append(option); // append new options
+}
+    }
+});
+});
+
+var data = {
+  
+    value:$('#customer_name').val()
+};
+
 </script>
